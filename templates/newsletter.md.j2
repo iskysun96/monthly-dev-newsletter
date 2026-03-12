@@ -1,0 +1,24 @@
+# {{ branding.title }} — {{ month_year }}
+
+> {{ branding.tagline }}
+
+{{ intro }}
+
+---
+
+{% for section in sections %}
+## {{ section.title }}
+
+{{ section.summary }}
+
+{% if section.entries %}
+{% for item in section.entries %}
+- **{{ item.title }}** {% if item.url %}([link]({{ item.url }})){% endif %}{% if item.repo %} — `{{ item.repo }}`{% endif %}
+
+  _{{ item.source_type | default("item", true) }}{% if item.repo %} | {{ item.repo }}{% endif %}{% if item.date %} | {{ item.date }}{% endif %}_
+{% endfor %}
+{% endif %}
+{% endfor %}
+---
+
+*{{ branding.footer }}*

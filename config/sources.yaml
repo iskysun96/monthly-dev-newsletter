@@ -1,0 +1,38 @@
+aips:
+  owner: aptos-foundation
+  name: AIPs
+  path: aips
+  branch: main
+
+blog:
+  type: rss
+  url: https://aptoslabs.com/blog/rss.xml
+  fallback_url: https://aptoslabs.com/blog
+
+medium:
+  type: rss
+  url: https://aptoslabs.medium.com/feed
+
+youtube:
+  channels:
+    - name: "Aptos Developers"
+      channel_id: "UCxxxxxxxxxx"  # TODO: replace with actual channel ID
+  min_duration_seconds: 60
+
+governance:
+  api_url: https://api.mainnet.aptoslabs.com/v1
+  voting_address: "0x1"
+  lookback_days: 45
+
+forum:
+  type: discourse
+  base_url: https://forum.aptosfoundation.org
+  categories:
+    - slug: general
+      id: 4
+    - slug: development
+      id: 7
+    - slug: governance
+      id: 6
+  min_likes: 3
+  min_replies: 2

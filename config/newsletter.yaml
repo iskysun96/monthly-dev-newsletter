@@ -1,0 +1,144 @@
+filtering:
+  exclude_title_patterns:
+    - "^chore[:(]"
+    - pattern: "^docs[:(]"
+      except_repos:
+        - "aptos-labs/aptos-docs"
+        - "aptos-labs/move-by-examples"
+    - "^ci[:(]"
+    - "^build[:(]"
+    - "^test[:(]"
+    - "^style[:(]"
+    - "^refactor[:(]"
+    - "^Version Packages$"
+    - "(?i)^bump version"
+    - "(?i)^republish"
+    - "(?i)^re-?release"
+    - "^\\[cp\\]"
+    - "(?i)^cherry-?pick"
+    - "(?i)^backport"
+    - "^\\[release\\]"
+  exclude_label_patterns:
+    - "cherry-pick"
+    - "backport"
+  exclude_prerelease: true
+
+sections:
+  - id: breaking_changes
+    title: "Breaking Changes"
+    priority: 1
+    rules:
+      - field: title
+        pattern: "(?i)break(ing)?|BREAKING"
+      - field: labels
+        contains: "breaking-change"
+      - field: title
+        pattern: "^(feat|fix)!:"
+    prompt: |
+      Summarize these breaking changes for Aptos developers. For each change,
+      explain what broke, why it changed, and what developers need to do to
+      migrate. Be direct and actionable. Use bullet points.
+
+  - id: protocol_updates
+    title: "Protocol Updates"
+    priority: 2
+    rules:
+      - field: repo
+        pattern: "aptos-core"
+        type: release
+      - field: labels
+        contains_any: ["consensus", "execution", "storage", "mempool", "state-sync"]
+      - field: title
+        pattern: "(?i)^\\[(consensus|execution|storage|mempool|state-sync|gas|network|compiler[^\\]]*|dkg|validator|vm|api|indexer|move[^\\]]*)\\]"
+    prompt: |
+      Summarize these Aptos protocol updates for developers. Focus on what
+      changed in the node software and how it affects validators, node operators,
+      or dApp developers. Group related changes together.
+
+  - id: sdk_tooling
+    title: "SDK & Tooling"
+    priority: 3
+    rules:
+      - field: repo
+        pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
+      - field: labels
+        contains_any: ["sdk", "tooling", "cli", "indexer"]
+    prompt: |
+      Summarize these SDK and tooling updates for Aptos developers. Group by
+      SDK/tool, highlight new features and bug fixes. Include version numbers
+      where available. Mention migration steps for any API changes.
+
+  - id: new_features
+    title: "New Features"
+    priority: 4
+    rules:
+      - field: title
+        pattern: "^feat[:(]"
+      - field: labels
+        contains_any: ["enhancement", "feature"]
+      - field: title
+        pattern: "(?i)(add(ing|s)?\\s+(support|new)|introduc(e|ing)|new feature)"
+    prompt: |
+      Summarize these new features added to the Aptos ecosystem. For each
+      feature, explain what it enables for developers and link to relevant
+      documentation or examples when available.
+
+  - id: governance_aips
+    title: "Governance & AIPs"
+    priority: 5
+    rules:
+      - field: source_type
+        equals: "aip"
+      - field: source_type
+        equals: "governance_proposal"
+      - field: labels
+        contains_any: ["governance", "aip"]
+    prompt: |
+      Summarize these Aptos Improvement Proposals and governance updates.
+      For each AIP, state its number, title, status, and a one-sentence
+      summary of what it proposes. Group by status (new, updated, accepted).
+
+  - id: docs_learning
+    title: "Documentation & Learning"
+    priority: 6
+    rules:
+      - field: repo
+        pattern: "(aptos-docs|move-by-examples)"
+      - field: source_type
+        equals: "youtube"
+    prompt: |
+      Summarize documentation updates and new learning resources. Group by
+      type (docs changes, new videos, new examples). Keep it concise.
+
+  - id: community_highlights
+    title: "Community Highlights"
+    priority: 7
+    rules:
+      - catch_all: true
+    prompt: |
+      Summarize these community highlights from the Aptos ecosystem. Include
+      notable blog posts, forum discussions, and community contributions.
+      Keep it concise — 1-2 sentences per item.
+
+intro_prompt: |
+  Write a 2-3 sentence introduction for the Aptos developer newsletter for
+  {month_year}. Mention the most significant changes from this list of
+  section summaries. Keep it professional, concise, and developer-focused.
+  Do not use marketing language.
+
+summarization:
+  model: "claude-sonnet-4-20250514"
+  max_tokens_section: 2048
+  max_tokens_intro: 512
+  temperature: 0.3
+  style: "concise, technical, developer-focused"
+
+branding:
+  title: "Aptos Developer Monthly"
+  tagline: "Your monthly digest of Aptos ecosystem updates"
+  footer: "Published by Aptos Labs DevRel"
+  color_primary: "#00D4AA"
+  color_bg: "#0B1221"
+  color_text: "#E8E8E8"
+  color_muted: "#8B95A5"
+  logo_url: ""

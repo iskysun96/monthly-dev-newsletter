@@ -1,0 +1,126 @@
+repos:
+  - owner: aptos-labs
+    name: aptos-core
+    track:
+      - releases
+      - prs
+      - commits
+    pr_min_files: 5
+    commit_prefixes:
+      - "feat:"
+      - "fix:"
+      - "breaking:"
+      - "feat!:"
+      - "fix!:"
+
+  - owner: aptos-labs
+    name: aptos-ts-sdk
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-python-sdk
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-rust-sdk
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-go-sdk
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-wallet-adapter
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-indexer-processors
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-indexer-processor-sdk
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: create-aptos-dapp
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-cli
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-agent-skills
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-agent
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: forklift
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: aptos-docs
+    track:
+      - prs
+    pr_min_files: 3
+
+  - owner: aptos-labs
+    name: move-by-examples
+    track:
+      - prs
+      - commits
+    commit_prefixes:
+      - "feat:"
+      - "fix:"
+
+  - owner: aptos-labs
+    name: aptos-mcp
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: explorer
+    track:
+      - releases
+      - prs
+
+  - owner: aptos-labs
+    name: move
+    track:
+      - releases
+      - prs
+      - commits
+    commit_prefixes:
+      - "feat:"
+      - "fix:"
+      - "breaking:"
+      - "feat!:"
+      - "fix!:"

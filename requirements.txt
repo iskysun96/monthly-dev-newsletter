@@ -1,0 +1,11 @@
+python-dotenv>=1.0.0
+PyGithub>=2.3.0
+httpx>=0.27.0
+beautifulsoup4>=4.12.0
+feedparser>=6.0.0
+anthropic>=0.70.0
+Jinja2>=3.1.0
+premailer>=3.10.0
+PyYAML>=6.0
+python-dateutil>=2.8.0
+google-api-python-client>=2.100.0

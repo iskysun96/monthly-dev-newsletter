@@ -1,0 +1,86 @@
+{
+  "week": "2026-W05",
+  "scraper": "web-content",
+  "items": [
+    {
+      "id": "blog:https://medium.com/aptoslabs/shelby-early-access-is-open-on-aptos-testnet-452e8de5613b?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Shelby Early Access Is Open on Aptos Testnet",
+      "url": "https://medium.com/aptoslabs/shelby-early-access-is-open-on-aptos-testnet-452e8de5613b?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/building-fair-markets-a-new-censorship-resistant-consensus-418ec403524c?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Building Fair Markets: A New Censorship-Resistant Consensus",
+      "url": "https://medium.com/aptoslabs/building-fair-markets-a-new-censorship-resistant-consensus-418ec403524c?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/the-end-of-the-long-proof-of-concept-with-hkma-bcg-09619fa1356a?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "The End of the Long Proof-of-Concept",
+      "url": "https://medium.com/aptoslabs/the-end-of-the-long-proof-of-concept-with-hkma-bcg-09619fa1356a?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/introducing-forklift-network-forking-and-smart-contract-testing-for-aptos-d516b815d625?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Introducing Forklift: Network Forking and Smart Contract Testing for Aptos",
+      "url": "https://medium.com/aptoslabs/introducing-forklift-network-forking-and-smart-contract-testing-for-aptos-d516b815d625?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/lazy-loading-a-new-era-of-composable-move-88611e8f3aec?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Lazy Loading: A New Era of Composable Move",
+      "url": "https://medium.com/aptoslabs/lazy-loading-a-new-era-of-composable-move-88611e8f3aec?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/aptos-labs-2025-recap-highlights-48fb3a9f2b2b?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Aptos Labs 2025 Recap &amp; Highlights",
+      "url": "https://medium.com/aptoslabs/aptos-labs-2025-recap-highlights-48fb3a9f2b2b?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/aptos-infrastructure-in-2025-one-step-closer-to-the-global-trading-engine-d82eede0859a?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Aptos Infrastructure in 2025: One Step Closer to the Global Trading Engine",
+      "url": "https://medium.com/aptoslabs/aptos-infrastructure-in-2025-one-step-closer-to-the-global-trading-engine-d82eede0859a?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/move-in-2025-building-a-modern-smart-contract-language-391fc8ce0fe8?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Move in 2025: Building a Modern, Smart Contract Language",
+      "url": "https://medium.com/aptoslabs/move-in-2025-building-a-modern-smart-contract-language-391fc8ce0fe8?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/the-composable-global-exchange-engine-bc67580f1f19?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "The Composable Global Exchange Engine",
+      "url": "https://medium.com/aptoslabs/the-composable-global-exchange-engine-bc67580f1f19?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    },
+    {
+      "id": "blog:https://medium.com/aptoslabs/laying-the-groundwork-for-the-next-financial-internet-a1bf80137da7?source=rss-70211828fe2e------2",
+      "source_type": "blog",
+      "title": "Laying the Groundwork for the Next Financial Internet",
+      "url": "https://medium.com/aptoslabs/laying-the-groundwork-for-the-next-financial-internet-a1bf80137da7?source=rss-70211828fe2e------2",
+      "date": "2026-03-12",
+      "repo": "aptoslabs.com/blog"
+    }
+  ]
+}

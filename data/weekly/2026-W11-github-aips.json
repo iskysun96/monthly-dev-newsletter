@@ -1,0 +1,17 @@
+{
+  "week": "2026-W11",
+  "scraper": "github-aips",
+  "items": [
+    {
+      "id": "aip:137:bffd08d31a37",
+      "source_type": "aip",
+      "title": "AIP-137: Post-quantum Aptos accounts via SLH-DSA-SHA2-128s signatures",
+      "url": "https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-137.md",
+      "date": "2026-03-09",
+      "repo": "aptos-foundation/AIPs",
+      "aip_number": 137,
+      "status": "Draft #<Draft | Last Call | Accepted | Final | Rejected>",
+      "is_new": true
+    }
+  ]
+}

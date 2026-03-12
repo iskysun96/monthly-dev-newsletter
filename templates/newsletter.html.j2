@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ branding.title }} — {{ month_year }}</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: {{ branding.color_bg }};
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: {{ branding.color_text }};
+      -webkit-text-size-adjust: 100%;
+    }
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .header {
+      background-color: {{ branding.color_bg }};
+      padding: 32px 24px;
+      text-align: center;
+      border-bottom: 3px solid {{ branding.color_primary }};
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: {{ branding.color_primary }};
+    }
+    .header .tagline {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: {{ branding.color_muted }};
+    }
+    .header .date {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+    }
+    .content {
+      padding: 24px;
+    }
+    .intro {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: {{ branding.color_text }};
+    }
+    .section {
+      margin-bottom: 32px;
+    }
+    .section h2 {
+      font-size: 22px;
+      color: {{ branding.color_primary }};
+      border-bottom: 1px solid {{ branding.color_muted }};
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .section .summary {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: {{ branding.color_text }};
+    }
+    .item {
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      background-color: rgba(255, 255, 255, 0.04);
+      border-radius: 6px;
+      border-left: 3px solid {{ branding.color_primary }};
+    }
+    .item .item-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: {{ branding.color_text }};
+    }
+    .item .item-title a {
+      color: {{ branding.color_primary }};
+      text-decoration: none;
+    }
+    .item .item-meta {
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+      margin-top: 4px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid {{ branding.color_muted }};
+      margin: 32px 0;
+    }
+    .footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+    }
+  </style>
+</head>
+<body>
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color: {{ branding.color_bg }};">
+    <tr>
+      <td align="center">
+        <table role="presentation" cellpadding="0" cellspacing="0" class="wrapper" width="600">
+          <!-- Header -->
+          <tr>
+            <td class="header">
+              <h1>{{ branding.title }}</h1>
+              <p class="tagline">{{ branding.tagline }}</p>
+              <p class="date">{{ month_year }}</p>
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td class="content">
+              <!-- Intro -->
+              <div class="intro">
+                {{ intro | replace('\n', '<br>') }}
+              </div>
+
+              {% for section in sections %}
+              <!-- Section: {{ section.title }} -->
+              <div class="section">
+                <h2>{{ section.title }}</h2>
+                {% if section.summary %}
+                <div class="summary">
+                  {{ section.summary | replace('\n', '<br>') }}
+                </div>
+                {% endif %}
+                {% for item in section.entries %}
+                <div class="item">
+                  <div class="item-title">
+                    {% if item.url %}
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+                    {% else %}
+                    {{ item.title }}
+                    {% endif %}
+                  </div>
+                  {% if item.repo %}
+                  <div class="item-meta">{{ item.repo }}{% if item.date %} · {{ item.date }}{% endif %}</div>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+
+              {% if not loop.last %}
+              <hr class="divider">
+              {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="footer">
+              {{ branding.footer }}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

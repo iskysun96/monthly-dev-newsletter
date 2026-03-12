@@ -1,0 +1,85 @@
+name: Monthly Newsletter
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 1st of each month at 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      month_override:
+        description: "Month to generate (YYYY-MM, defaults to previous month)"
+        required: false
+      skip_summarize:
+        description: "Skip Claude summarization (for testing)"
+        required: false
+        type: boolean
+        default: false
+      dry_run:
+        description: "Run filtering and categorization only (skip summarization and rendering)"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate newsletter
+        env:
+          GH_SCRAPE_TOKEN: ${{ secrets.GH_SCRAPE_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MONTH_OVERRIDE: ${{ github.event.inputs.month_override || '' }}
+          SKIP_SUMMARIZE: ${{ github.event.inputs.skip_summarize || 'false' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: python scripts/run_monthly_generate.py
+
+      - name: Determine branch name
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        id: branch
+        run: |
+          MONTH="${{ github.event.inputs.month_override }}"
+          if [ -z "$MONTH" ]; then
+            MONTH=$(date -d "last month" +%Y-%m 2>/dev/null || date -v-1m +%Y-%m)
+          fi
+          echo "name=newsletter/${MONTH}" >> "$GITHUB_OUTPUT"
+          echo "month=${MONTH}" >> "$GITHUB_OUTPUT"
+
+      - name: Create Pull Request
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.branch.outputs.name }}
+          commit-message: "newsletter: generate ${{ steps.branch.outputs.month }}"
+          title: "Newsletter: ${{ steps.branch.outputs.month }}"
+          body: |
+            ## Newsletter for ${{ steps.branch.outputs.month }}
+
+            Auto-generated developer newsletter. Please review the content before merging.
+
+            ### Review checklist
+            - [ ] Introduction is accurate and well-written
+            - [ ] Breaking changes are correctly identified
+            - [ ] No items are miscategorized
+            - [ ] Links are correct
+            - [ ] HTML renders correctly (open the `.html` file)
+            - [ ] No sensitive information included
+
+            ### Files
+            - `output/newsletters/${{ steps.branch.outputs.month }}.md` — Markdown version
+            - `output/newsletters/${{ steps.branch.outputs.month }}.html` — HTML email version
+          reviewers: ${{ vars.NEWSLETTER_REVIEWERS }}
+          labels: newsletter
