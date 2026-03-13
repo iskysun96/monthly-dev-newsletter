@@ -19,6 +19,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from src.processor.aggregator import aggregate_month
 from src.processor.filter import filter_items
+from src.processor.classifier import classify_items
 from src.processor.categorizer import categorize
 from src.generator.summarizer import generate_all_summaries
 from src.generator.renderer import render_markdown, render_html, save_output
@@ -88,6 +89,14 @@ def main() -> None:
 
     if not items:
         logger.warning("All items filtered for %s. Exiting.", month_year)
+        return
+
+    # Step 2.5: AI classification — drops internal and node-operator items
+    items = classify_items(items)
+    logger.info("After classification: %d items", len(items))
+
+    if not items:
+        logger.warning("All items classified as non-developer-facing for %s. Exiting.", month_year)
         return
 
     # Step 3: Categorize into sections

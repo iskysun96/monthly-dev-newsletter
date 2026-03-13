@@ -3,7 +3,6 @@ filtering:
     - "^chore[:(]"
     - pattern: "^docs[:(]"
       except_repos:
-        - "aptos-labs/aptos-docs"
         - "aptos-labs/move-by-examples"
     - "^ci[:(]"
     - "^build[:(]"
@@ -18,6 +17,17 @@ filtering:
     - "(?i)^cherry-?pick"
     - "(?i)^backport"
     - "^\\[release\\]"
+    # Internal refactoring/cleanup (not developer-facing)
+    - "(?i)\\brefactoring$"
+    - "(?i)\\btidy up\\b"
+    - "(?i)\\b(dead code|remove dead)\\b"
+    - "(?i)\\bclean up all #\\[allow"
+    # Helm/K8s ops (not developer-facing)
+    - "(?i)\\bvia helm\\b"
+    # Dependency-only wallet adapter UI packages
+    - "(?i)wallet-adapter-(mui|ant)-design@"
+  exclude_repos:
+    - "aptos-labs/aptos-docs"
   exclude_label_patterns:
     - "cherry-pick"
     - "backport"
@@ -28,6 +38,10 @@ sections:
     title: "Breaking Changes"
     priority: 1
     rules:
+      # AI classification (primary when classifier is enabled)
+      - field: category
+        equals: breaking
+      # Regex fallback (used when SKIP_CLASSIFY=true)
       - field: title
         pattern: "(?i)break(ing)?|BREAKING"
       - field: labels
@@ -59,6 +73,12 @@ sections:
     title: "SDK & Tooling"
     priority: 3
     rules:
+      # AI classification (primary when classifier is enabled)
+      - field: category
+        equals: dev-facing
+      - field: audience
+        contains_any: ["sdk-users", "dapp-developers", "wallet-builders", "indexer-users"]
+      # Regex fallback (used when SKIP_CLASSIFY=true)
       - field: repo
         pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
       - field: labels
@@ -68,9 +88,28 @@ sections:
       SDK/tool, highlight new features and bug fixes. Include version numbers
       where available. Mention migration steps for any API changes.
 
+  - id: move_language
+    title: "Move Language"
+    priority: 4
+    rules:
+      # AI classification (primary when classifier is enabled)
+      - field: category
+        equals: dev-facing
+      - field: audience
+        contains: move-developers
+      # Regex fallback
+      - field: title
+        pattern: "(?i)\\bmove\\b"
+      - field: labels
+        contains_any: ["move", "move-language", "compiler"]
+    prompt: |
+      Summarize these Move language updates for Aptos developers. Cover
+      compiler changes, new language features, standard library updates,
+      and anything that affects Move smart contract development.
+
   - id: new_features
     title: "New Features"
-    priority: 4
+    priority: 5
     rules:
       - field: title
         pattern: "^feat[:(]"
@@ -85,7 +124,7 @@ sections:
 
   - id: governance_aips
     title: "Governance & AIPs"
-    priority: 5
+    priority: 6
     rules:
       - field: source_type
         equals: "aip"
@@ -100,19 +139,19 @@ sections:
 
   - id: docs_learning
     title: "Documentation & Learning"
-    priority: 6
+    priority: 7
     rules:
       - field: repo
-        pattern: "(aptos-docs|move-by-examples)"
+        pattern: "move-by-examples"
       - field: source_type
         equals: "youtube"
     prompt: |
       Summarize documentation updates and new learning resources. Group by
-      type (docs changes, new videos, new examples). Keep it concise.
+      type (new tutorials, new videos, new examples). Keep it concise.
 
   - id: community_highlights
     title: "Community Highlights"
-    priority: 7
+    priority: 8
     rules:
       - catch_all: true
     prompt: |
