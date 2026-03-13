@@ -16,7 +16,7 @@ medium:
 youtube:
   channels:
     - name: "Aptos Developers"
-      channel_id: "UCxxxxxxxxxx"  # TODO: replace with actual channel ID
+      channel_id: "UCl4jqm80DCr5UDRR9RsmW1A"
   min_duration_seconds: 60
 
 governance:
