@@ -86,12 +86,6 @@ repos:
       - prs
 
   - owner: aptos-labs
-    name: aptos-docs
-    track:
-      - prs
-    pr_min_files: 3
-
-  - owner: aptos-labs
     name: move-by-examples
     track:
       - prs

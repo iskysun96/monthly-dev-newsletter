@@ -100,6 +100,7 @@ def filter_items(
     title_patterns = _compile_title_patterns(filtering.get("exclude_title_patterns", []))
     label_patterns = _compile_patterns(filtering.get("exclude_label_patterns", []))
     exclude_prerelease = filtering.get("exclude_prerelease", False)
+    exclude_repos: set[str] = set(filtering.get("exclude_repos", []))
 
     kept: list[dict[str, Any]] = []
     filtered_count = 0
@@ -109,6 +110,12 @@ def filter_items(
         labels = item.get("labels", [])
         prerelease = item.get("prerelease", False)
         repo = item.get("repo", "")
+
+        # Check repo exclusion
+        if exclude_repos and repo in exclude_repos:
+            logger.debug("Filtered (repo): %s", title)
+            filtered_count += 1
+            continue
 
         # Check title exclusion
         if title_patterns and _title_matches_any(title, title_patterns, repo):

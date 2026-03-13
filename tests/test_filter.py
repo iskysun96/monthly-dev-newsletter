@@ -112,7 +112,6 @@ class TestFilterItems:
                 {
                     "pattern": r"^docs[:(]",
                     "except_repos": [
-                        "aptos-labs/aptos-docs",
                         "aptos-labs/move-by-examples",
                     ],
                 },
@@ -129,6 +128,15 @@ class TestFilterItems:
                 r"(?i)^cherry-?pick",
                 r"(?i)^backport",
                 r"^\[release\]",
+                r"(?i)\brefactoring$",
+                r"(?i)\btidy up\b",
+                r"(?i)\b(dead code|remove dead)\b",
+                r"(?i)\bclean up all #\[allow",
+                r"(?i)\bvia helm\b",
+                r"(?i)wallet-adapter-(mui|ant)-design@",
+            ],
+            "exclude_repos": [
+                "aptos-labs/aptos-docs",
             ],
             "exclude_label_patterns": [
                 "cherry-pick",
@@ -152,11 +160,14 @@ class TestFilterItems:
         result = filter_items(items, config=self.SAMPLE_CONFIG)
         assert len(result) == 0
 
-    def test_docs_prefix_kept_for_exempt_repo_aptos_docs(self):
-        items = [{"id": "1", "title": "docs: update quickstart guide", "repo": "aptos-labs/aptos-docs"}]
+    def test_aptos_docs_repo_excluded(self):
+        """aptos-docs items are excluded via exclude_repos, regardless of title."""
+        items = [
+            {"id": "1", "title": "docs: update quickstart guide", "repo": "aptos-labs/aptos-docs"},
+            {"id": "2", "title": "feat: add new page", "repo": "aptos-labs/aptos-docs"},
+        ]
         result = filter_items(items, config=self.SAMPLE_CONFIG)
-        assert len(result) == 1
-        assert result[0]["id"] == "1"
+        assert len(result) == 0
 
     def test_docs_prefix_kept_for_exempt_repo_move_by_examples(self):
         items = [{"id": "1", "title": "docs(move): add new example", "repo": "aptos-labs/move-by-examples"}]
@@ -313,3 +324,59 @@ class TestFilterItems:
         items = [{"id": "1", "title": "rerelease v1.0"}]
         result = filter_items(items, config=self.SAMPLE_CONFIG)
         assert len(result) == 0
+
+    def test_exclude_repos_filters_all_items_from_repo(self):
+        items = [
+            {"id": "1", "title": "feat: something cool", "repo": "aptos-labs/aptos-docs"},
+            {"id": "2", "title": "feat: something cool", "repo": "aptos-labs/aptos-core"},
+        ]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 1
+        assert result[0]["id"] == "2"
+
+    def test_refactoring_suffix_excluded(self):
+        items = [{"id": "1", "title": "Aptos-dkg refactoring"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_tidy_up_excluded(self):
+        items = [{"id": "1", "title": "[vm] Tidy up abort tests"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_dead_code_excluded(self):
+        items = [{"id": "1", "title": "[storage] Remove dead StateValueSchema and state_value CF"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_clean_up_allow_dead_code_excluded(self):
+        items = [{"id": "1", "title": "[storage] Clean up all #[allow(dead_code)] in storage"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_via_helm_excluded(self):
+        items = [{"id": "1", "title": "Deploy multiple PFNs via helm releases"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_wallet_adapter_mui_design_excluded(self):
+        items = [{"id": "1", "title": "@aptos-labs/wallet-adapter-mui-design@3.0.11"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_wallet_adapter_ant_design_excluded(self):
+        items = [{"id": "1", "title": "@aptos-labs/wallet-adapter-ant-design@4.0.3"}]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 0
+
+    def test_valuable_items_not_excluded_by_new_patterns(self):
+        """Ensure new patterns don't accidentally filter valuable items."""
+        items = [
+            {"id": "1", "title": "feat: add Move module support"},
+            {"id": "2", "title": "[consensus] Remove randomness fast path"},
+            {"id": "3", "title": "AIP-77: Gas Schedule V2"},
+            {"id": "4", "title": "@aptos-labs/wallet-adapter-react@4.6.2"},
+            {"id": "5", "title": "[storage] Add new sharding support"},
+        ]
+        result = filter_items(items, config=self.SAMPLE_CONFIG)
+        assert len(result) == 5
