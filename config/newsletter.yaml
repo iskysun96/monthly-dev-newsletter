@@ -54,7 +54,7 @@ sections:
       - field: labels
         contains_any: ["sdk", "tooling", "cli", "indexer"]
       - field: title
-        pattern: "(?i)^\\[(cli|move-cli|gas.profiler|aptos-move-cli)\\]"
+        pattern: "(?i)^\\[(cli|move[- ]?cli|gas[- _.]profiler|aptos[- ]cli)\\]"
     prompt: |
       Summarize these SDK and tooling updates for Aptos developers. Group by
       SDK/tool, highlight new features and bug fixes. Include version numbers
