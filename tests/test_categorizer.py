@@ -560,3 +560,101 @@ class TestExpandedCategorizationRules:
         result = categorize(items, config=self.CONFIG_WITH_EXPANDED_RULES)
         assert len(result["breaking_changes"]) == 1
         assert len(result["protocol_updates"]) == 0
+
+
+# ---------------------------------------------------------------------------
+# Production config — routing rules for CLI/tooling and crypto/DKG items
+# ---------------------------------------------------------------------------
+
+
+class TestProductionConfigRouting:
+    """Test categorization against the real newsletter.yaml config to prevent regressions."""
+
+    @pytest.fixture()
+    def config(self):
+        from src.utils.config_loader import load_newsletter_config
+        return load_newsletter_config()
+
+    def _item(self, title, **kwargs):
+        base = {"id": f"test:{title[:20]}", "source_type": "pr", "title": title, "labels": [], "repo": "aptos-labs/aptos-core"}
+        base.update(kwargs)
+        return base
+
+    # --- CLI/tooling items should route to sdk_tooling ---
+
+    def test_cli_bracket_routes_to_sdk_tooling(self, config):
+        items = [self._item("[cli] Extract aptos move commands into standalone crate")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+        assert len(result["protocol_updates"]) == 0
+
+    def test_move_cli_bracket_routes_to_sdk_tooling(self, config):
+        items = [self._item("[move-cli] Add new compile flag")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_move_cli_space_routes_to_sdk_tooling(self, config):
+        items = [self._item("[move cli] Support new output format")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_gas_profiler_routes_to_sdk_tooling(self, config):
+        items = [self._item("[gas profiler] major UI overhaul")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_gas_profiler_hyphen_routes_to_sdk_tooling(self, config):
+        items = [self._item("[gas-profiler] various improvements")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_aptos_cli_bracket_routes_to_sdk_tooling(self, config):
+        items = [self._item("[aptos cli] Add new command")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_aptos_cli_hyphen_routes_to_sdk_tooling(self, config):
+        items = [self._item("[aptos-cli] Fix output format")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    # --- DKG/crypto items should route to protocol_updates ---
+
+    def test_dkg_bracket_routes_to_protocol_updates(self, config):
+        items = [self._item("[dkg] Integrate ChunkyDKGManager with epoch manager")]
+        result = categorize(items, config=config)
+        assert len(result["protocol_updates"]) == 1
+        assert len(result["community_highlights"]) == 0
+
+    def test_crypto_bracket_routes_to_protocol_updates(self, config):
+        items = [self._item("[crypto] Update signature verification")]
+        result = categorize(items, config=config)
+        assert len(result["protocol_updates"]) == 1
+
+    def test_pvss_bracket_routes_to_protocol_updates(self, config):
+        items = [self._item("[pvss] Redesign PVSS traits")]
+        result = categorize(items, config=config)
+        assert len(result["protocol_updates"]) == 1
+
+    def test_randomness_bracket_routes_to_protocol_updates(self, config):
+        items = [self._item("[randomness] Disable fast path by default")]
+        result = categorize(items, config=config)
+        assert len(result["protocol_updates"]) == 1
+
+    # --- SDK repos should route to sdk_tooling ---
+
+    def test_explorer_repo_routes_to_sdk_tooling(self, config):
+        items = [self._item("Eslint biome migration", repo="aptos-labs/explorer")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    def test_forklift_repo_routes_to_sdk_tooling(self, config):
+        items = [self._item("Add CLI version validation", repo="aptos-labs/forklift")]
+        result = categorize(items, config=config)
+        assert len(result["sdk_tooling"]) == 1
+
+    # --- SDK & Tooling should have higher priority than Protocol Updates ---
+
+    def test_sdk_tooling_priority_higher_than_protocol(self, config):
+        sections = {s["id"]: s["priority"] for s in config["sections"]}
+        assert sections["sdk_tooling"] < sections["protocol_updates"]

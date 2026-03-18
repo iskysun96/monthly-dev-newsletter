@@ -38,12 +38,37 @@ sections:
       Summarize these breaking changes for Aptos developers. For each change,
       explain what broke, why it changed, and what developers need to do to
       migrate. Be direct and actionable. Use bullet points.
+      Only include changes that directly affect developers building on Aptos
+      (API changes, SDK breaking changes, Move language changes). Skip internal
+      build system restructuring, CI changes, or internal crate reorganization
+      unless they require action from external developers.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
+
+  - id: sdk_tooling
+    title: "SDK & Tooling"
+    priority: 2
+    rules:
+      - field: repo
+        pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
+      - field: labels
+        contains_any: ["sdk", "tooling", "cli", "indexer"]
+      - field: title
+        pattern: "(?i)^\\[(cli|move[- ]?cli|gas[- _.]profiler|aptos[- ]cli)\\]"
+    prompt: |
+      Summarize these SDK and tooling updates for Aptos developers. Group by
+      SDK/tool, highlight new features and bug fixes. Include version numbers
+      where available. Mention migration steps for any API changes.
+      For explorer updates, focus on user-facing improvements (new features, UX
+      changes, new pages) rather than internal migrations (linter changes,
+      dependency updates, security patches in dev dependencies).
+      Skip CI/CD changes and internal tooling migrations.
       Do not include any headings (no # or ## lines). Write prose and bullet points only.
       A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: protocol_updates
     title: "Protocol Updates"
-    priority: 2
+    priority: 3
     rules:
       - field: repo
         pattern: "aptos-core"
@@ -51,26 +76,11 @@ sections:
       - field: labels
         contains_any: ["consensus", "execution", "storage", "mempool", "state-sync"]
       - field: title
-        pattern: "(?i)^\\[(consensus|execution|storage|mempool|state-sync|gas|network|compiler[^\\]]*|dkg|validator|vm|api|indexer|move[^\\]]*)\\]"
+        pattern: "(?i)^\\[(consensus|execution|storage|mempool|state-sync|gas|network|compiler[^\\]]*|dkg|validator|vm|api|indexer|move[^\\]]*|crypto|pvss|randomness)\\]"
     prompt: |
       Summarize these Aptos protocol updates for developers. Focus on what
       changed in the node software and how it affects validators, node operators,
       or dApp developers. Group related changes together.
-      Do not include any headings (no # or ## lines). Write prose and bullet points only.
-      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
-
-  - id: sdk_tooling
-    title: "SDK & Tooling"
-    priority: 3
-    rules:
-      - field: repo
-        pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
-      - field: labels
-        contains_any: ["sdk", "tooling", "cli", "indexer"]
-    prompt: |
-      Summarize these SDK and tooling updates for Aptos developers. Group by
-      SDK/tool, highlight new features and bug fixes. Include version numbers
-      where available. Mention migration steps for any API changes.
       Do not include any headings (no # or ## lines). Write prose and bullet points only.
       A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
@@ -88,6 +98,10 @@ sections:
       Summarize these new features added to the Aptos ecosystem. For each
       feature, explain what it enables for developers and link to relevant
       documentation or examples when available.
+      Focus on features that external developers can use or benefit from.
+      Skip internal infrastructure changes, cryptographic implementation details,
+      and low-level protocol internals unless they expose new developer-facing
+      APIs or capabilities.
       Do not include any headings (no # or ## lines). Write prose and bullet points only.
       A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
@@ -128,9 +142,13 @@ sections:
     rules:
       - catch_all: true
     prompt: |
-      Summarize these community highlights from the Aptos ecosystem. Include
-      notable blog posts, forum discussions, and community contributions.
-      Keep it concise — 1-2 sentences per item.
+      Summarize these community highlights from the Aptos ecosystem. Focus on
+      items relevant to the broader developer community: blog posts, forum
+      discussions, community tools, ecosystem projects, and developer experience
+      improvements. Keep it concise — 1-2 sentences per item.
+      Skip internal performance tuning (jemalloc, thread counts), internal code
+      cleanup, infrastructure migrations (Docker base images, CI changes), and
+      deep protocol internals.
       Do not include any headings (no # or ## lines). Write prose and bullet points only.
       A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
@@ -138,7 +156,9 @@ intro_prompt: |
   Write a 2-3 sentence introduction for the Aptos developer newsletter for
   {month_year}. Mention the most significant changes from this list of
   section summaries. Keep it professional, concise, and developer-focused.
-  Do not use marketing language.
+  Do not use marketing language. Lead with what matters most to developers
+  building on Aptos: SDK releases, new developer tools, and features they
+  can use. Do not lead with internal restructuring or infrastructure changes.
 
 summarization:
   model: "claude-sonnet-4-20250514"
