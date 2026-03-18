@@ -24,116 +24,115 @@
             <td class="content" style="padding:24px">
               <!-- Intro -->
               <div class="intro" style="font-size:16px; line-height:1.6; margin-bottom:32px; color:#E8E8E8">
-                Welcome to the March 2026 Aptos Developer Newsletter. This month brings significant updates including a 20x increase in default gas limits across TypeScript and Python SDKs (from 100k to 2M and 1M respectively), improved wallet adapter TypeScript compatibility with fixes for cross-chain derived wallet registration, and enhanced Create Aptos Dapp CLI with non-interactive scaffolding flags for automated workflows. Additionally, AIP-137 proposes post-quantum cryptographic security through SLH-DSA-SHA2-128s signatures, while community contributions include receiver function improvements in Move compiler v2 and major storage infrastructure optimizations.
+                The March 2026 Aptos developer newsletter highlights the release of **Forklift**, a new network forking framework that enables testing smart contracts against real mainnet state, alongside significant SDK improvements including 10-20x gas limit increases in both TypeScript and Python SDKs. Additional updates include Move compiler v2 enhancements for receiver functions, wallet adapter bug fixes for derived wallets, and new CLI flags for Create Aptos Dapp to support AI-friendly non-interactive scaffolding.
               </div>
 
               <!-- Section: SDK & Tooling -->
               <div class="section" style="margin-bottom:32px">
                 <h2 style="font-size:22px; color:#00D4AA; border-bottom:1px solid #8B95A5; padding-bottom:8px; margin-bottom:16px">SDK &amp; Tooling</h2>
                 <div class="summary" style="font-size:15px; line-height:1.6; margin-bottom:16px; color:#E8E8E8">
-                  # Aptos SDK and Tooling Updates Summary<br><br>## Aptos TypeScript SDK<br><br>### Version 6.2.0<br>- **New Features:**<br>  - Increased default max gas limit from 100,000 to 2,000,000 for more generous transaction defaults<br>- **Migration Notes:**<br>  - No breaking changes; gas limit increase is backward compatible<br><br>## Aptos Python SDK<br><br>### Latest Updates<br>- **New Features:**<br>  - Increased default `max_gas_amount` in `ClientConfig` from 100,000 to 1,000,000 (10x increase)<br>- **Migration Notes:**<br>  - No breaking changes; new default provides more generous gas limits for transactions<br><br>## Aptos Wallet Adapter<br><br>### Core Package (@aptos-labs/wallet-adapter-core@8.5.0)<br>- **New Features:**<br>  - Updated Nightly wallet logo<br><br>### React Package (@aptos-labs/wallet-adapter-react@8.3.1)<br>- **Bug Fixes:**<br>  - Fixed JSX intrinsic element typing by importing `JSX` and `ClassAttributes` directly from React<br>  - Replaced global `JSX.IntrinsicElements` references with `ReactJSX.IntrinsicElements`<br>- **Migration Notes:**<br>  - Improves TypeScript/React compatibility in various setups; no code changes required<br><br>### UI Design Packages<br>- **@aptos-labs/wallet-adapter-mui-design@5.5.4**: Dependency updates<br>- **@aptos-labs/wallet-adapter-ant-design@5.3.17**: Dependency updates<br><br>### Cross-Chain Derived Wallets<br>All derived wallet packages received the same critical bug fix:<br><br>#### Ethereum (@aptos-labs/derived-wallet-ethereum@0.9.1)<br>#### Solana (@aptos-labs/derived-wallet-solana@0.12.2)  <br>#### Sui (@aptos-labs/derived-wallet-sui@0.2.1)<br>- **Bug Fixes:**<br>  - Fixed `setupAutomaticDerivation` to properly unregister old derived wallets before re-registering on provider re-announcement<br>  - Prevents stale wallets from remaining in the registry<br><br>#### Cross-Chain Core (@aptos-labs/cross-chain-core@6.0.1)<br>- **Updates:** Dependency updates to include the derived wallet fixes<br><br>## Create Aptos Dapp<br><br>### Version 0.3.0<br>- **New Features:**<br>  - Added CLI flags for non-interactive and hybrid scaffolding<br>  - AI-friendly template scaffolding with single command support<br>  - Hybrid approach allows partial flags with interactive fallback for missing options<br>- **Migration Notes:**<br>  - Existing interactive usage remains unchanged<br>  - New flags enable automated/scripted template generation<br><br>---<br><br>**Key Highlights:**<br>- Gas limit increases across both TypeScript and Python SDKs provide more realistic defaults<br>- Wallet adapter improvements focus on TypeScript compatibility and cross-chain wallet stability<br>- Create Aptos Dapp now supports automated scaffolding for AI and CI/CD workflows
+                  **Aptos TypeScript SDK** received a significant gas limit increase, raising the default max gas from the previous limit to 2,000,000. This change provides more headroom for complex transactions and reduces the likelihood of gas-related failures.<br><br>**Aptos Python SDK** similarly increased its default `max_gas_amount` in `ClientConfig` from 100,000 to 1,000,000 (10x increase). Developers using the default configuration will automatically benefit from the higher gas limits without code changes.<br><br>**Aptos Wallet Adapter** released several updates across multiple packages:<br><br>• **@aptos-labs/wallet-adapter-react@8.3.1** - Fixed JSX intrinsic element typing issues by importing `JSX` and `ClassAttributes` directly from React, replacing global `JSX.IntrinsicElements` references with `ReactJSX.IntrinsicElements`. This resolves TypeScript compilation issues in certain React/TypeScript configurations.<br><br>• **@aptos-labs/wallet-adapter-core@8.5.0** - Updated the Nightly wallet logo.<br><br>• **Derived wallet packages** (ethereum@0.9.1, solana@0.12.2, sui@0.2.1) - Fixed a critical bug in `setupAutomaticDerivation` where old derived wallets weren't properly unregistered when providers re-announced with the same identifier. This prevents stale wallet instances from remaining in the registry.<br><br>• **@aptos-labs/wallet-adapter-mui-design@5.5.4** and **@aptos-labs/wallet-adapter-ant-design@5.3.17** received dependency updates.<br><br>**Create Aptos Dapp** added CLI flags for non-interactive and hybrid scaffolding modes. This enhancement makes the tool AI-friendly by allowing template scaffolding through single CLI commands instead of requiring interactive prompts. The hybrid approach supports partial flags while falling back to interactive mode for missing parameters.
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/782" style="color:#00D4AA; text-decoration:none">fix(wallet-adapter-react): use React JSX intrinsic types in headless component utils</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-ts-sdk/pull/843" style="color:#00D4AA; text-decoration:none">[release] 6.2.0</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-ts-sdk · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-ts-sdk/pull/841" style="color:#00D4AA; text-decoration:none">[gas] Increase default max gas to 2000000</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-ts-sdk · 2026-03-10</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-python-sdk/pull/76" style="color:#00D4AA; text-decoration:none">Default max gas limit</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-python-sdk · 2026-03-10</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-react%408.3.1" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/wallet-adapter-react@8.3.1</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-mui-design%405.5.4" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/wallet-adapter-mui-design@5.5.4</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-core%408.5.0" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/wallet-adapter-core@8.5.0</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-ant-design%405.3.17" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/wallet-adapter-ant-design@5.3.17</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-sui%400.2.1" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/derived-wallet-sui@0.2.1</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-solana%400.12.2" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/derived-wallet-solana@0.12.2</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
+                <div class="overflow-link" style="font-size:14px; color:#8B95A5; margin-top:8px">
+                  ... and 5 more in the <a href="https://iskysun96.github.io/monthly-dev-newsletter/changelogs/2026-03.html" style="color:#00D4AA; text-decoration:none">full changelog</a>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+              </div>
+
+              <hr class="divider" style="border:none; border-top:1px solid #8B95A5; margin:32px 0">
+              <!-- Section: Protocol Updates -->
+              <div class="section" style="margin-bottom:32px">
+                <h2 style="font-size:22px; color:#00D4AA; border-bottom:1px solid #8B95A5; padding-bottom:8px; margin-bottom:16px">Protocol Updates</h2>
+                <div class="summary" style="font-size:15px; line-height:1.6; margin-bottom:16px; color:#E8E8E8">
+                  The latest Aptos protocol updates include significant improvements to Move language features, storage optimizations, consensus simplifications, developer tooling enhancements, and networking improvements.<br><br>**Move Compiler Enhancements**<br><br>The Move compiler v2 received two important updates that expand receiver function capabilities. Developers can now use receiver functions (dot-call syntax with `self`) on fully concrete struct instantiations, removing the previous restriction that required generic identity instantiation. This enables patterns like `fun foo(self: S<u64, bool>)` that were previously blocked. Additionally, type inference improvements now allow struct constraints and receiver function constraints to coexist without canceling each other out, reducing the need for explicit type annotations in many cases.<br><br>**Storage Layer Cleanup**<br><br>Node operators will benefit from storage layer optimizations that remove legacy components. The deprecated `StateValueSchema` and its associated column family have been completely removed, as all state value operations now use the more efficient sharded `StateKvDb` through `StateValueByKeyHashSchema`. The monolithic `LedgerDb` architecture has been fully decomposed into individual sub-databases. These changes also include cleanup of dead code suppressions throughout the storage module, replacing blanket `#[allow(dead_code)]` attributes with proper conditional compilation flags for test-only code.<br><br>**Consensus Simplification**<br><br>Validators running consensus nodes will see reduced complexity with the removal of randomness fast path code. This eliminates approximately 800 lines of code across 29 files, including `ConfigV2`, `PathType`, `FastShare`, and related broadcast mechanisms. The fast path, which used separate higher secrecy thresholds for faster randomness reconstruction, was disabled on mainnet and has now been completely removed from the codebase.<br><br>**Developer Tooling**<br><br>dApp developers gain new testing capabilities through Move Flow's unit test generation support. The MCP server now includes two new tools: `move_package_test` for running Move unit tests with optional baseline establishment for coverage tracking, and functionality to report newly covered or uncovered lines in subsequent test runs. This enhances the development workflow for Move-based applications.<br><br>**Network Infrastructure**<br><br>Node operators can now configure priority inbound peer support, allowing specified peers to connect even when inbound connection limits are reached. When priority peers attempt to connect to a full node, the system will evict existing non-priority connections to accommodate them. This feature improves network reliability for critical peer relationships in validator and full node deployments.
+                </u64,></div>
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-ethereum%400.9.1" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/derived-wallet-ethereum@0.9.1</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/18977" style="color:#00D4AA; text-decoration:none">[compiler-v2] Allow receiver functions on fully concrete struct instantiations</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%406.0.1" style="color:#00D4AA; text-decoration:none">aptos-wallet-adapter @aptos-labs/cross-chain-core@6.0.1</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/18929" style="color:#00D4AA; text-decoration:none">[compiler-v2] Fix type inference to allow unifying struct constraints and receiver function constraints</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/create-aptos-dapp/pull/311" style="color:#00D4AA; text-decoration:none">republish with correct build</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/19017" style="color:#00D4AA; text-decoration:none">[storage] Remove dead StateValueSchema and legacy monolithic ledger DB support</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/create-aptos-dapp · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/create-aptos-dapp/pull/310" style="color:#00D4AA; text-decoration:none">bump version to 0.3.0</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/19016" style="color:#00D4AA; text-decoration:none">[storage] Clean up all #[allow(dead_code)] under storage/</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/create-aptos-dapp · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/create-aptos-dapp/pull/309" style="color:#00D4AA; text-decoration:none">feat: add CLI flags for non-interactive and hybrid scaffolding</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/18870" style="color:#00D4AA; text-decoration:none">[consensus] Remove randomness fast path code</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/create-aptos-dapp · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/783" style="color:#00D4AA; text-decoration:none">fix(derived-wallets): unregister old derived wallets on re-announcement</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/18859" style="color:#00D4AA; text-decoration:none">[move flow] adding supports for unit test generation</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/779" style="color:#00D4AA; text-decoration:none">Version Packages</a>
+                    <a href="https://github.com/aptos-labs/aptos-core/pull/18831" style="color:#00D4AA; text-decoration:none">[Network] Add priority inbound peer support and eviction.</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-wallet-adapter · 2026-03-09</div>
+                </div>
+              </div>
+
+              <hr class="divider" style="border:none; border-top:1px solid #8B95A5; margin:32px 0">
+              <!-- Section: New Features -->
+              <div class="section" style="margin-bottom:32px">
+                <h2 style="font-size:22px; color:#00D4AA; border-bottom:1px solid #8B95A5; padding-bottom:8px; margin-bottom:16px">New Features</h2>
+                <div class="summary" style="font-size:15px; line-height:1.6; margin-bottom:16px; color:#E8E8E8">
+                  Aptos has introduced **Forklift**, a new network forking and smart contract testing framework that enables developers to create isolated testing environments by forking the mainnet state. This tool allows developers to test smart contracts against real network conditions and data without affecting the live network.<br><br>Key capabilities for developers include:<br><br>• **Mainnet state forking** - Create test environments with actual on-chain data, enabling realistic testing scenarios with existing protocols, accounts, and contract states<br><br>• **Smart contract testing** - Deploy and test contracts in forked environments to validate behavior against real market conditions and user data before mainnet deployment<br><br>• **Integration testing** - Test complex interactions between multiple protocols and contracts using live network state as the foundation<br><br>• **Debugging and simulation** - Reproduce mainnet issues in controlled environments for debugging and optimization<br><br>Forklift addresses common developer pain points around testing smart contracts in realistic conditions, moving beyond synthetic test data to enable validation against actual network state. This is particularly valuable for DeFi protocols, NFT marketplaces, and other applications that need to interact with existing on-chain ecosystems.<br><br>The framework integrates with existing Aptos development tooling and supports standard testing workflows. Developers can specify block heights for forking, manipulate account states, and run comprehensive test suites against forked networks.<br><br>Full details and implementation guidance are available in the [announcement blog post](https://medium.com/aptoslabs/introducing-forklift-network-forking-and-smart-contract-testing-for-aptos-d516b815d625?source=rss-70211828fe2e------2).
+                </div>
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
+                    <a href="https://medium.com/aptoslabs/introducing-forklift-network-forking-and-smart-contract-testing-for-aptos-d516b815d625?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Introducing Forklift: Network Forking and Smart Contract Testing for Aptos</a>
+                  </div>
                 </div>
               </div>
 
@@ -142,13 +141,12 @@
               <div class="section" style="margin-bottom:32px">
                 <h2 style="font-size:22px; color:#00D4AA; border-bottom:1px solid #8B95A5; padding-bottom:8px; margin-bottom:16px">Governance &amp; AIPs</h2>
                 <div class="summary" style="font-size:15px; line-height:1.6; margin-bottom:16px; color:#E8E8E8">
-                  Based on the provided information, here is the summary of Aptos Improvement Proposals:<br><br>## New AIPs<br><br>**AIP-137: Post-quantum Aptos accounts via SLH-DSA-SHA2-128s signatures**<br>- Status: New<br>- Summary: Proposes implementing post-quantum cryptographic security for Aptos accounts by adding support for SLH-DSA-SHA2-128s digital signatures to protect against future quantum computing threats.<br><br>---<br><br>*Note: Only one AIP was provided in the input. To provide a complete governance update summary with AIPs grouped by status (new, updated, accepted), additional AIP information would be needed.*
+                  **New AIPs**<br><br>• AIP-137: Post-quantum Aptos accounts via SLH-DSA-SHA2-128s signatures - Status: New - Proposes adding support for post-quantum cryptographic signatures using the SLH-DSA-SHA2-128s algorithm to enable quantum-resistant account authentication on Aptos.<br><br>This proposal introduces quantum-resistant cryptography to future-proof account security against potential quantum computing threats. Developers should evaluate the performance implications of post-quantum signatures, which typically have larger signature sizes and different computational requirements compared to current ECDSA implementations. The change would require updates to wallet integrations and any applications that handle signature verification directly.
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://github.com/aptos-foundation/AIPs/blob/main/aips/aip-137.md" style="color:#00D4AA; text-decoration:none">AIP-137: Post-quantum Aptos accounts via SLH-DSA-SHA2-128s signatures</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-foundation/AIPs · 2026-03-09</div>
                 </div>
               </div>
 
@@ -157,148 +155,59 @@
               <div class="section" style="margin-bottom:32px">
                 <h2 style="font-size:22px; color:#00D4AA; border-bottom:1px solid #8B95A5; padding-bottom:8px; margin-bottom:16px">Community Highlights</h2>
                 <div class="summary" style="font-size:15px; line-height:1.6; margin-bottom:16px; color:#E8E8E8">
-                  ## Aptos Community Highlights Summary<br><br>### Compiler &amp; Move Language Improvements<br>**Receiver Functions Enhancement**: The Move compiler v2 now allows receiver functions (dot-call syntax) on fully concrete struct instantiations, removing the previous requirement for fully generic identity instantiation. Type inference has been improved to allow struct constraints and receiver function constraints to coexist without canceling each other out.<br><br>### Infrastructure &amp; Storage Optimization<br>**Storage Cleanup**: Major storage infrastructure improvements include removing deprecated StateValueSchema and legacy monolithic ledger DB support, as dead code cleanup eliminates unnecessary `#[allow(dead_code)]` suppressions. The deployment system now supports multiple Public Full Nodes (PFNs) via separate helm releases instead of individual Kubernetes resources.<br><br>### Gas &amp; Economic Changes<br>**Gas Cost Adjustment**: A significant 10x multiplier has been applied to gas costs and storage fees, with backports across multiple release versions (v1.41-v1.43). This represents a major economic parameter change for the network.<br><br>### Consensus &amp; Security Updates<br>**Randomness System Simplification**: The consensus layer has been streamlined by removing randomness fast path code, eliminating ~800 lines of complex fast-share reconstruction logic. DKG (Distributed Key Generation) components received major refactoring with simplified sigma protocol code.<br><br>### Developer Tools &amp; Testing<br>**Testing Infrastructure**: New Move unit test generation capabilities have been added to move-flow, including coverage tracking and baseline establishment. The Forklift tool introduces network forking and smart contract testing capabilities for Aptos developers.<br><br>### Network &amp; Performance<br>**Priority Peer Support**: Network infrastructure now supports priority inbound peers that can connect even when connection limits are reached, with automatic eviction of regular peers when needed. Move harness has been separated to avoid unintended "testing" feature activation in production services.<br><br>### Strategic Communications<br>**Vision &amp; Roadmap**: Multiple blog posts outline Aptos's 2025 strategy, including the vision for a "Global Trading Engine," composable exchange infrastructure, and censorship-resistant consensus mechanisms. The Shelby early access program is now available on testnet, representing advances in lazy loading and composable Move architecture.
+                  The Aptos ecosystem released several significant blog posts covering major developments in 2025. The Move smart contract language received substantial improvements including lazy loading capabilities that enhance composability and modularity. A new censorship-resistant consensus mechanism was introduced to enable fairer market operations.<br><br>Shelby, a new platform or tool, launched early access on Aptos testnet for developer experimentation. The team outlined their vision for a "Composable Global Exchange Engine" and shared infrastructure improvements that bring Aptos closer to becoming a global trading platform.<br><br>• **Move Language Evolution**: Lazy loading functionality enables more composable Move contracts, allowing developers to build more modular applications with improved resource efficiency.<br><br>• **Consensus Improvements**: New censorship-resistant consensus mechanisms provide stronger guarantees for fair market operations and transaction ordering.<br><br>• **Testnet Access**: Shelby early access on testnet gives developers hands-on experience with new platform capabilities before mainnet deployment.<br><br>• **Infrastructure Scaling**: Helm-based deployment improvements allow multiple Public Full Nodes (PFNs) to be deployed as separate releases, improving node management flexibility for operators.<br><br>• **Developer Tooling**: Move harness separation removes unintended testing dependencies from production builds, preventing hardcoded test configurations from affecting live services.<br><br>• **Cryptographic Updates**: DKG (Distributed Key Generation) protocol refactoring simplifies sigma protocol implementations and removes deprecated proof systems.<br><br>The 2025 recap highlighted Aptos Labs' progress toward building financial infrastructure, with particular emphasis on developer experience improvements and protocol optimizations that support high-throughput trading applications.
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18977" style="color:#00D4AA; text-decoration:none">[compiler-v2] Allow receiver functions on fully concrete struct instantiations</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-11</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18929" style="color:#00D4AA; text-decoration:none">[compiler-v2] Fix type inference to allow unifying struct constraints and receiver function constraints</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-11</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/the-end-of-the-long-proof-of-concept-with-hkma-bcg-09619fa1356a?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">The End of the Long Proof-of-Concept</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/the-composable-global-exchange-engine-bc67580f1f19?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">The Composable Global Exchange Engine</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/shelby-early-access-is-open-on-aptos-testnet-452e8de5613b?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Shelby Early Access Is Open on Aptos Testnet</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/move-in-2025-building-a-modern-smart-contract-language-391fc8ce0fe8?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Move in 2025: Building a Modern, Smart Contract Language</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/lazy-loading-a-new-era-of-composable-move-88611e8f3aec?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Lazy Loading: A New Era of Composable Move</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/laying-the-groundwork-for-the-next-financial-internet-a1bf80137da7?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Laying the Groundwork for the Next Financial Internet</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://medium.com/aptoslabs/introducing-forklift-network-forking-and-smart-contract-testing-for-aptos-d516b815d625?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Introducing Forklift: Network Forking and Smart Contract Testing for Aptos</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/building-fair-markets-a-new-censorship-resistant-consensus-418ec403524c?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Building Fair Markets: A New Censorship-Resistant Consensus</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
+                <div class="item" style="margin-bottom:8px; padding:8px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
                   <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
                     <a href="https://medium.com/aptoslabs/aptos-labs-2025-recap-highlights-48fb3a9f2b2b?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Aptos Labs 2025 Recap &amp; Highlights</a>
                   </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
                 </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://medium.com/aptoslabs/aptos-infrastructure-in-2025-one-step-closer-to-the-global-trading-engine-d82eede0859a?source=rss-70211828fe2e------2" style="color:#00D4AA; text-decoration:none">Aptos Infrastructure in 2025: One Step Closer to the Global Trading Engine</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptoslabs.com/blog · 2026-03-11</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/19017" style="color:#00D4AA; text-decoration:none">[storage] Remove dead StateValueSchema and legacy monolithic ledger DB support</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/19016" style="color:#00D4AA; text-decoration:none">[storage] Clean up all #[allow(dead_code)] under storage/</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/19009" style="color:#00D4AA; text-decoration:none">Deploy multiple PFNs via helm releases</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18967" style="color:#00D4AA; text-decoration:none">[cp][aptos-release-v1.43] [gas] Apply 10x multiplier to gas costs and storage fees</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18966" style="color:#00D4AA; text-decoration:none">[cp][aptos-release-v1.42] [gas] Apply 10x multiplier to gas costs and storage fees</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18965" style="color:#00D4AA; text-decoration:none">[cp][aptos-release-v1.41] [gas] Apply 10x multiplier to gas costs and storage fees</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18870" style="color:#00D4AA; text-decoration:none">[consensus] Remove randomness fast path code</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18859" style="color:#00D4AA; text-decoration:none">[move flow] adding supports for unit test generation</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-10</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18996" style="color:#00D4AA; text-decoration:none">Aptos-dkg refactoring</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-09</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18981" style="color:#00D4AA; text-decoration:none">separating move harness, so it can be included without feature="testing"</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-09</div>
-                </div>
-                <div class="item" style="margin-bottom:12px; padding:12px 16px; background-color:rgba(255, 255, 255, 0.04); border-radius:6px; border-left:3px solid #00D4AA" bgcolor="rgba(255, 255, 255, 0.04)">
-                  <div class="item-title" style="font-size:15px; font-weight:600; color:#E8E8E8">
-                    <a href="https://github.com/aptos-labs/aptos-core/pull/18831" style="color:#00D4AA; text-decoration:none">[Network] Add priority inbound peer support and eviction.</a>
-                  </div>
-                  <div class="item-meta" style="font-size:13px; color:#8B95A5; margin-top:4px">aptos-labs/aptos-core · 2026-03-09</div>
+                <div class="overflow-link" style="font-size:14px; color:#8B95A5; margin-top:8px">
+                  ... and 4 more in the <a href="https://iskysun96.github.io/monthly-dev-newsletter/changelogs/2026-03.html" style="color:#00D4AA; text-decoration:none">full changelog</a>
                 </div>
               </div>
 
+
+              <!-- Changelog CTA -->
+              <div class="changelog-cta" style="text-align:center; margin:32px 0" align="center">
+                <p style="color:#8B95A5; margin:0 0 12px">Want the complete picture?</p>
+                <a href="https://iskysun96.github.io/monthly-dev-newsletter/changelogs/2026-03.html" style="display:inline-block; padding:12px 32px; background-color:#00D4AA; color:#0B1221; text-decoration:none; border-radius:6px; font-weight:600" bgcolor="#00D4AA">View Full Changelog</a>
+              </div>
             </td>
           </tr>
 
