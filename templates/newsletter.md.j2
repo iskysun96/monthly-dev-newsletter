@@ -12,13 +12,22 @@
 {{ section.summary }}
 
 {% if section.entries %}
-{% for item in section.entries %}
-- **{{ item.title }}** {% if item.url %}([link]({{ item.url }})){% endif %}{% if item.repo %} — `{{ item.repo }}`{% endif %}
+**Key items:**
+{% for item in section.entries[:8] %}
+{% if item.url %}- [{{ item.title }}]({{ item.url }}){% if item.repo %} — `{{ item.repo }}`{% endif %}{% else %}- {{ item.title }}{% if item.repo %} — `{{ item.repo }}`{% endif %}{% endif %}
 
-  _{{ item.source_type | default("item", true) }}{% if item.repo %} | {{ item.repo }}{% endif %}{% if item.date %} | {{ item.date }}{% endif %}_
 {% endfor %}
+{% if section.entries | length > 8 and changelog_url %}
+- ... and {{ section.entries | length - 8 }} more in the [full changelog]({{ changelog_url }})
+{% endif %}
 {% endif %}
 {% endfor %}
 ---
+{% if changelog_url %}
+
+**[View Full Changelog]({{ changelog_url }})** — Every release, PR, and commit from this month.
+
+---
+{% endif %}
 
 *{{ branding.footer }}*

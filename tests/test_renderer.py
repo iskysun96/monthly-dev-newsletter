@@ -327,8 +327,8 @@ class TestRenderHtml:
 # ---------------------------------------------------------------------------
 
 
-class TestMarkdownMetadata:
-    """Verify that the metadata line (source_type, repo, date) appears in Markdown output."""
+class TestMarkdownCondensedItems:
+    """Verify that the condensed item format appears in Markdown output."""
 
     CATEGORIZED_WITH_METADATA = {
         "releases": [
@@ -363,63 +363,49 @@ class TestMarkdownMetadata:
     }
 
     @patch("src.generator.renderer.load_newsletter_config", return_value=MOCK_NEWSLETTER_CONFIG)
-    def test_metadata_line_contains_source_type(self, mock_config):
+    def test_condensed_items_have_links(self, mock_config):
         from src.generator.renderer import render_markdown
 
         md = render_markdown(
             self.SUMMARIES_FOR_METADATA, self.CATEGORIZED_WITH_METADATA, MONTH_YEAR
         )
 
-        assert "_release" in md
-        assert "_aip" in md
+        assert "[aptos-core v1.8.0]" in md
+        assert "[AIP-77: Gas Schedule V2]" in md
 
     @patch("src.generator.renderer.load_newsletter_config", return_value=MOCK_NEWSLETTER_CONFIG)
-    def test_metadata_line_contains_date(self, mock_config):
+    def test_no_metadata_lines_in_output(self, mock_config):
+        """Metadata lines (source_type | repo | date) are no longer in the template."""
         from src.generator.renderer import render_markdown
 
         md = render_markdown(
             self.SUMMARIES_FOR_METADATA, self.CATEGORIZED_WITH_METADATA, MONTH_YEAR
         )
 
-        assert "2026-02-20" in md
-        assert "2026-02-15" in md
+        assert "_release |" not in md
+        assert "_aip |" not in md
 
     @patch("src.generator.renderer.load_newsletter_config", return_value=MOCK_NEWSLETTER_CONFIG)
-    def test_metadata_line_contains_repo(self, mock_config):
+    def test_contains_repo_in_item_line(self, mock_config):
         from src.generator.renderer import render_markdown
 
         md = render_markdown(
             self.SUMMARIES_FOR_METADATA, self.CATEGORIZED_WITH_METADATA, MONTH_YEAR
         )
 
-        # Repo appears both in the item line and in the metadata line
         assert "aptos-labs/aptos-core" in md
         assert "aptos-foundation/AIPs" in md
 
     @patch("src.generator.renderer.load_newsletter_config", return_value=MOCK_NEWSLETTER_CONFIG)
-    def test_item_without_source_type_shows_default(self, mock_config):
+    def test_changelog_cta_present(self, mock_config):
         from src.generator.renderer import render_markdown
 
-        categorized = {
-            "releases": [
-                {
-                    "id": "r1",
-                    "title": "Some release",
-                    "url": "https://example.com",
-                    "repo": "aptos-labs/aptos-core",
-                    "date": "2026-02-20",
-                    # no source_type key
-                },
-            ],
-            "aips": [],
-            "community": [],
-        }
-        summaries = {
-            "intro": "Intro.",
-            "sections": {"releases": "Summary."},
-        }
+        md = render_markdown(
+            self.SUMMARIES_FOR_METADATA,
+            self.CATEGORIZED_WITH_METADATA,
+            MONTH_YEAR,
+            changelog_url="https://example.com/changelog",
+        )
 
-        md = render_markdown(summaries, categorized, MONTH_YEAR)
-
-        # Should fall back to "item" default
-        assert "_item" in md
+        assert "View Full Changelog" in md
+        assert "https://example.com/changelog" in md

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aptos Ecosystem Changelog — {{ month_year }}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: {{ branding.color_bg }};
+      color: {{ branding.color_text }};
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 240px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 24px 16px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sidebar h2 {
+      font-size: 14px;
+      color: {{ branding.color_primary }};
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 6px 8px;
+      color: {{ branding.color_muted }};
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+    .sidebar a:hover {
+      color: {{ branding.color_text }};
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+    .main {
+      margin-left: 240px;
+      max-width: 900px;
+      padding: 40px 48px;
+      flex: 1;
+    }
+    h1 {
+      font-size: 32px;
+      color: {{ branding.color_primary }};
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: {{ branding.color_muted }};
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+    .stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .stat {
+      background-color: rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 16px 20px;
+      min-width: 120px;
+    }
+    .stat .value {
+      font-size: 28px;
+      font-weight: 700;
+      color: {{ branding.color_primary }};
+    }
+    .stat .label {
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+    }
+    .repo-section {
+      margin-bottom: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .repo-header {
+      background-color: rgba(255, 255, 255, 0.04);
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .repo-header h2 {
+      font-size: 20px;
+      color: {{ branding.color_primary }};
+      margin: 0;
+    }
+    .repo-header .count {
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+    }
+    .repo-body {
+      padding: 20px;
+    }
+    .repo-body h3 {
+      font-size: 16px;
+      color: {{ branding.color_primary }};
+      margin: 24px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .repo-body h3:first-child {
+      margin-top: 0;
+    }
+    .release-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 3px solid {{ branding.color_primary }};
+    }
+    .release-card h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+    .release-card h4 a {
+      color: {{ branding.color_text }};
+      text-decoration: none;
+    }
+    .release-card h4 a:hover { text-decoration: underline; }
+    .release-meta {
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+      margin-bottom: 8px;
+    }
+    .release-body {
+      font-size: 14px;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+      color: {{ branding.color_text }};
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      padding: 8px 12px;
+      color: {{ branding.color_muted }};
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 600;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    td a {
+      color: {{ branding.color_primary }};
+      text-decoration: none;
+    }
+    td a:hover { text-decoration: underline; }
+    .commit-list {
+      list-style: none;
+      padding: 0;
+    }
+    .commit-list li {
+      padding: 6px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .commit-list code {
+      font-size: 12px;
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: {{ branding.color_muted }};
+    }
+    .commit-list a {
+      color: {{ branding.color_primary }};
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 60px;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 13px;
+      color: {{ branding.color_muted }};
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2>Repos</h2>
+      {% for repo_name in grouped %}
+      <a href="#{{ repo_name | replace('/', '-') | replace('.', '-') }}">{{ repo_name.split('/')[-1] }}</a>
+      {% endfor %}
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+      <h1>Aptos Ecosystem Changelog</h1>
+      <p class="subtitle">{{ month_year }} — Every release, PR, and commit from the Aptos ecosystem</p>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="value">{{ stats.total }}</div>
+          <div class="label">Total Items</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{ stats.releases }}</div>
+          <div class="label">Releases</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{ stats.prs }}</div>
+          <div class="label">PRs Merged</div>
+        </div>
+        <div class="stat">
+          <div class="value">{{ stats.repos_active }}</div>
+          <div class="label">Active Repos</div>
+        </div>
+      </div>
+
+      <!-- Repo Sections -->
+      {% for repo_name, items in grouped.items() %}
+      {% set releases = items | selectattr("source_type", "equalto", "release") | list %}
+      {% set changelog_entries = items | selectattr("source_type", "equalto", "changelog_entry") | list %}
+      {% set prs = items | selectattr("source_type", "equalto", "pr") | list %}
+      {% set commits = items | selectattr("source_type", "equalto", "commit") | list %}
+
+      <div class="repo-section" id="{{ repo_name | replace('/', '-') | replace('.', '-') }}">
+        <div class="repo-header">
+          <h2>{{ repo_name }}</h2>
+          <span class="count">{{ items | length }} item{{ 's' if items | length != 1 }}</span>
+        </div>
+        <div class="repo-body">
+
+          {% if releases %}
+          <h3>Releases</h3>
+          {% for item in releases %}
+          <div class="release-card">
+            <h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
+            <div class="release-meta">{{ item.tag | default('') }} · {{ item.date }}</div>
+            {% if item.body_full %}
+            <div class="release-body">{{ item.body_full }}</div>
+            {% elif item.body %}
+            <div class="release-body">{{ item.body }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% if changelog_entries %}
+          <h3>Changelog Entries</h3>
+          {% for item in changelog_entries %}
+          <div class="release-card">
+            <h4><a href="{{ item.url }}">{{ item.title }}</a></h4>
+            <div class="release-meta">{{ item.date }}</div>
+            {% if item.body_full %}
+            <div class="release-body">{{ item.body_full }}</div>
+            {% elif item.body %}
+            <div class="release-body">{{ item.body }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          {% if prs %}
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              {% for item in prs %}
+              <tr>
+                <td><a href="{{ item.url }}">{{ item.title }}</a></td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.changed_files | default('-') }}</td>
+                <td>+{{ item.additions | default(0) }}/-{{ item.deletions | default(0) }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% endif %}
+
+          {% if commits %}
+          <h3>Commits</h3>
+          <ul class="commit-list">
+            {% for item in commits %}
+            <li>
+              <a href="{{ item.url }}"><code>{{ item.sha[:8] if item.sha else '' }}</code></a>
+              {{ item.title }} <span style="color: {{ branding.color_muted }};">({{ item.date }})</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="footer">{{ branding.footer }}</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -94,8 +94,6 @@ def filter_items(
         config = load_newsletter_config()
 
     filtering = config.get("filtering", {})
-    if not filtering:
-        return list(items)
 
     title_patterns = _compile_title_patterns(filtering.get("exclude_title_patterns", []))
     label_patterns = _compile_patterns(filtering.get("exclude_label_patterns", []))
@@ -133,6 +131,12 @@ def filter_items(
         # Check prerelease exclusion
         if exclude_prerelease and prerelease:
             logger.debug("Filtered (prerelease): %s", title)
+            filtered_count += 1
+            continue
+
+        # Check minor PR exclusion
+        if item.get("minor", False):
+            logger.debug("Filtered (minor): %s", title)
             filtered_count += 1
             continue
 

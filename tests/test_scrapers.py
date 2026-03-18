@@ -195,10 +195,10 @@ class TestGitHubReposScraper:
 
     @patch("src.scrapers.github_repos.load_repos_config")
     @patch("src.scrapers.github_repos.wait_for_rate_limit")
-    def test_scrape_prs_filters_by_min_files(
+    def test_scrape_prs_marks_minor_below_min_files(
         self, mock_wait, mock_config
     ):
-        """PRs with fewer changed files than pr_min_files are excluded."""
+        """PRs with fewer changed files than pr_min_files are tagged as minor."""
         mock_config.return_value = {
             "repos": [
                 {
@@ -215,7 +215,13 @@ class TestGitHubReposScraper:
         mock_pr.merged = True
         mock_pr.merged_at = datetime(2026, 2, 20, 10, 0, tzinfo=timezone.utc)
         mock_pr.number = 99
+        mock_pr.title = "Small fix"
+        mock_pr.body = "Minor change"
+        mock_pr.html_url = "https://github.com/aptos-labs/aptos-core/pull/99"
+        mock_pr.labels = []
         mock_pr.changed_files = 3  # Below threshold of 10
+        mock_pr.additions = 5
+        mock_pr.deletions = 2
 
         mock_repo = MagicMock()
         mock_repo.full_name = "aptos-labs/aptos-core"
@@ -229,7 +235,8 @@ class TestGitHubReposScraper:
         scraper = GitHubReposScraper(client=mock_client)
         items = scraper.scrape(since=date(2026, 2, 1), until=date(2026, 2, 28))
 
-        assert len(items) == 0
+        assert len(items) == 1
+        assert items[0]["minor"] is True
 
     @patch("src.scrapers.github_repos.load_repos_config")
     @patch("src.scrapers.github_repos.wait_for_rate_limit")

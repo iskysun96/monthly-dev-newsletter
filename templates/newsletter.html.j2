@@ -65,8 +65,8 @@
       color: {{ branding.color_text }};
     }
     .item {
-      margin-bottom: 12px;
-      padding: 12px 16px;
+      margin-bottom: 8px;
+      padding: 8px 16px;
       background-color: rgba(255, 255, 255, 0.04);
       border-radius: 6px;
       border-left: 3px solid {{ branding.color_primary }};
@@ -80,15 +80,36 @@
       color: {{ branding.color_primary }};
       text-decoration: none;
     }
-    .item .item-meta {
-      font-size: 13px;
+    .overflow-link {
+      font-size: 14px;
       color: {{ branding.color_muted }};
-      margin-top: 4px;
+      margin-top: 8px;
+    }
+    .overflow-link a {
+      color: {{ branding.color_primary }};
+      text-decoration: none;
     }
     .divider {
       border: none;
       border-top: 1px solid {{ branding.color_muted }};
       margin: 32px 0;
+    }
+    .changelog-cta {
+      text-align: center;
+      margin: 32px 0;
+    }
+    .changelog-cta p {
+      color: {{ branding.color_muted }};
+      margin: 0 0 12px;
+    }
+    .changelog-cta a {
+      display: inline-block;
+      padding: 12px 32px;
+      background-color: {{ branding.color_primary }};
+      color: {{ branding.color_bg }};
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
     }
     .footer {
       padding: 24px;
@@ -129,7 +150,7 @@
                   {{ section.summary | replace('\n', '<br>') }}
                 </div>
                 {% endif %}
-                {% for item in section.entries %}
+                {% for item in section.entries[:8] %}
                 <div class="item">
                   <div class="item-title">
                     {% if item.url %}
@@ -138,17 +159,27 @@
                     {{ item.title }}
                     {% endif %}
                   </div>
-                  {% if item.repo %}
-                  <div class="item-meta">{{ item.repo }}{% if item.date %} · {{ item.date }}{% endif %}</div>
-                  {% endif %}
                 </div>
                 {% endfor %}
+                {% if section.entries | length > 8 and changelog_url %}
+                <div class="overflow-link">
+                  ... and {{ section.entries | length - 8 }} more in the <a href="{{ changelog_url }}">full changelog</a>
+                </div>
+                {% endif %}
               </div>
 
               {% if not loop.last %}
               <hr class="divider">
               {% endif %}
               {% endfor %}
+
+              {% if changelog_url %}
+              <!-- Changelog CTA -->
+              <div class="changelog-cta">
+                <p>Want the complete picture?</p>
+                <a href="{{ changelog_url }}">View Full Changelog</a>
+              </div>
+              {% endif %}
             </td>
           </tr>
 

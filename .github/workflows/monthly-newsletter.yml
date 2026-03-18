@@ -76,10 +76,13 @@ jobs:
             - [ ] No items are miscategorized
             - [ ] Links are correct
             - [ ] HTML renders correctly (open the `.html` file)
+            - [ ] Changelog renders correctly (open the changelog `.html` file)
             - [ ] No sensitive information included
 
             ### Files
             - `output/newsletters/${{ steps.branch.outputs.month }}.md` — Markdown version
             - `output/newsletters/${{ steps.branch.outputs.month }}.html` — HTML email version
+            - `output/changelogs/${{ steps.branch.outputs.month }}.md` — Comprehensive changelog (Markdown)
+            - `docs/changelogs/${{ steps.branch.outputs.month }}.html` — Comprehensive changelog (GitHub Pages)
           reviewers: ${{ vars.NEWSLETTER_REVIEWERS }}
           labels: newsletter

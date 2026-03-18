@@ -7,11 +7,42 @@
       "source_type": "release",
       "title": "aptos-core aptos-node-v1.41.7-hotfix",
       "body": "# Hotfix Release\r\n\r\nThis is a private hotfix. The source code is not available. Please use the attached binaries or upgrade using docker image.\r\n\r\n## Who should upgrade\r\n\r\n- **Validators**: YES\r\n- **Fullnodes**: OPTIONAL\r\n\r\n\r\nHotfix commit: `c395968a92aabf1ab6a26e929ac02318a204c9c5`",
+      "body_full": "# Hotfix Release\r\n\r\nThis is a private hotfix. The source code is not available. Please use the attached binaries or upgrade using docker image.\r\n\r\n## Who should upgrade\r\n\r\n- **Validators**: YES\r\n- **Fullnodes**: OPTIONAL\r\n\r\n\r\nHotfix commit: `c395968a92aabf1ab6a26e929ac02318a204c9c5`",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/untagged-2669bd97e83a68981c60",
       "date": "2026-02-25",
       "repo": "aptos-labs/aptos-core",
       "tag": "aptos-node-v1.41.7-hotfix",
       "prerelease": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18868",
+      "source_type": "pr",
+      "title": "[State Sync] Account for validator-PFN connections.",
+      "body": "## Description\r\nThis PR updates the aptos data client in state sync to better account for validator-PFN connections. Thankfully, nothing needs to change in the data client (aside from documentation and a new config flag we've added to help gate the feature). This config flag will be used across all components.\r\n\r\n## Testing Plan\r\nNew test infrastructure.\r\n\r\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Adds a new `BaseConfig` field that changes the serialized config schema (though it defaults safely), and expands state-sync tests; no peer-selection logic is modified.\n> \n> **Overview**\n> Introduces a new `BaseConfig.enable_validator_pfn_connections` flag (default `false`) to gate/describe direct validator\u2194PFN connectivity.\n> \n> Updates state-sync data client coverage to explicitly validate validator peer selection behavior when only PFN peers are available and when VFNs appear/disconnect, and tightens prioritization documentation/comments in `priority.rs` without changing logic.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 50d6c12edbc0585a55b35c004e560be7ba9fc138. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18868",
+      "date": "2026-03-01",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18868,
+      "labels": [],
+      "changed_files": 4,
+      "additions": 54,
+      "deletions": 11,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18871",
+      "source_type": "pr",
+      "title": "Add private view functions to the ABI",
+      "body": "## Description\r\nFixes PI-156.\r\n\r\nPrivate `#[view]` functions are callable via the REST API but were previously omitted from the node's ABI responses, preventing their discovery by tools like explorers. This PR updates the ABI generation logic to include private `#[view]` functions, ensuring they are properly exposed with their `private` visibility and `is_view: true` attribute.\r\n\r\nThis should hopefully not cause any issues with downstream tools (eg Surf) because they should be making all inference decisions based on privacy, is_entry, and is_view already.\r\n\r\n## How Has This Been Tested?\r\nExisting ABI tests were augmented to include a new private `#[view]` function alongside an existing public one. The tests now verify that both public and private `#[view]` functions are correctly included in the ABI with `is_view: true` and their respective `public` or `private` visibility. All `aptos-api` tests pass.\r\n\r\nSee the output for [this contract](https://github.com/banool/move-examples/tree/e951393b27ca15ccd628de1ae71ec9d7b7d2122f/view_function/sources/my_module.move) on localnet:\r\n```bash\r\ncurl http://127.0.0.1:8080/v1/accounts/0x7a5910e8007a116df2797d2c6d5f81b8bd602c213f26f09cdeabb0cc92e6d125/module/view_func | jq .\r\n```\r\n```json\r\n{\r\n  \"address\": \"0x7a5910e8007a116df2797d2c6d5f81b8bd602c213f26f09cdeabb0cc92e6d125\",\r\n  \"name\": \"view_func\",\r\n  \"friends\": [],\r\n  \"exposed_functions\": [\r\n    {\r\n      \"name\": \"add_5\",\r\n      \"visibility\": \"private\",\r\n      \"is_entry\": false,\r\n      \"is_view\": true,\r\n      \"generic_type_params\": [],\r\n      \"params\": [\r\n        \"u64\"\r\n      ],\r\n      \"return\": [\r\n        \"u64\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"add_ints\",\r\n      \"visibility\": \"public\",\r\n      \"is_entry\": false,\r\n      \"is_view\": true,\r\n      \"generic_type_params\": [],\r\n      \"params\": [\r\n        \"u64\",\r\n        \"u64\"\r\n      ],\r\n      \"return\": [\r\n        \"u64\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"get_my_struct\",\r\n      \"visibility\": \"public\",\r\n      \"is_entry\": false,\r\n  ",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18871",
+      "date": "2026-02-28",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18871,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 32,
+      "deletions": 13,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18790",
@@ -27,7 +58,8 @@
       ],
       "changed_files": 17,
       "additions": 569,
-      "deletions": 61
+      "deletions": 61,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18878",
@@ -41,7 +73,23 @@
       "labels": [],
       "changed_files": 15,
       "additions": 143,
-      "deletions": 48
+      "deletions": 48,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18874",
+      "source_type": "pr",
+      "title": "[storage] Replace pruner worker polling with channel-based wake",
+      "body": "\nReplace the 1ms sleep-poll loop in `PrunerWorker` with a\n`sync_channel(1)`-based blocking wait.\n\n**Before:** Each pruner worker thread (state_merkle, ledger, state_kv) woke up\nevery 1ms to check `is_pruning_pending()`, causing ~1000 context switches/sec\nper thread even when fully idle.\n\n**After:** The worker blocks on `recv()` when there's no pending work, and is\nwoken only when:\n- `set_target_db_version` is called with a new target (`try_send(())`)\n- The `PrunerWorker` is dropped (sender dropped \u2192 `recv()` returns `Err`)\n\nThis also eliminates the `PrunerWorkerInner` struct \u2014 the channel naturally\nseparates the producer (sender on `PrunerWorker`) from the consumer (receiver\nmoved into the worker thread). Error backoff is bumped from 1ms to 100ms.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Changes the pruner worker\u2019s concurrency model from tight sleep-polling to channel-based blocking wakeups, which can affect shutdown/wakeup behavior and risk hangs if signaling is missed. Scope is limited to `PrunerWorker`, but it runs continuously in production so regressions would be noisy.\n> \n> **Overview**\n> Replaces `PrunerWorker`\u2019s 1ms sleep/poll loop with a `sync_channel(1)` wake mechanism so idle pruner threads block on `recv()` and only run when signaled.\n> \n> `set_target_db_version()` now `try_send(())`s to wake the worker after advancing the target version, and `Drop` signals shutdown by dropping the sender (worker exits when the channel disconnects). The old `PrunerWorkerInner` + `AtomicBool` stop flag is removed, and pruning error backoff is increased to 100ms.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit e4a6b8e6df9d590914111648df0694eee02c05d3. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18874",
+      "date": "2026-02-28",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18874,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 41,
+      "deletions": 55,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18887",
@@ -58,7 +106,8 @@
       ],
       "changed_files": 10,
       "additions": 65,
-      "deletions": 92
+      "deletions": 92,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18885",
@@ -74,7 +123,23 @@
       ],
       "changed_files": 6,
       "additions": 262,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18867",
+      "source_type": "pr",
+      "title": "Rosetta fee payer tracking (#18799)",
+      "body": "* [rosetta] Fix fee payer tracking: use fee_payer_address instead of sender for fee operations\r\n\r\nWhen a transaction has a fee payer (via FeePayer authenticator), the gas fee and storage fee refund operations should attribute the fee to the fee payer address, not the transaction sender. Previously, txn.sender() was always used, which incorrectly showed the sender as the fee payer in the Rosetta response.\r\n\r\nNow we check for a fee_payer_address in the transaction authenticator and fall back to sender() only when no fee payer is present.\r\n\r\n\r\n\r\n* [rosetta] Add tests for fee payer tracking in Rosetta operations\r\n\r\nAdd two tests that verify fee operations are attributed to the fee payer address (not the sender) when a FeePayer authenticator is present:\r\n\r\n- test_fee_payer_transfer_attributes_fee_to_fee_payer: verifies a transfer with a fee payer shows the fee on the fee payer's account\r\n- test_fee_payer_mint_attributes_fee_to_fee_payer: verifies a mint with a fee payer shows the fee on the fee payer's account\r\n\r\nAlso adds a test_fee_payer_transaction helper that constructs a TransactionOnChainData with a FeePayer authenticator.\r\n\r\n\r\n\r\n* [rosetta] Deduplicate gas payer resolution into a single computation\r\n\r\nExtract the fee_payer_address().unwrap_or_else(sender) logic into a single gas_payer variable computed once per user transaction, then reuse it for both the storage fee refund and the gas fee operation. This eliminates duplication and prevents the two code paths from drifting apart.\r\n\r\n\r\n\r\n* [rosetta] Add storage fee refund attribution tests\r\n\r\nAdd two tests covering the storage fee refund path with FeeStatement events that have a non-zero storage_fee_refund:\r\n\r\n- test_fee_payer_storage_refund_attributes_to_fee_payer: verifies that the storage refund deposit AND gas fee are both attributed to the fee payer\r\n- test_no_fee_payer_storage_refund_attributes_to_sender: verifies that without a fee payer, both fall back to the sender\r\n\r\nThis ensures both changed code paths (",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18867",
+      "date": "2026-02-28",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18867,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 433,
+      "deletions": 5,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18735",
@@ -90,7 +155,8 @@
       ],
       "changed_files": 13,
       "additions": 465,
-      "deletions": 36
+      "deletions": 36,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18886",
@@ -106,7 +172,8 @@
       ],
       "changed_files": 6,
       "additions": 262,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18884",
@@ -123,7 +190,23 @@
       ],
       "changed_files": 6,
       "additions": 262,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18866",
+      "source_type": "pr",
+      "title": "Rosetta fee payer tracking (#18799)",
+      "body": "* [rosetta] Fix fee payer tracking: use fee_payer_address instead of sender for fee operations\r\n\r\nWhen a transaction has a fee payer (via FeePayer authenticator), the gas fee and storage fee refund operations should attribute the fee to the fee payer address, not the transaction sender. Previously, txn.sender() was always used, which incorrectly showed the sender as the fee payer in the Rosetta response.\r\n\r\nNow we check for a fee_payer_address in the transaction authenticator and fall back to sender() only when no fee payer is present.\r\n\r\n\r\n\r\n* [rosetta] Add tests for fee payer tracking in Rosetta operations\r\n\r\nAdd two tests that verify fee operations are attributed to the fee payer address (not the sender) when a FeePayer authenticator is present:\r\n\r\n- test_fee_payer_transfer_attributes_fee_to_fee_payer: verifies a transfer with a fee payer shows the fee on the fee payer's account\r\n- test_fee_payer_mint_attributes_fee_to_fee_payer: verifies a mint with a fee payer shows the fee on the fee payer's account\r\n\r\nAlso adds a test_fee_payer_transaction helper that constructs a TransactionOnChainData with a FeePayer authenticator.\r\n\r\n\r\n\r\n* [rosetta] Deduplicate gas payer resolution into a single computation\r\n\r\nExtract the fee_payer_address().unwrap_or_else(sender) logic into a single gas_payer variable computed once per user transaction, then reuse it for both the storage fee refund and the gas fee operation. This eliminates duplication and prevents the two code paths from drifting apart.\r\n\r\n\r\n\r\n* [rosetta] Add storage fee refund attribution tests\r\n\r\nAdd two tests covering the storage fee refund path with FeeStatement events that have a non-zero storage_fee_refund:\r\n\r\n- test_fee_payer_storage_refund_attributes_to_fee_payer: verifies that the storage refund deposit AND gas fee are both attributed to the fee payer\r\n- test_no_fee_payer_storage_refund_attributes_to_sender: verifies that without a fee payer, both fall back to the sender\r\n\r\nThis ensures both changed code paths (",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18866",
+      "date": "2026-02-27",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18866,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 433,
+      "deletions": 5,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18419",
@@ -137,7 +220,23 @@
       "labels": [],
       "changed_files": 9,
       "additions": 217,
-      "deletions": 68
+      "deletions": 68,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18875",
+      "source_type": "pr",
+      "title": "trivial aptos-trading change to get it to aptos-framework repo",
+      "body": "## Description\r\n<!-- Please include a summary of the change, including which issue it fixes or what feature it adds. Include relevant motivation, context and documentation as appropriate. List dependencies that are required for this change, if any. -->\r\n\r\n## How Has This Been Tested?\r\n<!--\r\n- Please ensure that the functionality introduced by this change is well tested and verified to work as expected.\r\n- Ensure tests cover both happy and unhappy paths.\r\n- List and link relevant tests.\r\n-->\r\n\r\n## Key Areas to Review\r\n<!--\r\n- Identify any critical parts of the code that require special attention or understanding. Explain why these parts are crucial to the functionality or architecture of the project.\r\n- Point out any areas where complex logic has been implemented. Provide a brief explanation of the logic and your approach to make it easier for reviewers to follow.\r\n- Highlight any areas where you are particularly concerned or unsure about the code's impact on the change. This can include potential performance or security issues, or compatibility with existing features.\r\n-->\r\n\r\n## Type of Change\r\n- [ ] New feature\r\n- [ ] Bug fix\r\n- [ ] Breaking change\r\n- [ ] Performance improvement\r\n- [ ] Refactoring\r\n- [ ] Dependency update\r\n- [ ] Documentation update\r\n- [ ] Tests\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [ ] Validator Node\r\n- [ ] Full Node (API, Indexer, etc.)\r\n- [ ] Move/Aptos Virtual Machine\r\n- [ ] Aptos Framework\r\n- [ ] Aptos CLI/SDK\r\n- [ ] Developer Infrastructure\r\n- [ ] Move Compiler\r\n- [ ] Other (specify)\r\n\r\n## Checklist\r\n- [ ] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\r\n- [ ] I have performed a self-review of my own code\r\n- [ ] I have commented my code, particularly in hard-to-understand areas\r\n- [ ] I identified and added all stakeholders and component owners affected by this change as reviewers\r\n- [ ] I tested both happy and unhappy path of the functionality\r\n- [ ] ",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18875",
+      "date": "2026-02-27",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18875,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 1,
+      "deletions": 2,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18798",
@@ -153,7 +252,53 @@
       ],
       "changed_files": 7,
       "additions": 403,
-      "deletions": 263
+      "deletions": 263,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18843",
+      "source_type": "pr",
+      "title": "[Network] Add simple token bucket rate limiter implementation.",
+      "body": "## Description\r\nThis PR adds a simple token bucket rate limiter implementation. This will be used by the internal and external network rate limiters (coming in subsequent PRs).\r\n\r\n## Testing Plan\r\nExisting test infrastructure.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Purely additive new utility crate plus tests and workspace wiring; no existing runtime behavior changes unless adopted by follow-up PRs.\n> \n> **Overview**\n> Adds a new workspace crate, `aptos-token-bucket`, providing a simple token-bucket rate limiter (`TokenBucket` and `SharedTokenBucket`) with time-based refilling via `aptos-time-service`.\n> \n> The implementation exposes an all-or-nothing `try_acquire_all()` API that returns either success or the `Instant` when enough tokens will be available (or `None` if the request exceeds capacity), and includes extensive unit tests for refill timing, drift handling, and saturation/edge cases.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 34dd98c67e2d3cdbc4f820ef4dde226c61f9fbc5. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18843",
+      "date": "2026-02-26",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18843,
+      "labels": [],
+      "changed_files": 4,
+      "additions": 797,
+      "deletions": 0,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18836",
+      "source_type": "pr",
+      "title": "[prover] Fix behavioral predicates on opaque functions",
+      "body": "## Description\n\nFix Boogie compilation error (\"call to undeclared procedure\") when behavioral predicates (`result_of<f>`, `aborts_of<f>`) are used on opaque functions.\n\nThe `$apply` procedure (which dispatches closure calls) emitted a direct `call` to the target function's Boogie procedure. But opaque functions have no Boogie procedure body generated, causing the compilation error. The fix detects opaque targets in the closure variant loop and uses behavioral predicates (`$aborts_of` evaluator + `$result_of` function) instead of a direct call, matching how function parameter variants are already handled.\n\n## How Has This Been Tested?\n\n- New test: `opaque_behavioral_predicates.move` covering simple opaque, recursive opaque (bounded), and mutually recursive opaque functions with behavioral predicates. All verify cleanly.\n- Full prover test suite passes (173 tests, 0 failures).\n\n## Type of Change\n- [x] Bug fix\n\n## Which Components or Systems Does This Change Impact?\n- [x] Move/Aptos Virtual Machine\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Changes core Boogie codegen for closure dispatch and result/mutation handling, which could affect prover soundness/precision across many specs, though the change is localized and covered by a new regression test.\n> \n> **Overview**\n> Fixes Boogie generation in `bytecode_translator.rs` so `$apply` no longer emits a direct `call` when a closure target is an *opaque* Move function (which has no Boogie procedure body); instead it models the call using behavioral predicates (`aborts_of`/`result_of`) and shared result/abort/memory-havoc logic.\n> \n> Refactors the behavioral-predicate call emission into a new helper (`emit_behavioral_predicate_body`) and adds a new functional test `opaque_behavioral_predicates.move` covering simple, recursive, and mutually-recursive opaque functions using `result_of`/`aborts_of`.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18836",
+      "date": "2026-02-26",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18836,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 244,
+      "deletions": 121,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18863",
+      "source_type": "pr",
+      "title": "[faucet] Use auth headers in all cases",
+      "body": "## Description\r\n<!-- Please include a summary of the change, including which issue it fixes or what feature it adds. Include relevant motivation, context and documentation as appropriate. List dependencies that are required for this change, if any. -->\r\nWhen hitting the gas estimation API we weren't passing the internal auth headers as intended, so the queries were getting rejected sometimes because they were subject to the low anonymous limit.\r\n\r\n## How Has This Been Tested?\r\n<!--\r\n- Please ensure that the functionality introduced by this change is well tested and verified to work as expected.\r\n- Ensure tests cover both happy and unhappy paths.\r\n- List and link relevant tests.\r\n-->\r\nWill test live soon.\r\n\r\n## Key Areas to Review\r\n<!--\r\n- Identify any critical parts of the code that require special attention or understanding. Explain why these parts are crucial to the functionality or architecture of the project.\r\n- Point out any areas where complex logic has been implemented. Provide a brief explanation of the logic and your approach to make it easier for reviewers to follow.\r\n- Highlight any areas where you are particularly concerned or unsure about the code's impact on the change. This can include potential performance or security issues, or compatibility with existing features.\r\n-->\r\n\r\n## Type of Change\r\n- [ ] New feature\r\n- [x] Bug fix\r\n- [ ] Breaking change\r\n- [ ] Performance improvement\r\n- [ ] Refactoring\r\n- [ ] Dependency update\r\n- [ ] Documentation update\r\n- [ ] Tests\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [ ] Validator Node\r\n- [ ] Full Node (API, Indexer, etc.)\r\n- [ ] Move/Aptos Virtual Machine\r\n- [ ] Aptos Framework\r\n- [ ] Aptos CLI/SDK\r\n- [x] Developer Infrastructure\r\n- [ ] Move Compiler\r\n- [ ] Other (specify)\r\n\r\n## Checklist\r\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\r\n- [x] I have performed a self-review of my own code\r\n- [x] I have commented my code, ",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18863",
+      "date": "2026-02-26",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18863,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 32,
+      "deletions": 7,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18823",
@@ -167,7 +312,38 @@
       "labels": [],
       "changed_files": 86,
       "additions": 4060,
-      "deletions": 49
+      "deletions": 49,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18851",
+      "source_type": "pr",
+      "title": "[Storage] Add hot state cache age metrics",
+      "body": "\nReport per-shard MRU/LRU `hot_since_version` gauges to help assess whether\nthe hot state cache capacity is adequate. A small version span between MRU\nand LRU indicates items are being evicted too quickly (cache too small).\n\nNew metrics:\n- `aptos_hot_state_shard_gauge{shard_id, name=\"mru_hot_since_version\"}`\n- `aptos_hot_state_shard_gauge{shard_id, name=\"lru_hot_since_version\"}`\n- `aptos_storage_gauge{name=\"hot_state_max_lru_hot_since_version\"}` (aggregate)\n- `aptos_storage_gauge{name=\"hot_state_min_lru_hot_since_version\"}` (aggregate)\n\nThe aggregate metrics track the max and min LRU across shards rather than\nMRU, since MRU versions are similar across shards (all near the latest\ncommitted version). Max LRU identifies the shard under the most eviction\npressure (shallowest cache depth), which is more useful for capacity planning.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Metrics-only changes (new gauges and shared constants) with minimal behavioral impact beyond extra reporting work in the hot state committer loop.\n> \n> **Overview**\n> Adds new metrics to track hot state cache *age* by reporting per-shard MRU/LRU `hot_since_version` via `aptos_hot_state_shard_gauge{shard_id,name}` and aggregate min/max LRU across shards via `aptos_storage_gauge`.\n> \n> Centralizes shard label mapping by moving `SHARD_NAME_BY_ID` into `metrics.rs` and reusing it from both hot state metric reporting and RocksDB shard property reporting.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit a090ab825d9f4256aea89643c92328d5382c44cd. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18851",
+      "date": "2026-02-26",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18851,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 61,
+      "deletions": 6,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18850",
+      "source_type": "pr",
+      "title": "[storage] Distinguish hot vs cold metrics in StateMerkleDb and StateKvDb",
+      "body": "\nBoth hot and cold instances of `StateMerkleDb` and `StateKvDb` were recording\nto the same Prometheus metrics with identical label values, making it impossible\nto distinguish their performance characteristics (cache hit rates, commit\nlatencies, etc.).\n\nFix:\n- Store `is_hot` in both structs and add a `db_tag()` helper returning\n  `\"hot\"` or `\"cold\"`\n- `NODE_CACHE_SECONDS`: add a `\"db_type\"` label dimension (only used by\n  `StateMerkleDb`, so safe to evolve)\n- `OTHER_TIMERS_SECONDS`: prefix timer `name` values with the db tag\n  (e.g. `\"hot__jmt_update\"` vs `\"cold__jmt_update\"`), avoiding an\n  invasive label change to this broadly-shared metric\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Metrics schema changes can break existing dashboards/alerts and increase series cardinality (new `db_type` label and renamed timer values), but runtime behavior is otherwise unchanged.\n> \n> **Overview**\n> Distinguishes **hot vs cold** `StateMerkleDb` and `StateKvDb` performance metrics so both instances no longer emit identical label sets.\n> \n> `NODE_CACHE_SECONDS` gains a new `db_type` label and `StateMerkleDb` now records node-cache observations with `db_tag()` (\"hot\"/\"cold\"). For broader `OTHER_TIMERS_SECONDS`, timers in `StateMerkleDb` and `StateKvDb` are renamed by prefixing the existing `name` label value (e.g. `hot__jmt_update`, `cold__state_kv_db__commit`) to avoid a breaking label-schema change.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit e3d1b1c2f922044044da600897596a18d829e6aa. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18850",
+      "date": "2026-02-26",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18850,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 48,
+      "deletions": 13,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18661",
@@ -181,7 +357,23 @@
       "labels": [],
       "changed_files": 105,
       "additions": 2973,
-      "deletions": 1141
+      "deletions": 1141,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18854",
+      "source_type": "pr",
+      "title": "Configurable settings for grpc heartbeat and staleness",
+      "body": "## Description\r\n- Adds config settings for heartbeat and keepalive for GRPC manager\r\n- Use defaults for backwards compatibility\r\n\r\n## How Has This Been Tested?\r\ncargo test\r\n\r\n## Type of Change\r\n- [x] New feature\r\n- [ ] Bug fix\r\n- [ ] Breaking change\r\n- [ ] Performance improvement\r\n- [ ] Refactoring\r\n- [ ] Dependency update\r\n- [ ] Documentation update\r\n- [ ] Tests\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [ ] Validator Node\r\n- [x] Full Node (API, Indexer, etc.)\r\n- [ ] Move/Aptos Virtual Machine\r\n- [ ] Aptos Framework\r\n- [ ] Aptos CLI/SDK\r\n- [ ] Developer Infrastructure\r\n- [ ] Move Compiler\r\n- [ ] Other (specify)\r\n\r\n## Checklist\r\n- [ ] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\r\n- [ ] I have performed a self-review of my own code\r\n- [ ] I have commented my code, particularly in hard-to-understand areas\r\n- [ ] I identified and added all stakeholders and component owners affected by this change as reviewers\r\n- [ ] I tested both happy and unhappy path of the functionality\r\n- [ ] I have made corresponding changes to the documentation\r\n\r\n<!-- Thank you for your contribution! -->\r\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Touches runtime networking/health-check behavior (HTTP/2 keepalive and service eviction thresholds), which can affect connection stability and service availability if misconfigured, though defaults preserve existing behavior.\n> \n> **Overview**\n> Makes gRPC manager connection health behavior configurable via `IndexerGrpcManagerConfig` by adding `http2_ping_interval_secs`, `http2_ping_timeout_secs`, and `service_staleness_threshold_secs` with backward-compatible defaults.\n> \n> `GrpcManager` now uses these config values for Tonic HTTP/2 keepalive settings, and `MetadataManager` uses the staleness threshold (instead of a hardcoded 60s) when deciding to evict unreachable live/historical data services; tests are updated to populate the new config fields",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18854",
+      "date": "2026-02-25",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18854,
+      "labels": [],
+      "changed_files": 4,
+      "additions": 33,
+      "deletions": 7,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18797",
@@ -195,7 +387,23 @@
       "labels": [],
       "changed_files": 150,
       "additions": 7032,
-      "deletions": 4004
+      "deletions": 4004,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18844",
+      "source_type": "pr",
+      "title": "Testsuite python security",
+      "body": "## Description\nThis PR updates the Python dependencies in the `testsuite/` directory to address several security vulnerabilities.\n\nThe primary motivation is to fix known CVEs in the following packages:\n*   **certifi**: CVE-2024-39689\n*   **urllib3**: CVE-2023-43804, CVE-2023-45803, CVE-2024-37891, CVE-2025-66471, CVE-2026-21441\n*   **requests**: CVE-2024-35195, CVE-2024-47081\n*   **setuptools**: CVE-2024-6345, CVE-2025-47273\n\nTo ensure that the secure versions of `urllib3` and `setuptools` could be resolved, the minimum Python version in `testsuite/pyproject.toml` was bumped from `>=3.8` to `>=3.9`, as these packages dropped Python 3.8 support in their patched versions.\n\n## How Has This Been Tested?\nThe `poetry.lock` files for `testsuite/` and `testsuite/replay-verify/` were regenerated using `poetry update`. Verification was performed by inspecting the updated lock files to confirm that the vulnerable packages were upgraded to their secure versions and that no older, vulnerable versions remained for Python 3.9+.\n\n## Key Areas to Review\n*   **`testsuite/pyproject.toml`**: Verify the change in the minimum Python version constraint from `>=3.8` to `>=3.9`.\n*   **`testsuite/poetry.lock` and `testsuite/replay-verify/poetry.lock`**: Review the updated dependency versions to ensure that the identified security vulnerabilities are addressed and no new regressions are introduced.\n\n## Type of Change\n- [ ] New feature\n- [x] Bug fix\n- [ ] Breaking change\n- [ ] Performance improvement\n- [ ] Refactoring\n- [x] Dependency update\n- [ ] Documentation update\n- [ ] Tests\n\n## Which Components or Systems Does This Change Impact?\n- [ ] Validator Node\n- [ ] Full Node (API, Indexer, etc.)\n- [ ] Move/Aptos Virtual Machine\n- [ ] Aptos Framework\n- [ ] Aptos CLI/SDK\n- [ ] Developer Infrastructure\n- [ ] Move Compiler\n- [x] Other (specify): `testsuite` Python dependencies\n\n## Checklist\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTI",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18844",
+      "date": "2026-02-25",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18844,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 1504,
+      "deletions": 770,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18788",
@@ -209,7 +417,8 @@
       "labels": [],
       "changed_files": 99,
       "additions": 656,
-      "deletions": 911
+      "deletions": 911,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18578",
@@ -226,7 +435,8 @@
       ],
       "changed_files": 13,
       "additions": 196,
-      "deletions": 940
+      "deletions": 940,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18699",
@@ -242,7 +452,8 @@
       ],
       "changed_files": 6,
       "additions": 456,
-      "deletions": 94
+      "deletions": 94,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18849",
@@ -256,7 +467,23 @@
       "labels": [],
       "changed_files": 7,
       "additions": 54,
-      "deletions": 37
+      "deletions": 37,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18837",
+      "source_type": "pr",
+      "title": "[execution] Fetch persisted auxiliary info in replay-benchmark download",
+      "body": "## Summary\n- The replay-benchmark download command was discarding `PersistedAuxiliaryInfo` returned by `get_committed_transactions()`, causing benchmarks to always use empty auxiliary info (`PersistedAuxiliaryInfo::None`)\n- Now captures auxiliary infos during download, partitions them alongside transactions into blocks, and serializes them to disk\n- `Workload::from(TransactionBlock)` uses `DefaultTxnProvider::new()` with the real auxiliary infos instead of `new_without_info()`\n- Added `#[serde(default)]` on the new field for backward compatibility with previously downloaded transaction files\n\n## Test plan\n- [x] All 13 existing tests in `aptos-replay-benchmark` pass (including updated partition tests)\n- [x] `cargo check -p aptos-replay-benchmark` succeeds\n- [ ] Manual test: download transactions and verify auxiliary infos are serialized in the output file\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Scoped change to benchmark data serialization and in-memory provider construction; main risk is misaligned aux-info/txn vectors leading to incorrect replay behavior, but logic is straightforward and covered by updated tests.\n> \n> **Overview**\n> Replay-benchmark downloads now retain and serialize `PersistedAuxiliaryInfo` alongside transactions, partitioning auxiliary infos into the same on-disk `TransactionBlock`s (and keeping vectors aligned when trimming the end sentinel).\n> \n> `Workload::from(TransactionBlock)` now uses the persisted infos to build a `DefaultTxnProvider` with real `AuxiliaryInfo` when present, while keeping backward compatibility via `#[serde(default)]` for older transaction files; partitioning tests were updated accordingly.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit b9f2376f4339c69cf99b4d33fff9ea5208fbaaab. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_S",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18837",
+      "date": "2026-02-24",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18837,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 75,
+      "deletions": 31,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18577",
@@ -272,7 +499,38 @@
       ],
       "changed_files": 11,
       "additions": 195,
-      "deletions": 143
+      "deletions": 143,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18845",
+      "source_type": "pr",
+      "title": "[storage] Update hot state deferred merge metrics more frequently",
+      "body": "\nThe `hot_state_deferred_merge_old_views` and `hot_state_deferred_merge_version_lag`\ngauges were only updated at the end of each `run` iteration, right after publishing\na new commit. At that point `try_merge` typically fails because readers still hold\nthe previous view, so the metrics always showed `old_views=1` and a non-zero version\nlag (equal to the batch size), even though the merge succeeds a few milliseconds\nlater in `next_to_commit`'s timeout retry loop.\n\n- Extract `update_deferred_merge_gauges()` helper to avoid duplication.\n- Call it in `try_merge` on both the success path (lag=0 after merge) and the\n  `return false` path (accurate lag while blocked by lingering readers).\n- Move `hot_state_items` / `hot_state_key_bytes` / `hot_state_value_bytes` gauges\n  into `apply_delta_to_base`, since that's the only place that mutates DashMaps\n  and byte counters.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Metrics-only refactor with minor control-flow changes around when gauges are updated; no changes to merge logic or persisted data paths.\n> \n> **Overview**\n> Improves hot-state deferred-merge observability by updating `hot_state_deferred_merge_old_views` and `hot_state_deferred_merge_version_lag` inside `try_merge()` on both blocked and success paths, rather than only after publishing a new commit.\n> \n> Refactors metric updates by extracting `update_deferred_merge_gauges()` and moving `hot_state_items`/`hot_state_key_bytes`/`hot_state_value_bytes` gauge updates into `apply_delta_to_base()` (the only place that mutates the DashMaps/byte counters).\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit a81a6fddc31b2dc0fb0cc4a7496f6710e5fcf4ef. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18845",
+      "date": "2026-02-24",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18845,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 23,
+      "deletions": 18,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18838",
+      "source_type": "pr",
+      "title": "[Storage] Reduce RocksDB property reporter overhead",
+      "body": "\nEach invocation of the property reporter takes 10\u201315 seconds in production\n(sometimes nearly 20), causing the reporter thread to consume roughly half a\ncore just for metrics collection.\n\nRemove 13 low-value properties from `RocksdbPropertyReporter` and increase the\nreporting interval from 10s to 60s.\n\nThe most impactful removal is `rocksdb.block-cache-pinned-usage`, which performs\na full O(cache_size) scan of the shared HyperClockCache **while holding the\nper-DB mutex**, directly blocking concurrent writes. The remaining removed\nproperties (`num-entries-*`, `num-deletes-*`, `estimate-num-keys`,\n`num-snapshots`, `num-live-versions`, etc.) still acquire the per-DB mutex on\neach call but are rarely consulted and provide little actionable benefit.\n\n- Properties queried per cycle: 32 \u2192 19 (~41% fewer)\n- Sleep between cycles: 10s \u2192 60s\n\nFor reference, removing the property reporter entirely and running the executor\nbenchmark (20 baseline vs 20 test runs, 10M txns each) showed +3.3% overall\nTPS and +13.2% commit TPS (p < 0.001, Cohen's d = 1.64). This commit should\ncapture most of that improvement.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Metrics-only change that reduces sampling frequency and queried properties; main risk is losing visibility into the removed RocksDB metrics.\n> \n> **Overview**\n> Reduces `RocksdbPropertyReporter` overhead by removing a set of RocksDB properties from `ROCKSDB_PROPERTY_MAP` (including `rocksdb.block-cache-pinned-usage` and several entry/delete/snapshot-related stats), lowering the number of per-CF/per-shard `get_property` calls made each cycle.\n> \n> Increases the production reporting interval from 10s to 60s (tests remain effectively unchanged), reducing mutex contention and background CPU spent on metrics collection.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit b24e3e7cf4f5d4cecdb6ee7a6d23dba7e5d5e669. This will update autom",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18838",
+      "date": "2026-02-24",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18838,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 2,
+      "deletions": 15,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18165",
@@ -288,7 +546,8 @@
       ],
       "changed_files": 235,
       "additions": 6150,
-      "deletions": 757
+      "deletions": 757,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18817",
@@ -302,7 +561,8 @@
       "labels": [],
       "changed_files": 137,
       "additions": 16,
-      "deletions": 17456
+      "deletions": 17456,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18117",
@@ -320,7 +580,59 @@
       ],
       "changed_files": 252,
       "additions": 7018,
-      "deletions": 1136
+      "deletions": 1136,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18825",
+      "source_type": "pr",
+      "title": "[execution] Parallelize sequence number resync in executor benchmark",
+      "body": "\n`resync_sequence_numbers` reads each account's sequence number from the\nDB sequentially. On a large DB, hundreds of thousands of RocksDB lookups\nbecome I/O-bound and take minutes on a single thread.\n\nUse `par_iter_mut()` (same pattern as the existing\n`verify_sequence_numbers`) to read all accounts in parallel across\nrayon's thread pool.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Benchmark-only performance change; main risk is increased concurrent DB reads that could expose thread-safety or resource contention issues, but it doesn\u2019t affect production execution paths.\n> \n> **Overview**\n> Speeds up executor-benchmark account initialization by parallelizing `TransactionGenerator::resync_sequence_numbers` so DB sequence-number lookups run concurrently across Rayon threads.\n> \n> This switches from a sequential loop to `par_iter_mut()` over the account list (using an `AtomicUsize` counter), and updates imports to enable parallel mutable iteration.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit cf15c3eba3f581d67ad47803378799d1c01b727c. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18825",
+      "date": "2026-02-23",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18825,
+      "labels": [
+        "claude-code-assisted"
+      ],
+      "changed_files": 1,
+      "additions": 14,
+      "deletions": 9,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18828",
+      "source_type": "pr",
+      "title": "[indexer] Fix potential overflow in ending version calculation",
+      "body": "## Summary\n\n- Fix potential integer overflow when calculating `ending_version` from `starting_version + transactions_count` in the indexer-grpc data service v2\n- Use `saturating_add` instead of unchecked `+` operator in both `LiveDataService` and `HistoricalDataService`, preventing wraparound when both values are large `u64`s\n\n## Test plan\n\n- [ ] Existing tests pass (`cargo test -p indexer-grpc-data-service-v2`)\n- [ ] Verified the fix is consistent with the existing pattern in `fullnode_data_service.rs:84` which already uses `saturating_add`\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Small, localized arithmetic change in request handling; behavior only differs for extreme values where overflow would have occurred.\n> \n> **Overview**\n> Prevents potential `u64` overflow when deriving `ending_version` from `starting_version` and `transactions_count` in indexer-grpc data service v2.\n> \n> Both `HistoricalDataService` and `LiveDataService` now use `saturating_add` instead of `+`, avoiding wraparound for extremely large request values and ensuring streams cap at `u64::MAX` rather than producing an invalid lower ending version.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit c605ac7db8c2c0bca99eb3ebea413e9e3104f0b1. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18828",
+      "date": "2026-02-23",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18828,
+      "labels": [
+        "claude-code-assisted"
+      ],
+      "changed_files": 2,
+      "additions": 2,
+      "deletions": 2,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18827",
+      "source_type": "pr",
+      "title": "[Execution] Fix seed account balance exhaustion in executor benchmark",
+      "body": "\nThe seed account balance was hardcoded as `init_account_balance * 10_000`,\nwhich doesn't scale when the number of accounts per seed account exceeds\n10,000 (e.g. creating 1 billion accounts with 100K seed accounts). This\ncaused `EINSUFFICIENT_BALANCE` aborts as seed accounts ran out of funds.\n\nCompute seed account balance dynamically based on the actual expected\nnumber of accounts per seed, with a large margin for gas fees and random\ndistribution variance.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Small, localized change to benchmark-only account-funding math; main risk is potential under/over-funding due to arithmetic edge cases for extreme inputs.\n> \n> **Overview**\n> Fixes executor-benchmark minting failures by replacing the hardcoded seed funding assumption (\"enough for 10k accounts\") with a dynamic calculation based on `num_new_accounts` and the derived `num_seed_accounts`.\n> \n> `run_mint` now computes both the seed account count and per-seed balance (with a 50% buffer), and `create_seed_accounts` is updated to accept `num_seed_accounts` directly rather than recomputing it, preventing `EINSUFFICIENT_BALANCE` when scaling to very large account creation runs.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 3ddd069d1e2ec00f41806b96a00c4ed9921093aa. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18827",
+      "date": "2026-02-23",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18827,
+      "labels": [
+        "claude-code-assisted"
+      ],
+      "changed_files": 1,
+      "additions": 9,
+      "deletions": 6,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18818",
@@ -336,7 +648,70 @@
       ],
       "changed_files": 53,
       "additions": 390,
-      "deletions": 1984
+      "deletions": 1984,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18829",
+      "source_type": "pr",
+      "title": "fix warnings in natives",
+      "body": "introduced by accident in #18713 \n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Purely conditional-compilation cleanup to silence warnings; no functional changes to production code paths.\n> \n> **Overview**\n> **Fixes build warnings in cryptography natives** by gating test-only error constants and imports behind `#[cfg(feature = \"testing\")]`.\n> \n> This keeps `algebra` rand-related abort codes and the `bls12381`/`multi_ed25519` `SafeNativeError` usage (and associated error codes) compiled only for testing, without changing runtime native behavior.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit cedbe39f2e11850bbc81f93aa732fe5fec214c84. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18829",
+      "date": "2026-02-24",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18829,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 14,
+      "deletions": 2,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18834",
+      "source_type": "pr",
+      "title": "[consensus] Fix WVUF batch verification off-by-one and log errors",
+      "body": "## Description\n\nTwo fixes for WVUF batch verification in the randomness pipeline:\n\n1. **Off-by-one in proof length check** (`crates/aptos-dkg/src/weighted_vuf/pinkas/mod.rs`): `verify_proof` rejected valid proofs when `proof.len() == apks.len()`, because the guard used `>=` instead of `>`. This caused batch verification to fail when a validator happens to collect shares from all validators, forcing an unnecessary fallback to individual share verification.\n\n2. **Silent error in `pre_aggregate_verify`** (`consensus/src/rand/rand_gen/types.rs`): When batch verification failed, the error from `WVUF::verify_proof` was silently dropped via `.is_ok()`. Replaced with a `match` that logs the actual error in the existing `warn!` message, making verification failures diagnosable.\n\n## How Has This Been Tested?\n\n- `cargo test -p aptos-consensus -- test_pre_aggregate_verify_happy_path`\n- `cargo test -p aptos-consensus -- test_pre_aggregate_verify_with_bad_share`\n- `cargo check -p aptos-consensus`\n\n## Key Areas to Review\n\n- `crates/aptos-dkg/src/weighted_vuf/pinkas/mod.rs:219`: The bounds check change from `>=` to `>`. Having `proof.len() == apks.len()` is valid when all validators contribute shares.\n- `consensus/src/rand/rand_gen/types.rs:154-177`: The `.is_ok()` pattern replaced with `match` to log the error on the `Err` branch.\n\n## Type of Change\n- [x] Bug fix\n\n## Which Components or Systems Does This Change Impact?\n- [x] Validator Node\n\n## Checklist\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\n- [x] I have performed a self-review of my own code\n- [x] I have commented my code, particularly in hard-to-understand areas\n- [x] I identified and added all stakeholders and component owners affected by this change as reviewers\n- [x] I tested both happy and unhappy path of the functionality\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Small, localized bug fix to verification bounds plus additional w",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18834",
+      "date": "2026-02-24",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18834,
+      "labels": [
+        "CICD:run-forge-e2e-perf"
+      ],
+      "changed_files": 2,
+      "additions": 22,
+      "deletions": 25,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18815",
+      "source_type": "pr",
+      "title": "Update Rustls",
+      "body": "## Description\nThis PR addresses CVE-2024-32650, a Denial-of-Service (DoS) vulnerability in `rustls::ConnectionCommon::complete_io`. This vulnerability could lead to an infinite loop and 100% CPU usage if a client sends a `close_notify` message immediately after `client_hello`.\n\nThe primary fix involves upgrading `rustls` from `0.21.10` to `0.21.12` via `cargo update`, which includes the necessary security patch. While `rustls 0.20.9` remains in the `Cargo.lock` (as it's EOL and has no patch), it is only used by `kube` through `tokio-rustls`. The CVE description explicitly states that `tokio-rustls` does not call `complete_io` and is therefore not affected by this specific vulnerability.\n\n## How Has This Been Tested?\n- Verified that `Cargo.lock` reflects the `rustls` version upgrades.\n- Successfully ran `cargo build` for affected crates to ensure compilation with the updated dependencies.\n- The original Proof-of-Concept (PoC) was not re-run, as the fix is a dependency upgrade to a patched version, and the remaining unpatched `rustls 0.20.9` is confirmed to be on an unaffected code path.\n\n## Key Areas to Review\n- **`Cargo.lock` changes**: Confirm that `rustls` versions `0.21.10` have been upgraded to `0.21.12` across all transitive dependencies.\n- **Dependency analysis**: Verify that `rustls 0.20.9` is indeed only used by `tokio-rustls`, and that `tokio-rustls` is not affected by the `complete_io` vulnerability as per the CVE details.\n\n## Type of Change\n- [x] Bug fix\n- [x] Dependency update\n\n## Which Components or Systems Does This Change Impact?\n- [ ] Other (specify): Rustls ecosystem dependencies (e.g., reqwest, hyper-rustls, tokio-rustls)\n\n## Checklist\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\n- [x] I have performed a self-review of my own code\n- [ ] I have commented my code, particularly in hard-to-understand areas\n- [ ] I identified and added all stakeholders and component owners aff",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18815",
+      "date": "2026-02-23",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18815,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 7,
+      "deletions": 7,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18814",
+      "source_type": "pr",
+      "title": "Update quinn-proto",
+      "body": "## Description\nThis PR addresses a denial-of-service vulnerability in `quinn-proto` versions prior to 0.11.9. The vulnerability could cause a server panic when handling `Incoming` connections, specifically when calling `retry()` on unvalidated connections, followed by `refuse()`, `ignore()`, or `accept()` under certain conditions.\n\nThe fix involves updating the transitive dependency `quinn-proto` from version `0.11.3` to `0.11.13` in `Cargo.lock`. This dependency is pulled in via `gcloud-sdk` -> `reqwest` 0.12.5 -> `quinn` 0.11.2 -> `quinn-proto`. No source code changes were required as this is a lockfile-only update within a semver-compatible patch range.\n\n## How Has This Been Tested?\nThis is a lockfile-only update for a semver-compatible patch version.\n- `cargo check -p aptos-rest-client` was executed successfully to verify compilation of a crate that transitively depends on `reqwest` (and thus `quinn-proto`).\n\n## Key Areas to Review\n- Verify that the `Cargo.lock` change correctly updates `quinn-proto` to `0.11.13` without introducing unexpected dependency conflicts or regressions.\n\n## Type of Change\n- [x] Bug fix\n- [x] Dependency update\n\n## Which Components or Systems Does This Change Impact?\n- [ ] Validator Node\n- [x] Full Node (API, Indexer, etc.)\n- [ ] Move/Aptos Virtual Machine\n- [ ] Aptos Framework\n- [ ] Aptos CLI/SDK\n- [ ] Developer Infrastructure\n- [ ] Move Compiler\n- [x] Other (specify: Components using `reqwest` or `gcloud-sdk` for network requests, e.g., `aptos-rest-client`)\n\n## Checklist\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\n- [x] I have performed a self-review of my own code\n- [ ] I have commented my code, particularly in hard-to-understand areas\n- [ ] I identified and added all stakeholders and component owners affected by this change as reviewers\n- [x] I tested both happy and unhappy path of the functionality\n- [ ] I have made corresponding changes to the documentati",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18814",
+      "date": "2026-02-23",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18814,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 30,
+      "deletions": 5,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#831",
@@ -350,7 +725,8 @@
       "labels": [],
       "changed_files": 710,
       "additions": 14965,
-      "deletions": 3
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#821",
@@ -364,7 +740,8 @@
       "labels": [],
       "changed_files": 21,
       "additions": 1099,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#825",
@@ -378,7 +755,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 15,
-      "deletions": 6
+      "deletions": 6,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#830",
@@ -392,7 +770,8 @@
       "labels": [],
       "changed_files": 7,
       "additions": 331,
-      "deletions": 2438
+      "deletions": 2438,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#828",
@@ -406,13 +785,15 @@
       "labels": [],
       "changed_files": 6,
       "additions": 222,
-      "deletions": 3
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "release:aptos-labs/aptos-rust-sdk:sdk-v0.4.0",
       "source_type": "release",
       "title": "aptos-rust-sdk sdk-v0.4.0",
       "body": "## What's Changed\n* Chore: minor dependency improvements by @auterium in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* CI multi-platform builds by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/31\n* Release docs.rs publishing by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/33\n* Dependencies health check by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/34\n* Bump keccak from 0.1.5 to 0.1.6 by @dependabot[bot] in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n* Replace hex crate with const-hex by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/38\n* Various performance and security fixes by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/32\n* Sdk release preparation by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/39\n* Revert multi-agent fee-payer simulation and related changes by @WGB5445 in https://github.com/aptos-labs/aptos-rust-sdk/pull/41\n* fix: fix circular dependency for releases by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/40\n\n## New Contributors\n* @auterium made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n\n**Full Changelog**: https://github.com/aptos-labs/aptos-rust-sdk/compare/sdk-v0.3.0...sdk-v0.4.0",
+      "body_full": "## What's Changed\n* Chore: minor dependency improvements by @auterium in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* CI multi-platform builds by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/31\n* Release docs.rs publishing by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/33\n* Dependencies health check by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/34\n* Bump keccak from 0.1.5 to 0.1.6 by @dependabot[bot] in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n* Replace hex crate with const-hex by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/38\n* Various performance and security fixes by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/32\n* Sdk release preparation by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/39\n* Revert multi-agent fee-payer simulation and related changes by @WGB5445 in https://github.com/aptos-labs/aptos-rust-sdk/pull/41\n* fix: fix circular dependency for releases by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/40\n\n## New Contributors\n* @auterium made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n\n**Full Changelog**: https://github.com/aptos-labs/aptos-rust-sdk/compare/sdk-v0.3.0...sdk-v0.4.0",
       "url": "https://github.com/aptos-labs/aptos-rust-sdk/releases/tag/sdk-v0.4.0",
       "date": "2026-02-27",
       "repo": "aptos-labs/aptos-rust-sdk",
@@ -424,6 +805,7 @@
       "source_type": "release",
       "title": "aptos-rust-sdk macros-v0.2.0",
       "body": "## What's Changed\n* Chore: minor dependency improvements by @auterium in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* CI multi-platform builds by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/31\n* Release docs.rs publishing by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/33\n* Dependencies health check by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/34\n* Bump keccak from 0.1.5 to 0.1.6 by @dependabot[bot] in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n* Replace hex crate with const-hex by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/38\n* Various performance and security fixes by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/32\n* Sdk release preparation by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/39\n* Revert multi-agent fee-payer simulation and related changes by @WGB5445 in https://github.com/aptos-labs/aptos-rust-sdk/pull/41\n* fix: fix circular dependency for releases by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/40\n\n## New Contributors\n* @auterium made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n\n**Full Changelog**: https://github.com/aptos-labs/aptos-rust-sdk/compare/sdk-v0.3.0...macros-v0.2.0",
+      "body_full": "## What's Changed\n* Chore: minor dependency improvements by @auterium in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* CI multi-platform builds by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/31\n* Release docs.rs publishing by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/33\n* Dependencies health check by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/34\n* Bump keccak from 0.1.5 to 0.1.6 by @dependabot[bot] in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n* Replace hex crate with const-hex by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/38\n* Various performance and security fixes by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/32\n* Sdk release preparation by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/39\n* Revert multi-agent fee-payer simulation and related changes by @WGB5445 in https://github.com/aptos-labs/aptos-rust-sdk/pull/41\n* fix: fix circular dependency for releases by @gregnazario in https://github.com/aptos-labs/aptos-rust-sdk/pull/40\n\n## New Contributors\n* @auterium made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/30\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-rust-sdk/pull/37\n\n**Full Changelog**: https://github.com/aptos-labs/aptos-rust-sdk/compare/sdk-v0.3.0...macros-v0.2.0",
       "url": "https://github.com/aptos-labs/aptos-rust-sdk/releases/tag/macros-v0.2.0",
       "date": "2026-02-27",
       "repo": "aptos-labs/aptos-rust-sdk",
@@ -442,7 +824,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 50,
-      "deletions": 19
+      "deletions": 19,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#41",
@@ -456,7 +839,8 @@
       "labels": [],
       "changed_files": 7,
       "additions": 19,
-      "deletions": 763
+      "deletions": 763,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#39",
@@ -470,7 +854,8 @@
       "labels": [],
       "changed_files": 6,
       "additions": 63,
-      "deletions": 9
+      "deletions": 9,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#32",
@@ -484,7 +869,8 @@
       "labels": [],
       "changed_files": 23,
       "additions": 1497,
-      "deletions": 195
+      "deletions": 195,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#38",
@@ -498,7 +884,8 @@
       "labels": [],
       "changed_files": 25,
       "additions": 175,
-      "deletions": 192
+      "deletions": 192,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#37",
@@ -515,13 +902,15 @@
       ],
       "changed_files": 1,
       "additions": 2,
-      "deletions": 2
+      "deletions": 2,
+      "minor": false
     },
     {
       "id": "release:aptos-labs/aptos-go-sdk:v1.12.0",
       "source_type": "release",
       "title": "aptos-go-sdk v1.12.0",
       "body": "One of the final releases for the V1 SDK\r\n\r\n## What's Changed\r\n* [refactor] Simplify type conversion logic in tests and functions by @WGB5445 in https://github.com/aptos-labs/aptos-go-sdk/pull/189\r\n* Support signed ints by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/191\r\n* Refactor next major version by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/192\r\n* V2 updates by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/193\r\n* V2 SDK release by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/197\r\n* Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in /v2 by @dependabot[bot] in https://github.com/aptos-labs/aptos-go-sdk/pull/196\r\n* Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 by @dependabot[bot] in https://github.com/aptos-labs/aptos-go-sdk/pull/195\r\n\r\n## New Contributors\r\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-go-sdk/pull/196\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-go-sdk/compare/v1.11.0...v1.12.0",
+      "body_full": "One of the final releases for the V1 SDK\r\n\r\n## What's Changed\r\n* [refactor] Simplify type conversion logic in tests and functions by @WGB5445 in https://github.com/aptos-labs/aptos-go-sdk/pull/189\r\n* Support signed ints by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/191\r\n* Refactor next major version by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/192\r\n* V2 updates by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/193\r\n* V2 SDK release by @gregnazario in https://github.com/aptos-labs/aptos-go-sdk/pull/197\r\n* Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in /v2 by @dependabot[bot] in https://github.com/aptos-labs/aptos-go-sdk/pull/196\r\n* Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 by @dependabot[bot] in https://github.com/aptos-labs/aptos-go-sdk/pull/195\r\n\r\n## New Contributors\r\n* @dependabot[bot] made their first contribution in https://github.com/aptos-labs/aptos-go-sdk/pull/196\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-go-sdk/compare/v1.11.0...v1.12.0",
       "url": "https://github.com/aptos-labs/aptos-go-sdk/releases/tag/v1.12.0",
       "date": "2026-02-26",
       "repo": "aptos-labs/aptos-go-sdk",
@@ -533,6 +922,7 @@
       "source_type": "release",
       "title": "aptos-go-sdk v2/2.0.0",
       "body": "A complete rewrite of the Go SDK, with more idiomatic Go features.  See the changelog for full details.",
+      "body_full": "A complete rewrite of the Go SDK, with more idiomatic Go features.  See the changelog for full details.",
       "url": "https://github.com/aptos-labs/aptos-go-sdk/releases/tag/v2/2.0.0",
       "date": "2026-02-26",
       "repo": "aptos-labs/aptos-go-sdk",
@@ -551,7 +941,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 15,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-go-sdk:#198",
@@ -565,7 +956,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 7,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-go-sdk:#195",
@@ -582,7 +974,8 @@
       ],
       "changed_files": 2,
       "additions": 3,
-      "deletions": 3
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-go-sdk:#196",
@@ -599,7 +992,8 @@
       ],
       "changed_files": 2,
       "additions": 3,
-      "deletions": 3
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-go-sdk:#197",
@@ -613,7 +1007,8 @@
       "labels": [],
       "changed_files": 8,
       "additions": 130,
-      "deletions": 124
+      "deletions": 124,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#774",
@@ -627,7 +1022,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 3,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#771",
@@ -641,7 +1037,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 11,
-      "deletions": 1
+      "deletions": 1,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#34",
@@ -655,7 +1052,8 @@
       "labels": [],
       "changed_files": 11,
       "additions": 102,
-      "deletions": 9
+      "deletions": 9,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#33",
@@ -669,7 +1067,8 @@
       "labels": [],
       "changed_files": 9,
       "additions": 5149,
-      "deletions": 5143
+      "deletions": 5143,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#32",
@@ -683,7 +1082,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 2,
-      "deletions": 3
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#31",
@@ -697,7 +1097,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 17,
-      "deletions": 83
+      "deletions": 83,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#30",
@@ -711,7 +1112,8 @@
       "labels": [],
       "changed_files": 6,
       "additions": 40,
-      "deletions": 5
+      "deletions": 5,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#28",
@@ -725,79 +1127,8 @@
       "labels": [],
       "changed_files": 25,
       "additions": 113,
-      "deletions": 76
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#382",
-      "source_type": "pr",
-      "title": "Update all deps",
-      "body": "Updates all dependencies accordingly to make the build work correctly, remove warnings, and reduce security issues",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/382",
-      "date": "2026-02-27",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 382,
-      "labels": [],
-      "changed_files": 7,
-      "additions": 3796,
-      "deletions": 2700
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#380",
-      "source_type": "pr",
-      "title": "Eslint to biome migration",
-      "body": "Migrate the project from ESLint to Biome for improved linting and formatting performance and a simplified developer experience.\n\nThe migration involved creating a new Biome configuration, updating project scripts and VS Code settings, removing ESLint dependencies, and applying numerous code fixes to align with Biome's rules, while preserving Prettier for Astro and MDX files.\n\n---\n<p><a href=\"https://cursor.com/agents/bc-a8be9fd1-ce50-49ee-9083-001098d2dad5\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/background-agent?bcId=bc-a8be9fd1-ce50-49ee-9083-001098d2dad5\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;</p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/380",
-      "date": "2026-02-26",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 380,
-      "labels": [],
-      "changed_files": 58,
-      "additions": 637,
-      "deletions": 2749
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#381",
-      "source_type": "pr",
-      "title": "Legacy wallet removal",
-      "body": "Remove legacy `window.aptos` and `window.petra` references and update wallet documentation to promote the wallet adapter and AIP-62 standard.\n\n---\n<p><a href=\"https://cursor.com/agents/bc-645034cf-dcc5-4b15-8eec-47d06673fbd0\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/background-agent?bcId=bc-645034cf-dcc5-4b15-8eec-47d06673fbd0\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;</p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/381",
-      "date": "2026-02-26",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 381,
-      "labels": [],
-      "changed_files": 8,
-      "additions": 302,
-      "deletions": 60
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#378",
-      "source_type": "pr",
-      "title": "Mermaid rendering validation",
-      "body": "Fix mermaid diagrams not rendering and add Vitest tests to prevent regressions.\n\n`astro-mermaid@1.2.0` had a bug where the `astro:after-swap` event listener (for Astro View Transitions) was only registered if the initial page contained mermaid diagrams. This meant diagrams would not render on subsequent client-side navigations to pages with mermaid content. Upgrading to `astro-mermaid@1.3.1` fixes this by always registering the listener and lazily loading mermaid.js.\n\n---\n<p><a href=\"https://cursor.com/agents/bc-3fb4284b-5457-477c-a317-7a25935d4660\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/background-agent?bcId=bc-3fb4284b-5457-477c-a317-7a25935d4660\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;</p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/378",
-      "date": "2026-02-24",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 378,
-      "labels": [],
-      "changed_files": 6,
-      "additions": 493,
-      "deletions": 26
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#375",
-      "source_type": "pr",
-      "title": "[ai] Add some AI improvements",
-      "body": "",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/375",
-      "date": "2026-02-23",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 375,
-      "labels": [
-        "claude-code-assisted"
-      ],
-      "changed_files": 10,
-      "additions": 239,
-      "deletions": 3
+      "deletions": 76,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1446",
@@ -811,7 +1142,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 198,
-      "deletions": 176
+      "deletions": 176,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1445",
@@ -825,7 +1157,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 2,
-      "deletions": 2
+      "deletions": 2,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1444",
@@ -839,7 +1172,8 @@
       "labels": [],
       "changed_files": 336,
       "additions": 5762,
-      "deletions": 9614
+      "deletions": 9614,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1427",
@@ -853,7 +1187,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 14,
-      "deletions": 14
+      "deletions": 14,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1430",
@@ -869,7 +1204,8 @@
       ],
       "changed_files": 52,
       "additions": 639,
-      "deletions": 232
+      "deletions": 232,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1440",
@@ -883,7 +1219,8 @@
       "labels": [],
       "changed_files": 4,
       "additions": 7122,
-      "deletions": 3822
+      "deletions": 3822,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1428",
@@ -897,7 +1234,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 104,
-      "deletions": 36
+      "deletions": 36,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1426",
@@ -914,7 +1252,8 @@
       ],
       "changed_files": 1,
       "additions": 3682,
-      "deletions": 7063
+      "deletions": 7063,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1431",
@@ -931,7 +1270,8 @@
       ],
       "changed_files": 1,
       "additions": 3682,
-      "deletions": 7063
+      "deletions": 7063,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1439",
@@ -945,7 +1285,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 347,
-      "deletions": 106
+      "deletions": 106,
+      "minor": false
     }
   ]
 }
