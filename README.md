@@ -56,58 +56,72 @@ Edit the YAML files in `config/`:
 
 ## Local Usage
 
-### Run a weekly scrape
+### One-command newsletter generation (recommended)
+
+The `generate_newsletter.py` script handles the full pipeline — scraping all weeks for a month and generating the newsletter in one step. Weeks that already have data are automatically skipped.
+
+```bash
+# Generate for the previous month (default)
+python scripts/generate_newsletter.py
+
+# Generate for a specific month
+python scripts/generate_newsletter.py 2026-02
+
+# Preview categorization without calling Claude
+python scripts/generate_newsletter.py 2026-02 --dry-run
+
+# Generate with raw bullet lists (no Claude API needed)
+python scripts/generate_newsletter.py 2026-02 --skip-summarize
+
+# Scrape only (no newsletter generation)
+python scripts/generate_newsletter.py 2026-02 --scrape-only
+
+# Generate only from existing weekly data
+python scripts/generate_newsletter.py 2026-02 --generate-only
+
+# Re-scrape fresh data (delete existing weekly files first)
+python scripts/generate_newsletter.py 2026-02 --force-scrape
+```
+
+### Individual scripts
+
+You can also run the scrape and generation steps separately.
+
+#### Run a weekly scrape
 
 ```bash
 export GH_SCRAPE_TOKEN=ghp_...
 python scripts/run_weekly_scrape.py
-```
 
-Override the week:
-
-```bash
+# Override the week
 WEEK_OVERRIDE=2026-W09 python scripts/run_weekly_scrape.py
 ```
 
-### Generate a newsletter
-
-By default, the generator targets the previous month. Use `MONTH_OVERRIDE` to specify a different month.
-
-#### Full generation
-
-Aggregates scraped data, categorizes items, calls Claude for summaries, and renders Markdown + HTML output.
+#### Generate a newsletter from existing data
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
 MONTH_OVERRIDE=2026-02 python scripts/run_monthly_generate.py
-```
 
-#### Dry run
-
-Prints a categorized summary of items to the console without calling Claude or writing any files. Useful for checking what the scraper found before spending API credits.
-
-```bash
+# Dry run (preview categorization)
 DRY_RUN=true MONTH_OVERRIDE=2026-02 python scripts/run_monthly_generate.py
-```
 
-#### Skip summarization
-
-Runs the full pipeline but skips the Claude summarization step. Outputs raw categorized items into the rendered templates.
-
-```bash
+# Skip Claude summarization
 SKIP_SUMMARIZE=true MONTH_OVERRIDE=2026-02 python scripts/run_monthly_generate.py
 ```
 
-#### Environment variables
+### Environment variables
 
 | Variable | Default | Description |
 |----------|---------|-------------|
+| `GH_SCRAPE_TOKEN` | — | GitHub PAT with repo read scope (required for scraping) |
+| `ANTHROPIC_API_KEY` | — | Claude API key (required for full generation) |
 | `MONTH_OVERRIDE` | Previous month | Target month in `YYYY-MM` format |
+| `WEEK_OVERRIDE` | Current week | Target week in `YYYY-W##` format (weekly scrape only) |
 | `DRY_RUN` | `false` | Print categorized items to console and exit |
 | `SKIP_SUMMARIZE` | `false` | Skip Claude summarization (render raw items) |
-| `ANTHROPIC_API_KEY` | — | Required for full generation |
 
-#### Output
+### Output
 
 Files appear in `output/newsletters/`:
 - `YYYY-MM.md` — Markdown version
@@ -140,8 +154,9 @@ pytest
 ## Newsletter Sections
 
 1. **Breaking Changes** — highest priority, items here don't appear elsewhere
-2. **Protocol Updates** — core node releases, consensus/execution/storage
-3. **SDK & Tooling** — SDK releases, CLI, wallet adapter, indexer
+2. **SDK & Tooling** — SDK releases, CLI, wallet adapter, explorer, indexer
+3. **Protocol Updates** — core node releases, consensus/execution/storage
 4. **New Features** — feat: prefix commits/PRs, enhancement labels
 5. **Governance & AIPs** — new/updated Aptos Improvement Proposals
-6. **Community Highlights** — blog posts, forum discussions (catch-all)
+6. **Documentation & Learning** — docs, videos, examples
+7. **Community Highlights** — blog posts, forum discussions (catch-all)
