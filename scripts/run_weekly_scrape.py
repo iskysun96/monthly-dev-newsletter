@@ -47,7 +47,7 @@ def save_results(iso_week: str, scraper_name: str, items: list) -> Path:
 
 
 def main() -> None:
-    iso_week = os.environ.get("WEEK_OVERRIDE", current_iso_week())
+    iso_week = os.environ.get("WEEK_OVERRIDE") or current_iso_week()
     logger.info("Running weekly scrape for %s", iso_week)
 
     since, until = iso_week_date_range(iso_week)
