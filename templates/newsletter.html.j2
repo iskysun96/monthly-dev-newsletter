@@ -161,7 +161,7 @@
                   </div>
                 </div>
                 {% endfor %}
-                {% if section.entries | length > 8 %}
+                {% if section.entries | length > 8 and changelog_url %}
                 <div class="overflow-link">
                   ... and {{ section.entries | length - 8 }} more in the <a href="{{ changelog_url }}">full changelog</a>
                 </div>
@@ -173,11 +173,13 @@
               {% endif %}
               {% endfor %}
 
+              {% if changelog_url %}
               <!-- Changelog CTA -->
               <div class="changelog-cta">
                 <p>Want the complete picture?</p>
                 <a href="{{ changelog_url }}">View Full Changelog</a>
               </div>
+              {% endif %}
             </td>
           </tr>
 

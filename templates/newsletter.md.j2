@@ -14,18 +14,20 @@
 {% if section.entries %}
 **Key items:**
 {% for item in section.entries[:8] %}
-- [{{ item.title }}]({{ item.url }}){% if item.repo %} — `{{ item.repo }}`{% endif %}
+{% if item.url %}- [{{ item.title }}]({{ item.url }}){% if item.repo %} — `{{ item.repo }}`{% endif %}{% else %}- {{ item.title }}{% if item.repo %} — `{{ item.repo }}`{% endif %}{% endif %}
 
 {% endfor %}
-{% if section.entries | length > 8 %}
+{% if section.entries | length > 8 and changelog_url %}
 - ... and {{ section.entries | length - 8 }} more in the [full changelog]({{ changelog_url }})
 {% endif %}
 {% endif %}
 {% endfor %}
 ---
+{% if changelog_url %}
 
 **[View Full Changelog]({{ changelog_url }})** — Every release, PR, and commit from this month.
 
 ---
+{% endif %}
 
 *{{ branding.footer }}*

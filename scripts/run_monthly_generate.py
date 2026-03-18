@@ -123,22 +123,29 @@ def main() -> None:
 
     # Step 2: Generate comprehensive changelog (light filter only)
     config = load_newsletter_config()
+    changelog_cfg = config.get("changelog", {})
+    changelog_enabled = changelog_cfg.get("enabled", True)
     changelog_base_url = config.get("branding", {}).get("changelog_base_url", "")
-    changelog_url = f"{changelog_base_url}/{month_year}.html" if changelog_base_url else ""
+    changelog_url = ""
 
-    changelog_items = _light_filter(all_items)
-    logger.info("Changelog items after light filter: %d", len(changelog_items))
+    if changelog_enabled:
+        changelog_url = f"{changelog_base_url}/{month_year}.html" if changelog_base_url else ""
 
-    changelog_md = render_changelog_markdown(changelog_items, month_year)
-    changelog_html = render_changelog_html(changelog_items, month_year)
-    save_changelog(month_year, changelog_md, changelog_html)
+        changelog_items = _light_filter(all_items)
+        logger.info("Changelog items after light filter: %d", len(changelog_items))
 
-    # Step 3: Regenerate index
-    existing_months = _discover_existing_months()
-    if month_year not in existing_months:
-        existing_months.append(month_year)
-    index_html = render_changelog_index(existing_months)
-    save_index(index_html)
+        changelog_md = render_changelog_markdown(changelog_items, month_year)
+        changelog_html = render_changelog_html(changelog_items, month_year)
+        save_changelog(month_year, changelog_md, changelog_html)
+
+        # Step 3: Regenerate index
+        existing_months = _discover_existing_months()
+        if month_year not in existing_months:
+            existing_months.append(month_year)
+        index_html = render_changelog_index(existing_months)
+        save_index(index_html)
+    else:
+        logger.info("Changelog generation disabled via config")
 
     # Step 4: Filter for newsletter (full filter + minor PR exclusion)
     items = filter_items(all_items)

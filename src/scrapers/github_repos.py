@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import base64
 import logging
 import re
 from datetime import date, datetime, timezone
@@ -178,9 +177,11 @@ class GitHubReposScraper(BaseScraper):
         items = []
         try:
             contents = repo.get_contents("CHANGELOG.md")
-        except GithubException:
-            logger.debug("No CHANGELOG.md in %s", repo.full_name)
-            return items
+        except GithubException as exc:
+            if exc.status == 404:
+                logger.debug("No CHANGELOG.md in %s", repo.full_name)
+                return items
+            raise
 
         if isinstance(contents, list):
             return items
