@@ -50,7 +50,7 @@ sections:
     priority: 2
     rules:
       - field: repo
-        pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
+        pattern: "(aptos-ts-sdk|aptos-python-sdk|aptos-rust-sdk|aptos-go-sdk|aptos-wallet-adapter|aptos-indexer|create-aptos-dapp|aptos-cli|aptos-npm-mcp|aptos-agent|aptos-agent-skills|forklift|explorer)"
       - field: labels
         contains_any: ["sdk", "tooling", "cli", "indexer"]
       - field: title

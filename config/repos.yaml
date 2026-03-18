@@ -100,7 +100,7 @@ repos:
       - "fix:"
 
   - owner: aptos-labs
-    name: aptos-mcp
+    name: aptos-npm-mcp
     track:
       - releases
       - prs
