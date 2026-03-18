@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aptos Ecosystem Changelog — 2026-03</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0B1221;
+      color: #E8E8E8;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 240px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 24px 16px;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sidebar h2 {
+      font-size: 14px;
+      color: #00D4AA;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 6px 8px;
+      color: #8B95A5;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+    .sidebar a:hover {
+      color: #E8E8E8;
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+    .main {
+      margin-left: 240px;
+      max-width: 900px;
+      padding: 40px 48px;
+      flex: 1;
+    }
+    h1 {
+      font-size: 32px;
+      color: #00D4AA;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #8B95A5;
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+    .stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .stat {
+      background-color: rgba(255, 255, 255, 0.04);
+      border-radius: 8px;
+      padding: 16px 20px;
+      min-width: 120px;
+    }
+    .stat .value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00D4AA;
+    }
+    .stat .label {
+      font-size: 13px;
+      color: #8B95A5;
+    }
+    .repo-section {
+      margin-bottom: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .repo-header {
+      background-color: rgba(255, 255, 255, 0.04);
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .repo-header h2 {
+      font-size: 20px;
+      color: #00D4AA;
+      margin: 0;
+    }
+    .repo-header .count {
+      font-size: 13px;
+      color: #8B95A5;
+    }
+    .repo-body {
+      padding: 20px;
+    }
+    .repo-body h3 {
+      font-size: 16px;
+      color: #00D4AA;
+      margin: 24px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .repo-body h3:first-child {
+      margin-top: 0;
+    }
+    .release-card {
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 3px solid #00D4AA;
+    }
+    .release-card h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+    .release-card h4 a {
+      color: #E8E8E8;
+      text-decoration: none;
+    }
+    .release-card h4 a:hover { text-decoration: underline; }
+    .release-meta {
+      font-size: 13px;
+      color: #8B95A5;
+      margin-bottom: 8px;
+    }
+    .release-body {
+      font-size: 14px;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+      color: #E8E8E8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      padding: 8px 12px;
+      color: #8B95A5;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 600;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    td a {
+      color: #00D4AA;
+      text-decoration: none;
+    }
+    td a:hover { text-decoration: underline; }
+    .commit-list {
+      list-style: none;
+      padding: 0;
+    }
+    .commit-list li {
+      padding: 6px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .commit-list code {
+      font-size: 12px;
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #8B95A5;
+    }
+    .commit-list a {
+      color: #00D4AA;
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 60px;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 13px;
+      color: #8B95A5;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2>Repos</h2>
+      <a href="#aptos-foundation-AIPs">AIPs</a>
+      <a href="#aptos-labs-aptos-core">aptos-core</a>
+      <a href="#aptos-labs-aptos-python-sdk">aptos-python-sdk</a>
+      <a href="#aptos-labs-aptos-ts-sdk">aptos-ts-sdk</a>
+      <a href="#aptos-labs-aptos-wallet-adapter">aptos-wallet-adapter</a>
+      <a href="#aptos-labs-create-aptos-dapp">create-aptos-dapp</a>
+      <a href="#aptoslabs-com-blog">blog</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+      <h1>Aptos Ecosystem Changelog</h1>
+      <p class="subtitle">2026-03 — Every release, PR, and commit from the Aptos ecosystem</p>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="value">39</div>
+          <div class="label">Total Items</div>
+        </div>
+        <div class="stat">
+          <div class="value">8</div>
+          <div class="label">Releases</div>
+        </div>
+        <div class="stat">
+          <div class="value">20</div>
+          <div class="label">PRs Merged</div>
+        </div>
+        <div class="stat">
+          <div class="value">7</div>
+          <div class="label">Active Repos</div>
+        </div>
+      </div>
+
+      <!-- Repo Sections -->
+
+      <div class="repo-section" id="aptos-foundation-AIPs">
+        <div class="repo-header">
+          <h2>aptos-foundation/AIPs</h2>
+          <span class="count">1 item</span>
+        </div>
+        <div class="repo-body">
+
+
+
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptos-labs-aptos-core">
+        <div class="repo-header">
+          <h2>aptos-labs/aptos-core</h2>
+          <span class="count">11 items</span>
+        </div>
+        <div class="repo-body">
+
+
+
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18977">[compiler-v2] Allow receiver functions on fully concrete struct instantiations</a></td>
+                <td>2026-03-11</td>
+                <td>17</td>
+                <td>+643/-21</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18929">[compiler-v2] Fix type inference to allow unifying struct constraints and receiver function constraints</a></td>
+                <td>2026-03-11</td>
+                <td>5</td>
+                <td>+99/-0</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/19017">[storage] Remove dead StateValueSchema and legacy monolithic ledger DB support</a></td>
+                <td>2026-03-10</td>
+                <td>5</td>
+                <td>+4/-150</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/19016">[storage] Clean up all #[allow(dead_code)] under storage/</a></td>
+                <td>2026-03-10</td>
+                <td>14</td>
+                <td>+30/-82</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/19009">Deploy multiple PFNs via helm releases</a></td>
+                <td>2026-03-10</td>
+                <td>9</td>
+                <td>+105/-862</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18870">[consensus] Remove randomness fast path code</a></td>
+                <td>2026-03-10</td>
+                <td>26</td>
+                <td>+149/-852</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18859">[move flow] adding supports for unit test generation</a></td>
+                <td>2026-03-10</td>
+                <td>60</td>
+                <td>+1644/-128</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18996">Aptos-dkg refactoring</a></td>
+                <td>2026-03-09</td>
+                <td>33</td>
+                <td>+657/-1481</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18981">separating move harness, so it can be included without feature="testing"</a></td>
+                <td>2026-03-09</td>
+                <td>18</td>
+                <td>+111/-49</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18831">[Network] Add priority inbound peer support and eviction.</a></td>
+                <td>2026-03-09</td>
+                <td>6</td>
+                <td>+627/-57</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-core/pull/18868">[State Sync] Account for validator-PFN connections.</a></td>
+                <td>2026-03-01</td>
+                <td>4</td>
+                <td>+54/-11</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptos-labs-aptos-python-sdk">
+        <div class="repo-header">
+          <h2>aptos-labs/aptos-python-sdk</h2>
+          <span class="count">1 item</span>
+        </div>
+        <div class="repo-body">
+
+
+
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-python-sdk/pull/76">Default max gas limit</a></td>
+                <td>2026-03-10</td>
+                <td>16</td>
+                <td>+37/-28</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptos-labs-aptos-ts-sdk">
+        <div class="repo-header">
+          <h2>aptos-labs/aptos-ts-sdk</h2>
+          <span class="count">2 items</span>
+        </div>
+        <div class="repo-body">
+
+
+
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-ts-sdk/pull/843">[release] 6.2.0</a></td>
+                <td>2026-03-10</td>
+                <td>711</td>
+                <td>+14970/-6</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-ts-sdk/pull/841">[gas] Increase default max gas to 2000000</a></td>
+                <td>2026-03-10</td>
+                <td>40</td>
+                <td>+68/-67</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptos-labs-aptos-wallet-adapter">
+        <div class="repo-header">
+          <h2>aptos-labs/aptos-wallet-adapter</h2>
+          <span class="count">11 items</span>
+        </div>
+        <div class="repo-body">
+
+          <h3>Releases</h3>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-react%408.3.1">aptos-wallet-adapter @aptos-labs/wallet-adapter-react@8.3.1</a></h4>
+            <div class="release-meta">@aptos-labs/wallet-adapter-react@8.3.1 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   Updated dependencies [67b3d73]
+    -   @aptos-labs/wallet-adapter-core@8.5.0
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-mui-design%405.5.4">aptos-wallet-adapter @aptos-labs/wallet-adapter-mui-design@5.5.4</a></h4>
+            <div class="release-meta">@aptos-labs/wallet-adapter-mui-design@5.5.4 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   @aptos-labs/wallet-adapter-react@8.3.1
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-core%408.5.0">aptos-wallet-adapter @aptos-labs/wallet-adapter-core@8.5.0</a></h4>
+            <div class="release-meta">@aptos-labs/wallet-adapter-core@8.5.0 · 2026-03-09</div>
+            <div class="release-body">### Minor Changes
+
+-   67b3d73: Update Nightly logo.
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-ant-design%405.3.17">aptos-wallet-adapter @aptos-labs/wallet-adapter-ant-design@5.3.17</a></h4>
+            <div class="release-meta">@aptos-labs/wallet-adapter-ant-design@5.3.17 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   @aptos-labs/wallet-adapter-react@8.3.1
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-sui%400.2.1">aptos-wallet-adapter @aptos-labs/derived-wallet-sui@0.2.1</a></h4>
+            <div class="release-meta">@aptos-labs/derived-wallet-sui@0.2.1 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   4efd34e: Unregister old derived wallets before re-registering on provider re-announcement, preventing stale wallets from remaining in the registry.
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-solana%400.12.2">aptos-wallet-adapter @aptos-labs/derived-wallet-solana@0.12.2</a></h4>
+            <div class="release-meta">@aptos-labs/derived-wallet-solana@0.12.2 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   4efd34e: Unregister old derived wallets before re-registering on provider re-announcement, preventing stale wallets from remaining in the registry.
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/derived-wallet-ethereum%400.9.1">aptos-wallet-adapter @aptos-labs/derived-wallet-ethereum@0.9.1</a></h4>
+            <div class="release-meta">@aptos-labs/derived-wallet-ethereum@0.9.1 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   4efd34e: Unregister old derived wallets before re-registering on provider re-announcement, preventing stale wallets from remaining in the registry.
+</div>
+          </div>
+          <div class="release-card">
+            <h4><a href="https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%406.0.1">aptos-wallet-adapter @aptos-labs/cross-chain-core@6.0.1</a></h4>
+            <div class="release-meta">@aptos-labs/cross-chain-core@6.0.1 · 2026-03-09</div>
+            <div class="release-body">### Patch Changes
+
+-   Updated dependencies [4efd34e]
+-   Updated dependencies [67b3d73]
+    -   @aptos-labs/derived-wallet-ethereum@0.9.1
+    -   @aptos-labs/derived-wallet-solana@0.12.2
+    -   @aptos-labs/derived-wallet-sui@0.2.1
+    -   @aptos-labs/wallet-adapter-core@8.5.0
+</div>
+          </div>
+
+
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/782">fix(wallet-adapter-react): use React JSX intrinsic types in headless component utils</a></td>
+                <td>2026-03-11</td>
+                <td>2</td>
+                <td>+12/-6</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/783">fix(derived-wallets): unregister old derived wallets on re-announcement</a></td>
+                <td>2026-03-09</td>
+                <td>4</td>
+                <td>+10/-0</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/aptos-wallet-adapter/pull/779">Version Packages</a></td>
+                <td>2026-03-09</td>
+                <td>18</td>
+                <td>+62/-20</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptos-labs-create-aptos-dapp">
+        <div class="repo-header">
+          <h2>aptos-labs/create-aptos-dapp</h2>
+          <span class="count">3 items</span>
+        </div>
+        <div class="repo-body">
+
+
+
+          <h3>Pull Requests</h3>
+          <table>
+            <thead>
+              <tr><th>PR</th><th>Date</th><th>Files</th><th>+/-</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/create-aptos-dapp/pull/311">republish with correct build</a></td>
+                <td>2026-03-09</td>
+                <td>2</td>
+                <td>+5/-1</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/create-aptos-dapp/pull/310">bump version to 0.3.0</a></td>
+                <td>2026-03-09</td>
+                <td>2</td>
+                <td>+9/-1</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/aptos-labs/create-aptos-dapp/pull/309">feat: add CLI flags for non-interactive and hybrid scaffolding</a></td>
+                <td>2026-03-09</td>
+                <td>7</td>
+                <td>+456/-82</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+      <div class="repo-section" id="aptoslabs-com-blog">
+        <div class="repo-header">
+          <h2>aptoslabs.com/blog</h2>
+          <span class="count">10 items</span>
+        </div>
+        <div class="repo-body">
+
+
+
+
+
+        </div>
+      </div>
+
+      <div class="footer">Published by Aptos Labs DevRel</div>
+    </div>
+  </div>
+</body>
+</html>
