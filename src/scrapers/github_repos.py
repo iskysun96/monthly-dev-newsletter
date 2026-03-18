@@ -1,13 +1,14 @@
-"""Scraper for GitHub repos: releases, merged PRs, and notable commits."""
+"""Scraper for GitHub repos: releases, merged PRs, notable commits, and changelogs."""
 
 from __future__ import annotations
 
+import base64
 import logging
 import re
 from datetime import date, datetime, timezone
 from typing import Any
 
-from github import Github
+from github import Github, GithubException
 from github.Repository import Repository
 
 from src.scrapers.base import BaseScraper
@@ -61,6 +62,11 @@ class GitHubReposScraper(BaseScraper):
                     self._scrape_commits(repo, since_dt, until_dt, prefixes)
                 )
 
+            if "changelog" in track:
+                items.extend(
+                    self._scrape_changelog(repo, since_dt, until_dt)
+                )
+
         return items
 
     def _scrape_releases(
@@ -81,6 +87,7 @@ class GitHubReposScraper(BaseScraper):
                     "source_type": "release",
                     "title": f"{repo.name} {release.tag_name}",
                     "body": (release.body or "")[:2000],
+                    "body_full": release.body or "",
                     "url": release.html_url,
                     "date": published.date().isoformat(),
                     "repo": repo.full_name,
@@ -106,8 +113,7 @@ class GitHubReposScraper(BaseScraper):
                 continue
             if pr.merged_at < since or pr.merged_at > until:
                 continue
-            if min_files > 0 and pr.changed_files < min_files:
-                continue
+            minor = min_files > 0 and pr.changed_files < min_files
             labels = [l.name for l in pr.labels]
             items.append(
                 {
@@ -123,6 +129,7 @@ class GitHubReposScraper(BaseScraper):
                     "changed_files": pr.changed_files,
                     "additions": pr.additions,
                     "deletions": pr.deletions,
+                    "minor": minor,
                 }
             )
             wait_for_rate_limit(self.client)
@@ -160,3 +167,83 @@ class GitHubReposScraper(BaseScraper):
             )
             wait_for_rate_limit(self.client)
         return items
+
+    def _scrape_changelog(
+        self,
+        repo: Repository,
+        since: datetime,
+        until: datetime,
+    ) -> list[dict[str, Any]]:
+        """Scrape CHANGELOG.md for version entries within the date range."""
+        items = []
+        try:
+            contents = repo.get_contents("CHANGELOG.md")
+        except GithubException:
+            logger.debug("No CHANGELOG.md in %s", repo.full_name)
+            return items
+
+        if isinstance(contents, list):
+            return items
+
+        text = contents.decoded_content.decode("utf-8", errors="replace")
+        entries = self._parse_changelog_sections(text)
+
+        since_date = since.date() if isinstance(since, datetime) else since
+        until_date = until.date() if isinstance(until, datetime) else until
+
+        for entry in entries:
+            entry_date = entry.get("date")
+            if entry_date is None:
+                continue
+            if entry_date < since_date or entry_date > until_date:
+                continue
+            items.append(
+                {
+                    "id": f"changelog:{repo.full_name}:{entry['version']}",
+                    "source_type": "changelog_entry",
+                    "title": f"{repo.name} {entry['version']}",
+                    "body": entry["body"][:2000],
+                    "body_full": entry["body"],
+                    "url": f"https://github.com/{repo.full_name}/blob/{repo.default_branch}/CHANGELOG.md",
+                    "date": entry_date.isoformat(),
+                    "repo": repo.full_name,
+                    "version": entry["version"],
+                }
+            )
+
+        return items
+
+    @staticmethod
+    def _parse_changelog_sections(text: str) -> list[dict[str, Any]]:
+        """Parse version sections from a CHANGELOG.md file.
+
+        Recognises headings like ``## [1.2.3]``, ``## v1.2.3``,
+        ``## [1.2.3] - 2026-03-01`` etc.
+        """
+        heading_re = re.compile(
+            r"^##\s+\[?v?(\d+\.\d+[^\]\s]*)\]?"
+            r"(?:\s*[-–—]\s*(\d{4}-\d{2}-\d{2}))?",
+            re.MULTILINE,
+        )
+        sections: list[dict[str, Any]] = []
+        matches = list(heading_re.finditer(text))
+
+        for i, m in enumerate(matches):
+            version = m.group(1).strip()
+            date_str = m.group(2)
+            entry_date = None
+            if date_str:
+                try:
+                    entry_date = date.fromisoformat(date_str)
+                except ValueError:
+                    pass
+
+            start = m.end()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            body = text[start:end].strip()
+
+            sections.append(
+                {"version": version, "date": entry_date, "body": body}
+            )
+
+        return sections

@@ -38,6 +38,8 @@ sections:
       Summarize these breaking changes for Aptos developers. For each change,
       explain what broke, why it changed, and what developers need to do to
       migrate. Be direct and actionable. Use bullet points.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: protocol_updates
     title: "Protocol Updates"
@@ -54,6 +56,8 @@ sections:
       Summarize these Aptos protocol updates for developers. Focus on what
       changed in the node software and how it affects validators, node operators,
       or dApp developers. Group related changes together.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: sdk_tooling
     title: "SDK & Tooling"
@@ -67,6 +71,8 @@ sections:
       Summarize these SDK and tooling updates for Aptos developers. Group by
       SDK/tool, highlight new features and bug fixes. Include version numbers
       where available. Mention migration steps for any API changes.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: new_features
     title: "New Features"
@@ -82,6 +88,8 @@ sections:
       Summarize these new features added to the Aptos ecosystem. For each
       feature, explain what it enables for developers and link to relevant
       documentation or examples when available.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: governance_aips
     title: "Governance & AIPs"
@@ -97,6 +105,8 @@ sections:
       Summarize these Aptos Improvement Proposals and governance updates.
       For each AIP, state its number, title, status, and a one-sentence
       summary of what it proposes. Group by status (new, updated, accepted).
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: docs_learning
     title: "Documentation & Learning"
@@ -109,6 +119,8 @@ sections:
     prompt: |
       Summarize documentation updates and new learning resources. Group by
       type (docs changes, new videos, new examples). Keep it concise.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
   - id: community_highlights
     title: "Community Highlights"
@@ -119,6 +131,8 @@ sections:
       Summarize these community highlights from the Aptos ecosystem. Include
       notable blog posts, forum discussions, and community contributions.
       Keep it concise — 1-2 sentences per item.
+      Do not include any headings (no # or ## lines). Write prose and bullet points only.
+      A comprehensive changelog with full details is linked separately. Focus on highlights and developer impact.
 
 intro_prompt: |
   Write a 2-3 sentence introduction for the Aptos developer newsletter for
@@ -142,3 +156,8 @@ branding:
   color_text: "#E8E8E8"
   color_muted: "#8B95A5"
   logo_url: ""
+  changelog_base_url: "https://iskysun96.github.io/monthly-dev-newsletter/changelogs"
+
+changelog:
+  enabled: true
+  output_dir: "docs/changelogs"

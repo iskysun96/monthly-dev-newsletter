@@ -1,0 +1,91 @@
+# Aptos Ecosystem Changelog — {{ month_year }}
+
+> Comprehensive record of every release, PR, commit, and changelog entry across the Aptos ecosystem.
+
+## Summary
+
+| Metric | Count |
+|--------|-------|
+| Total items | {{ stats.total }} |
+| Releases | {{ stats.releases }} |
+| PRs merged | {{ stats.prs }} |
+| Commits | {{ stats.commits }} |
+| Changelog entries | {{ stats.changelog_entries }} |
+| Active repos | {{ stats.repos_active }} |
+
+## Table of Contents
+
+{% for repo_name in grouped %}
+- [{{ repo_name }}](#{{ repo_name | replace('/', '') | replace('.', '') | lower }})
+{% endfor %}
+
+---
+
+{% for repo_name, items in grouped.items() %}
+## {{ repo_name }}
+
+{% set releases = items | selectattr("source_type", "equalto", "release") | list %}
+{% set changelog_entries = items | selectattr("source_type", "equalto", "changelog_entry") | list %}
+{% set prs = items | selectattr("source_type", "equalto", "pr") | list %}
+{% set commits = items | selectattr("source_type", "equalto", "commit") | list %}
+
+{% if releases %}
+### Releases
+
+{% for item in releases %}
+#### {{ item.title }}
+
+- **Tag:** `{{ item.tag }}`
+- **Date:** {{ item.date }}
+- **URL:** [{{ item.url }}]({{ item.url }})
+
+{% if item.body_full %}
+{{ item.body_full }}
+{% elif item.body %}
+{{ item.body }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if changelog_entries %}
+### Changelog Entries
+
+{% for item in changelog_entries %}
+#### {{ item.title }}
+
+- **Date:** {{ item.date }}
+- **URL:** [{{ item.url }}]({{ item.url }})
+
+{% if item.body_full %}
+{{ item.body_full }}
+{% elif item.body %}
+{{ item.body }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if prs %}
+### Pull Requests
+
+| PR | Date | Changed Files | +/- |
+|----|------|---------------|-----|
+{% for item in prs %}
+| [{{ item.title }}]({{ item.url }}) | {{ item.date }} | {{ item.changed_files | default('-') }} | +{{ item.additions | default(0) }}/-{{ item.deletions | default(0) }} |
+{% endfor %}
+
+{% endif %}
+
+{% if commits %}
+### Commits
+
+{% for item in commits %}
+- [`{{ item.sha[:8] if item.sha else '' }}`]({{ item.url }}) {{ item.title }} ({{ item.date }})
+{% endfor %}
+
+{% endif %}
+
+---
+
+{% endfor %}

@@ -7,6 +7,7 @@
       "source_type": "release",
       "title": "aptos-core aptos-node-v1.40.4-hotfix",
       "body": "This is a private hotfix made using the private repo.\r\nPlease DO NOT build from the aptos-core source release branch.\r\nUse either the docker image or the binaries.",
+      "body_full": "This is a private hotfix made using the private repo.\r\nPlease DO NOT build from the aptos-core source release branch.\r\nUse either the docker image or the binaries.",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/aptos-node-v1.40.4-hotfix",
       "date": "2026-02-05",
       "repo": "aptos-labs/aptos-core",
@@ -18,6 +19,7 @@
       "source_type": "release",
       "title": "aptos-core aptos-node-v1.40.3-hotfix",
       "body": "This is a private hotfix made using the private repo.\r\nPlease DO NOT build from the aptos-core source release branch.\r\nUse either the docker image or the binaries.\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.3-hotfix_c9344d75f4d47c1b2ebd14155010ab15f85784b9/images/sha256-d7bb2131181d1d192f66de24258f9cd924bfcd68607921e2150d6058034ff75f\r\nCommit hash: `c9344d75f4d47c1b2ebd14155010ab15f85784b9`\r\n\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-core/compare/aptos-node-v1.40.1...aptos-node-v1.40.3-hotfix",
+      "body_full": "This is a private hotfix made using the private repo.\r\nPlease DO NOT build from the aptos-core source release branch.\r\nUse either the docker image or the binaries.\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.3-hotfix_c9344d75f4d47c1b2ebd14155010ab15f85784b9/images/sha256-d7bb2131181d1d192f66de24258f9cd924bfcd68607921e2150d6058034ff75f\r\nCommit hash: `c9344d75f4d47c1b2ebd14155010ab15f85784b9`\r\n\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-core/compare/aptos-node-v1.40.1...aptos-node-v1.40.3-hotfix",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/aptos-node-v1.40.3-hotfix",
       "date": "2026-02-04",
       "repo": "aptos-labs/aptos-core",
@@ -29,6 +31,7 @@
       "source_type": "release",
       "title": "aptos-core aptos-node-v1.40.2-rc",
       "body": "This is a private hotfix. Please use the docker image or the binaries to upgrade.\r\n\r\nCommit hash: `f42f399074e39164dafbfbf159c0648b7b976f86`\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.2-rc/images/sha256-d71f0f6e597127b868e69d5cc78859544225527ee48f399d93ba285c5d1dc572\r\n\r\n",
+      "body_full": "This is a private hotfix. Please use the docker image or the binaries to upgrade.\r\n\r\nCommit hash: `f42f399074e39164dafbfbf159c0648b7b976f86`\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.2-rc/images/sha256-d71f0f6e597127b868e69d5cc78859544225527ee48f399d93ba285c5d1dc572\r\n\r\n",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/aptos-node-v1.40.2-rc",
       "date": "2026-02-03",
       "repo": "aptos-labs/aptos-core",
@@ -40,6 +43,7 @@
       "source_type": "release",
       "title": "aptos-core aptos-node-v1.40.2-hotfix",
       "body": "This is a private hotfix made using the private repo. \r\nPlease DO NOT build from the aptos-core source release branch. \r\nUse either the docker image or the binaries.\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.2-hotfix/images/sha256-d71f0f6e597127b868e69d5cc78859544225527ee48f399d93ba285c5d1dc572\r\n\r\nCommit hash: `f42f399074e39164dafbfbf159c0648b7b976f86`\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-core/compare/aptos-node-v1.40.1...aptos-node-v1.40.2-hotfix",
+      "body_full": "This is a private hotfix made using the private repo. \r\nPlease DO NOT build from the aptos-core source release branch. \r\nUse either the docker image or the binaries.\r\n\r\nDocker image: https://hub.docker.com/layers/aptoslabs/validator/aptos-node-v1.40.2-hotfix/images/sha256-d71f0f6e597127b868e69d5cc78859544225527ee48f399d93ba285c5d1dc572\r\n\r\nCommit hash: `f42f399074e39164dafbfbf159c0648b7b976f86`\r\n\r\n**Full Changelog**: https://github.com/aptos-labs/aptos-core/compare/aptos-node-v1.40.1...aptos-node-v1.40.2-hotfix",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/aptos-node-v1.40.2-hotfix",
       "date": "2026-02-03",
       "repo": "aptos-labs/aptos-core",
@@ -51,11 +55,27 @@
       "source_type": "release",
       "title": "aptos-core aptos-cli-v7.14.2",
       "body": "## Commits\n- bf2f2d8: release 7.11.1 (#18179) (Teng Zhang) [#18179](https://github.com/aptos-labs/aptos-core/pull/18179)\n- 0d82cb3: Use the new runners for Docker Rust builds and checks (Stelian Ionescu) [#18169](https://github.com/aptos-labs/aptos-core/pull/18169)\n- bab75db: Revert \"Use the new runners for Docker Rust builds and checks\" (Stelian Ionescu) [#18182](https://github.com/aptos-labs/aptos-core/pull/18182)\n- a84bcc9: [forge] Enable upcoming VM features on forge (#18178) (George Mitenkov) [#18178](https://github.com/aptos-labs/aptos-core/pull/18178)\n- f134e67: [vm] Use &[Type] for native type args (#18171) (George Mitenkov) [#18171](https://github.com/aptos-labs/aptos-core/pull/18171)\n- e33e3c1: [executor] optimize ledger update (Zekun Li) [#18173](https://github.com/aptos-labs/aptos-core/pull/18173)\n- 54418cb: update license (Sherry Xiao) [#18190](https://github.com/aptos-labs/aptos-core/pull/18190)\n- 1702f89: Various optimizations (wqfish) [#18166](https://github.com/aptos-labs/aptos-core/pull/18166)\n- ae06823: fix (#18191) (Teng Zhang) [#18191](https://github.com/aptos-labs/aptos-core/pull/18191)\n- aa70f3c: [aptos-vm] Cache keyless configs in environment (#18180) (George Mitenkov) [#18180](https://github.com/aptos-labs/aptos-core/pull/18180)\n- 1cd5855: inlining optimization for framework (#18175) (Teng Zhang) [#18175](https://github.com/aptos-labs/aptos-core/pull/18175)\n- fb4f427: [qs] Introduce BatchInfoExt and BatchSignatureAggregator (#18084) (Balaji Arun) [#18084](https://github.com/aptos-labs/aptos-core/pull/18084)\n- 2867413: [aptos fuzz] add fuzzing target for u256 (#18081) (Jun Xu) [#18081](https://github.com/aptos-labs/aptos-core/pull/18081)\n- 5fff9a9: [framework] Add support for reflection (#17892) (Wolfgang Grieskamp) [#17892](https://github.com/aptos-labs/aptos-core/pull/17892)\n- 8e61d6d: [gha] monitor gha rate limit (#18193) (Rustie Lin) [#18193](https://github.com/aptos-labs/aptos-core/pull/18193)\n- 92c0534: [VM] Fix divergence in error beha",
+      "body_full": "## Commits\n- bf2f2d8: release 7.11.1 (#18179) (Teng Zhang) [#18179](https://github.com/aptos-labs/aptos-core/pull/18179)\n- 0d82cb3: Use the new runners for Docker Rust builds and checks (Stelian Ionescu) [#18169](https://github.com/aptos-labs/aptos-core/pull/18169)\n- bab75db: Revert \"Use the new runners for Docker Rust builds and checks\" (Stelian Ionescu) [#18182](https://github.com/aptos-labs/aptos-core/pull/18182)\n- a84bcc9: [forge] Enable upcoming VM features on forge (#18178) (George Mitenkov) [#18178](https://github.com/aptos-labs/aptos-core/pull/18178)\n- f134e67: [vm] Use &[Type] for native type args (#18171) (George Mitenkov) [#18171](https://github.com/aptos-labs/aptos-core/pull/18171)\n- e33e3c1: [executor] optimize ledger update (Zekun Li) [#18173](https://github.com/aptos-labs/aptos-core/pull/18173)\n- 54418cb: update license (Sherry Xiao) [#18190](https://github.com/aptos-labs/aptos-core/pull/18190)\n- 1702f89: Various optimizations (wqfish) [#18166](https://github.com/aptos-labs/aptos-core/pull/18166)\n- ae06823: fix (#18191) (Teng Zhang) [#18191](https://github.com/aptos-labs/aptos-core/pull/18191)\n- aa70f3c: [aptos-vm] Cache keyless configs in environment (#18180) (George Mitenkov) [#18180](https://github.com/aptos-labs/aptos-core/pull/18180)\n- 1cd5855: inlining optimization for framework (#18175) (Teng Zhang) [#18175](https://github.com/aptos-labs/aptos-core/pull/18175)\n- fb4f427: [qs] Introduce BatchInfoExt and BatchSignatureAggregator (#18084) (Balaji Arun) [#18084](https://github.com/aptos-labs/aptos-core/pull/18084)\n- 2867413: [aptos fuzz] add fuzzing target for u256 (#18081) (Jun Xu) [#18081](https://github.com/aptos-labs/aptos-core/pull/18081)\n- 5fff9a9: [framework] Add support for reflection (#17892) (Wolfgang Grieskamp) [#17892](https://github.com/aptos-labs/aptos-core/pull/17892)\n- 8e61d6d: [gha] monitor gha rate limit (#18193) (Rustie Lin) [#18193](https://github.com/aptos-labs/aptos-core/pull/18193)\n- 92c0534: [VM] Fix divergence in error behavior of txn validation (#18208) (Wolfgang Grieskamp) [#18208](https://github.com/aptos-labs/aptos-core/pull/18208)\n- 957be7c: update KeylessConfiguration comments (#18221) (Alin Tomescu) [#18221](https://github.com/aptos-labs/aptos-core/pull/18221)\n- b6de7f7: [log] change a few info to debug (Zekun Li) [#18209](https://github.com/aptos-labs/aptos-core/pull/18209)\n- 915b4c6: Add fill id to bulk order fill event and cancellation reason to APIs (#18212) (Sital Kedia) [#18212](https://github.com/aptos-labs/aptos-core/pull/18212)\n- 0faa04d: [qs] BatchV2 support with new messages using BatchInfoExt (#18085) (Balaji Arun) [#18085](https://github.com/aptos-labs/aptos-core/pull/18085)\n- 9a3caae: [API] Add support for encrypted transaction filtering. (Josh Lind) [#18211](https://github.com/aptos-labs/aptos-core/pull/18211)\n- ca448ec: [Indexer gRPC] Add billing metrics to v2 data services (#18227) (Justin Chang) [#18227](https://github.com/aptos-labs/aptos-core/pull/18227)\n- 0cf2d47: Change arkworks dependencies to use custom version (#18231) (Rex Fernando) [#18231](https://github.com/aptos-labs/aptos-core/pull/18231)\n- 5c8402e: [consensus] Introduce OptQS::V2 Payload (#18087) (Balaji Arun) [#18087](https://github.com/aptos-labs/aptos-core/pull/18087)\n- 8900fa2: [move compiler] fix issue #17211 (#18229) (Jun Xu) [#18229](https://github.com/aptos-labs/aptos-core/pull/18229)\n- 36fc852: bump gas version on main to v1.40 (#18237) (vsharongg) [#18237](https://github.com/aptos-labs/aptos-core/pull/18237)\n- 2a50409: [Pre-Commit] Add innovation license header to lint-rules. (Josh Lind) [#18243](https://github.com/aptos-labs/aptos-core/pull/18243)\n- 7e4af9d: [License] Update license header in api (Josh Lind) [#18243](https://github.com/aptos-labs/aptos-core/pull/18243)\n- 120b417: [License] Update license header for aptos-move (Josh Lind) [#18243](https://github.com/aptos-labs/aptos-core/pull/18243)\n- d66c28f: Add support for configuring node txn stream worker count and channel size (#18028) (Daniel Porteous (dport)) [#18028](https://github.com/aptos-labs/aptos-core/pull/18028)\n- 33a21a1: [License] Update license header in aptos-node (Josh Lind) [#18244](https://github.com/aptos-labs/aptos-core/pull/18244)\n- 34e7fae: [License] Update license header in config (Josh Lind) [#18244](https://github.com/aptos-labs/aptos-core/pull/18244)\n- a2f90b3: [License] Update license header in consensus (Josh Lind) [#18244](https://github.com/aptos-labs/aptos-core/pull/18244)\n- 73b1959: Revert \"Add support for configuring node txn stream worker count and channel \u2026\" (Josh Lind) [#18249](https://github.com/aptos-labs/aptos-core/pull/18249)\n- b661f8e: [License] Update license header in crates (Josh Lind) [#18245](https://github.com/aptos-labs/aptos-core/pull/18245)\n- 797f47b: [indexer test transactions] Add test transaction for FA (#18240) (Jon) [#18240](https://github.com/aptos-labs/aptos-core/pull/18240)\n- 7afceff: [License] Update license header in devtools (Josh Lind) [#18246](https://github.com/aptos-labs/aptos-core/pull/18246)\n- 6d72acf: [License] Update license header in dkg (Josh Lind) [#18246](https://github.com/aptos-labs/aptos-core/pull/18246)\n- 97dca1c: [License] Update license header in ecosystem (Josh Lind) [#18246](https://github.com/aptos-labs/aptos-core/pull/18246)\n- 255d9b6: [Keyless] Add Federated keyless tests to the pepper service. (Josh Lind) [#18226](https://github.com/aptos-labs/aptos-core/pull/18226)\n- a662082: [License] Update license header in execution (Josh Lind) [#18247](https://github.com/aptos-labs/aptos-core/pull/18247)\n- ff3d47b: [License] Update license header in experimental (Josh Lind) [#18247](https://github.com/aptos-labs/aptos-core/pull/18247)\n- 9136907: [License] Update license header in keyless (Josh Lind) [#18247](https://github.com/aptos-labs/aptos-core/pull/18247)\n- fcbb4a7: [License] Update license header in mempool (Josh Lind) [#18247](https://github.com/aptos-labs/aptos-core/pull/18247)\n- 23c4828: aptos-dkg: allow subtranscript to derive key shares (#18235) (Rex Fernando) [#18235](https://github.com/aptos-labs/aptos-core/pull/18235)\n- 82d9619: [txn-emitter] fix logging (#18251) (Balaji Arun) [#18251](https://github.com/aptos-labs/aptos-core/pull/18251)\n- d907240: Add `aptos-batch-encryption` crate (#18217) (Rex Fernando) [#18217](https://github.com/aptos-labs/aptos-core/pull/18217)\n- 89de680: [Priority Fee] Add a public function to set limit. (#18236) (Guoteng Rao) [#18236](https://github.com/aptos-labs/aptos-core/pull/18236)\n- 0a91206: Revert \"Revert \"Add support for configuring node txn stream worker count and \u2026\" (#18253) (Daniel Porteous (dport)) [#18253](https://github.com/aptos-labs/aptos-core/pull/18253)\n- 586fba8: Remove thread pools from `aptos-batch-encryption` (#18232) (Rex Fernando) [#18232](https://github.com/aptos-labs/aptos-core/pull/18232)\n- 3b3d480: [License] Update license header in network (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- 0a470c7: [License] Update license header in peer-monitoring-service (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- c9cc0c1: [License] Update license header in protos (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- 767119a: [License] Update license header in sdk (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- 869e427: [License] Update license header in secure (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- c0aab97: [License] Update license header in state-sync (Josh Lind) [#18259](https://github.com/aptos-labs/aptos-core/pull/18259)\n- 2ae1ec6: Weighted field PVSS and generic signing PVSS protocol (#18254) (Wicher Malten) [#18254](https://github.com/aptos-labs/aptos-core/pull/18254)\n- 1390215: [License] Update license header in storage (Josh Lind) [#18260](https://github.com/aptos-labs/aptos-core/pull/18260)\n- 840c041: [License] Update license header in testsuite (Josh Lind) [#18260](https://github.com/aptos-labs/aptos-core/pull/18260)\n- 10271db: [License] Update license header in tools (Josh Lind) [#18260](https://github.com/aptos-labs/aptos-core/pull/18260)\n- 7ed775e: [License] Update license header in types (Josh Lind) [#18260](https://github.com/aptos-labs/aptos-core/pull/18260)\n- d94a00f: [DKG] small cleanup (Zekun Li) [#18266](https://github.com/aptos-labs/aptos-core/pull/18266)\n- 3c75010: [Pre-Commit] Remove old UTF8 license header. (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 178b6d0: [License] Update shared UTF8 license header (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 70927c0: [Pre-Commit] Remove shared UTF8 license header. (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- e5a737c: [License] Update original license header in api (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 74c45cf: [License] Update original license header in aptos-move (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- b8e6479: [License] Update original license header in consensus (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- b6085ea: [License] Update original license header in crates (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 99a942b: [License] Update original license header in ecosystem (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 19f3179: [License] Update original license header in execution (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 6d4ebf8: [License] Update original license header in experimental (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- a57c75d: [License] Update original license header in keyless (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- b747fba: [License] Update original license header in mempool (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- aeda017: [License] Update original license header in protos (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 124db55: [License] Update original license header in storage (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- d703654: [License] Update original license header in testsuite (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 7830451: [License] Update original license header in types (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- acdc999: [License] Remove original license header from source files (Josh Lind) [#18261](https://github.com/aptos-labs/aptos-core/pull/18261)\n- 9131ffe: [vm] Small fixes to interpreter caches (#18233) (George Mitenkov) [#18233](https://github.com/aptos-labs/aptos-core/pull/18233)\n- 1dda3c6: Integrate pvss with batch encryption (#18252) (Rex Fernando) [#18252](https://github.com/aptos-labs/aptos-core/pull/18252)\n- 5a8620e: [vm] Make layout caches nebaled by default (#18262) (George Mitenkov) [#18262](https://github.com/aptos-labs/aptos-core/pull/18262)\n- 650d4ab: Add weighted batch encryption (#18267) (Rex Fernando) [#18267](https://github.com/aptos-labs/aptos-core/pull/18267)\n- 073772e: [Pre-Commit] Remove shared license from pre-commit allowlist. (Josh Lind) [#18270](https://github.com/aptos-labs/aptos-core/pull/18270)\n- 000645a: fix (#18275) (Teng Zhang) [#18275](https://github.com/aptos-labs/aptos-core/pull/18275)\n- 08c4b71: backfill staker passively for staking contract (#18276) (Aaron) [#18276](https://github.com/aptos-labs/aptos-core/pull/18276)\n- 391f1ac: Linter fix bug in boolean expression equality (#18286) (Vineeth Kashyap) [#18286](https://github.com/aptos-labs/aptos-core/pull/18286)\n- 8f5ffca: Increase expiration time requirement for orderless transactions (#18264) (Satya Vusirikala) [#18264](https://github.com/aptos-labs/aptos-core/pull/18264)\n- 30b0d79: Add support for txn filtering when streaming directly from the node (#18026) (Daniel Porteous (dport)) [#18026](https://github.com/aptos-labs/aptos-core/pull/18026)\n- bb48aa3: Fix license header following semantic merge issue with txn filtering code (#18294) (Daniel Porteous (dport)) [#18294](https://github.com/aptos-labs/aptos-core/pull/18294)\n- ad217ee: fix (#18292) (Teng Zhang) [#18292](https://github.com/aptos-labs/aptos-core/pull/18292)\n- 4796a42: [move] Remove enabled features (#18290) (George Mitenkov) [#18290](https://github.com/aptos-labs/aptos-core/pull/18290)\n- ab7b6c9: initial SLH DSA sha-128s implementation (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 218295f: added benchmarks (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 50ea8f0: a few renames (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 78e3721: fix arbitrary bug (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 94ce8a4: fix SK serialization (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- a14f4d3: test PK deserialization (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 9360ec2: test signature deserialization (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 72b6f26: lints (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 58e85f3: cleanups and test SK cloning and keypair generation (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- fe393e0: clean up slh_dsa_sigs.rs (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 30f051b: address joshboss comme nt (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- f6ecc2e: test signing is deterministic (Alin Tomescu) [#18293](https://github.com/aptos-labs/aptos-core/pull/18293)\n- 59d2ef0: adding params to the stack trace inside gas-profiler (#18283) (Marco Ilardi) [#18283](https://github.com/aptos-labs/aptos-core/pull/18283)\n- 36b4ed5: [telemetry] support custom contracts (#18248) (Rustie Lin) [#18248](https://github.com/aptos-labs/aptos-core/pull/18248)\n- b77a2a2: Fix dlog algorithm issue and update batch encryption tests (#18299) (Rex Fernando) [#18299](https://github.com/aptos-labs/aptos-core/pull/18299)\n- cf7b2e2: DKG edits (#18268) (Wicher Malten) [#18268](https://github.com/aptos-labs/aptos-core/pull/18268)\n- 7748a7a: Sigma protocol for inhomogeneous tuple morphism (#18302) (Wicher Malten) [#18302](https://github.com/aptos-labs/aptos-core/pull/18302)\n- 971a021: PVSS trait refactoring (#18303) (Wicher Malten) [#18303](https://github.com/aptos-labs/aptos-core/pull/18303)\n- 9ad8d18: refactor (#15522) (Teng Zhang) [#15522](https://github.com/aptos-labs/aptos-core/pull/15522)\n- 1d891de: Revert \"adding params to the stack trace inside gas-profiler (#18283)\" (#18307) (Victor Gao) [#18307](https://github.com/aptos-labs/aptos-core/pull/18307)\n- 2e93fab: [compiler-v2] Fix spurious compiler warning in inline functions (#18315) (Vineeth Kashyap) [#18315](https://github.com/aptos-labs/aptos-core/pull/18315)\n- 5454f95: file format code gen (#18083) (Teng Zhang) [#18083](https://github.com/aptos-labs/aptos-core/pull/18083)\n- 1e5bd51: fix feature flag override (#18308) (Teng Zhang) [#18308](https://github.com/aptos-labs/aptos-core/pull/18308)\n- 191e8f4: [hot state] fix counters (wqfish) [#18306](https://github.com/aptos-labs/aptos-core/pull/18306)\n- fa8b0cc: [Indexer gRPC v2] Fix gap between batches when querying historical data service with transaction filter (#18322) (Justin Chang) [#18322](https://github.com/aptos-labs/aptos-core/pull/18322)\n- a98bd8c: [Orderbook] Implement dead man's switch support for the orderbook (#18263) (Sital Kedia) [#18263](https://github.com/aptos-labs/aptos-core/pull/18263)\n- 7036aa4: [qs] update batch expiration logic (#18312) (Balaji Arun) [#18312](https://github.com/aptos-labs/aptos-core/pull/18312)\n- e5d75f0: [aptos cli] add supports for txn args of sint types via cli (#18318) (Jun Xu) [#18318](https://github.com/aptos-labs/aptos-core/pull/18318)\n- 1cfb4b2: [gas profiler] track peak memory usage (#18304) (Victor Gao) [#18304](https://github.com/aptos-labs/aptos-core/pull/18304)\n- c0fb41f: self in framework (#18326) (igor-aptos) [#18326](https://github.com/aptos-labs/aptos-core/pull/18326)\n- ab6677e: [consensus] secret sharing infra (#18223) (Balaji Arun) [#18223](https://github.com/aptos-labs/aptos-core/pull/18223)\n- b281079: [aptos cli] release cli 7.11.2 (#18334) (Jun Xu) [#18334](https://github.com/aptos-labs/aptos-core/pull/18334)\n- 1932b4d: Switch small workflows to GH-hosted runners (Stelian Ionescu) [#18333](https://github.com/aptos-labs/aptos-core/pull/18333)\n- 537d9bf: Add orderless transactions in a MoveHarness function (#18338) (Satya Vusirikala) [#18338](https://github.com/aptos-labs/aptos-core/pull/18338)\n- db04383: [Batch Encryption] Remove sha2-asm feature. (Josh Lind) [#18339](https://github.com/aptos-labs/aptos-core/pull/18339)\n- 3684dce: Update crates/aptos-batch-encryption/Cargo.toml (zhoujunma) [#18339](https://github.com/aptos-labs/aptos-core/pull/18339)\n- e3086a4: Update crates/aptos-batch-encryption/Cargo.toml (zhoujunma) [#18339](https://github.com/aptos-labs/aptos-core/pull/18339)\n- d7d560c: Update macOS runner version for CLI release (#18342) (James Kao) [#18342](https://github.com/aptos-labs/aptos-core/pull/18342)\n- 24841f8: [License] Change license attribute in Cargo.toml (Josh Lind) [#18349](https://github.com/aptos-labs/aptos-core/pull/18349)\n- d8d4e70: [vm] Fix leak in function caches (#18350) (George Mitenkov) [#18350](https://github.com/aptos-labs/aptos-core/pull/18350)\n- 4e3b3ac: Address Security review feedback 2 (#18279) (Sital Kedia) [#18279](https://github.com/aptos-labs/aptos-core/pull/18279)\n- 3a7d0e6: Support gRPC live mode for fullnodes (#18359) (Justin Chang) [#18359](https://github.com/aptos-labs/aptos-core/pull/18359)\n- adfb708: Upgrade cc crate to 1.2.50 and stop setting LTO flags manually (wqfish) [#18358](https://github.com/aptos-labs/aptos-core/pull/18358)\n- ec3d56b: [aptos cli] release cli 7.12.1 (#18369) (Jun Xu) [#18369](https://github.com/aptos-labs/aptos-core/pull/18369)\n- 3d9bcda: some cleanups (#18377) (Balaji Arun) [#18377](https://github.com/aptos-labs/aptos-core/pull/18377)\n- 94fe0a3: [Network] Small cleaups to streaming code. (#18375) (Josh Lind) [#18375](https://github.com/aptos-labs/aptos-core/pull/18375)\n- 56b9cf9: [forge] pin image for etna stable test (#18351) (Balaji Arun) [#18351](https://github.com/aptos-labs/aptos-core/pull/18351)\n- 7716055: IndexedRef Runtime TAG (#18142) (Andrea Cappa (zi0Black)) [#18142](https://github.com/aptos-labs/aptos-core/pull/18142)\n- 3ee1cb1: [move-vm] Native function modeling for runtime reference safety checker (#18346) (Vineeth Kashyap) [#18346](https://github.com/aptos-labs/aptos-core/pull/18346)\n- d24dbd5: Update Docker images (#17328) (github-actions[bot]) [#17328](https://github.com/aptos-labs/aptos-core/pull/17328)\n- 2f99b2f: [move linter] revise a linter name (#18387) (Jun Xu) [#18387](https://github.com/aptos-labs/aptos-core/pull/18387)\n- e53123a: [vm] New VM instruction for aborting with message (#18316) (Calin Tataru) [#18316](https://github.com/aptos-labs/aptos-core/pull/18316)\n- 5f5d138: [aptos cli] set language version 2.3 as stable and release cli 7.13.0 (#18391) (Jun Xu) [#18391](https://github.com/aptos-labs/aptos-core/pull/18391)\n- 3318621: [VM] Add code coverage support for e2e tests (#18337) (Wolfgang Grieskamp) [#18337](https://github.com/aptos-labs/aptos-core/pull/18337)\n- 44953af: [cli] Update CLI to use latest formatter and mutation testing tool (#18373) (Vineeth Kashyap) [#18373](https://github.com/aptos-labs/aptos-core/pull/18373)\n- d181eb3: [GEO-328] Add signed integers to protos and indexer type conversion code (#18394) (Daniel Porteous (dport)) [#18394](https://github.com/aptos-labs/aptos-core/pull/18394)\n- 362677f: [aptos cli] update cli 7.13.0 to mark lang version 2.3 and bytecode version 9 as default (#18400) (Jun Xu) [#18400](https://github.com/aptos-labs/aptos-core/pull/18400)\n- b8a58e8: [AIP-105] Make mem::swap and mem::replace public (#18330) (igor-aptos) [#18330](https://github.com/aptos-labs/aptos-core/pull/18330)\n- df0c634: [Hot State] Delete unused code (wqfish) [#18365](https://github.com/aptos-labs/aptos-core/pull/18365)\n- 89c0055: [encrypted-mempool] use FTXWeighted instead of FTX (#18409) (Balaji Arun) [#18409](https://github.com/aptos-labs/aptos-core/pull/18409)\n- 3dc513f: orderbook events (#18277) (igor-aptos) [#18277](https://github.com/aptos-labs/aptos-core/pull/18277)\n- fd789ba: [Hot State] Use config to replace hard-coded parameters (wqfish) [#18366](https://github.com/aptos-labs/aptos-core/pull/18366)\n- f0f8fc9: [Storage] Fix error message formatting in config (wqfish) [#18397](https://github.com/aptos-labs/aptos-core/pull/18397)\n- 7787942: Update jemalloc to latest version (wqfish) [#18341](https://github.com/aptos-labs/aptos-core/pull/18341)\n- c5ff83e: Enable memory profiling by default (wqfish) [#18341](https://github.com/aptos-labs/aptos-core/pull/18341)\n- 92f0a31: [consensus] support secret sharing manager in execution client (#18313) (Balaji Arun) [#18313](https://github.com/aptos-labs/aptos-core/pull/18313)\n- 8a38adc: [framework] Add `String::into_bytes` function (#18395) (Calin Tataru) [#18395](https://github.com/aptos-labs/aptos-core/pull/18395)\n- 0257e5a: [Storage Config] Make db path override related fields private (wqfish) [#18385](https://github.com/aptos-labs/aptos-core/pull/18385)\n- 5524f4d: [Hot State] Add a separate StateMerkleDb for hot state (wqfish) [#18385](https://github.com/aptos-labs/aptos-core/pull/18385)\n- 5755d5e: sui daa security audit fixes (#18398) (Maayan) [#18398](https://github.com/aptos-labs/aptos-core/pull/18398)\n- 99d5c8d: [Orderbook] Cleanup client order id mapping when taking ready time based order (#18417) (Sital Kedia) [#18417](https://github.com/aptos-labs/aptos-core/pull/18417)\n- 49e73b0: [vm] New bytecode for aborting with message (#18347) (Calin Tataru) [#18347](https://github.com/aptos-labs/aptos-core/pull/18347)\n- bb7cb88: [compiler] Overload Move abort to support messages (#18403) (Calin Tataru) [#18403](https://github.com/aptos-labs/aptos-core/pull/18403)\n- ac16a37: Set reserve bit in monotonically increasing counters (#18418) (Satya Vusirikala) [#18418](https://github.com/aptos-labs/aptos-core/pull/18418)\n- fd0d96e: [telemetry] support prometheus sink (#18336) (Rustie Lin) [#18336](https://github.com/aptos-labs/aptos-core/pull/18336)\n- 6cfd28e: [forge] bump deployer version (#17266) (aptos-bot) [#17266](https://github.com/aptos-labs/aptos-core/pull/17266)\n- fb8f96f: Fix test_only timestamp::fast_forward_seconds for extra microseconds (#18415) (igor-aptos) [#18415](https://github.com/aptos-labs/aptos-core/pull/18415)\n- 6eec669: [cli][txn sim sessions] support code object and chunked publishing (#18329) (Victor Gao) [#18329](https://github.com/aptos-labs/aptos-core/pull/18329)\n- 16758e6: [forge] bump deployer version (#18435) (aptos-bot) [#18435](https://github.com/aptos-labs/aptos-core/pull/18435)\n- f7a776d: [cli] bump version to 7.14 (#18440) (Victor Gao) [#18440](https://github.com/aptos-labs/aptos-core/pull/18440)\n- 8d48624: [ai] Basic setup for Cursor/Claude agents.md (#18413) (Wolfgang Grieskamp) [#18413](https://github.com/aptos-labs/aptos-core/pull/18413)\n- ecb203d: [Layered Map] Expose inner layers (wqfish) [#18353](https://github.com/aptos-labs/aptos-core/pull/18353)\n- 844655c: Add succinct-ciphertext version of batch encryption (#18439) (Rex Fernando) [#18439](https://github.com/aptos-labs/aptos-core/pull/18439)\n- d434f8e: [encrypted mempool] Switch curve to BLS (#18442) (Rex Fernando) [#18442](https://github.com/aptos-labs/aptos-core/pull/18442)\n- a900b30: [Storage] Move log out of loop in StateSnapshotCommitter (wqfish) [#18390](https://github.com/aptos-labs/aptos-core/pull/18390)\n- eac80f9: [Hot State] Compute root hash for hot state (wqfish) [#18390](https://github.com/aptos-labs/aptos-core/pull/18390)\n- 8dbb447: [transaction simulation] fix bug in fund_apt_fungible_store (#18448) (Victor Gao) [#18448](https://github.com/aptos-labs/aptos-core/pull/18448)\n- d91d3c5: [compiler] fix issue 18335 (#18411) (Jun Xu) [#18411](https://github.com/aptos-labs/aptos-core/pull/18411)\n- c83c8f2: Calibrate execution performance benchmark (wqfish) [#18427](https://github.com/aptos-labs/aptos-core/pull/18427)\n- 08437aa: [Hot State] Include HotVacant slots in root hash (wqfish) [#18427](https://github.com/aptos-labs/aptos-core/pull/18427)\n- 8fc3fd0: [qs] fix flaky batch store test (Balaji Arun) [#18449](https://github.com/aptos-labs/aptos-core/pull/18449)\n- d49896b: [move-prover] Adding behavioral predicates to the parser (#18428) (Wolfgang Grieskamp) [#18428](https://github.com/aptos-labs/aptos-core/pull/18428)\n- def1598: [batch-encryption] remove happy path in trait and impls (Balaji Arun) [#18445](https://github.com/aptos-labs/aptos-core/pull/18445)\n- 6ec9e87: [forge] bump deployer version (#18446) (aptos-bot) [#18446](https://github.com/aptos-labs/aptos-core/pull/18446)\n- 11f6f5d: Add conversion fns from blst consensus keys to chunky encryption keys (#18454) (Rex Fernando) [#18454](https://github.com/aptos-labs/aptos-core/pull/18454)\n- be9ff3e: add support for SLH-DSA-SHA2-128s TXN authenticators (#18300) (Alin Tomescu) [#18300](https://github.com/aptos-labs/aptos-core/pull/18300)\n- d2839e6: [api] feature flag for enc txn submission (Balaji Arun) [#18086](https://github.com/aptos-labs/aptos-core/pull/18086)\n- 31180f5: [api] add validations for batch txn submission (Balaji Arun) [#18086](https://github.com/aptos-labs/aptos-core/pull/18086)\n- properly desugar receiver style functions in let statements (#18438) [#18438](https://github.com/aptos-labs/aptos-core/pull/18438) ([Maksim Kurnikov](https://github.com/aptos-labs/aptos-core/commit/1a40fb345f99f93c887a251177e145a8f1148059))\n- d8c55a2: [move-prover] Adding behavioral predicates to the type checker (#18429) (Wolfgang Grieskamp) [#18429](https://github.com/aptos-labs/aptos-core/pull/18429)\n- 3307e04: Remove refs to unweighted chunky from aptos-batch-encryption (#18466) (Rex Fernando) [#18466](https://github.com/aptos-labs/aptos-core/pull/18466)\n- 6c3a7df: Wicher/more dkg edits (#18384) (Wicher Malten) [#18384](https://github.com/aptos-labs/aptos-core/pull/18384)\n- b0102f4: separating out types (#18364) (igor-aptos) [#18364](https://github.com/aptos-labs/aptos-core/pull/18364)\n- 509de39: [State Sync] Increase state-sync network frame size. (Josh Lind) [#18473](https://github.com/aptos-labs/aptos-core/pull/18473)\n- 002b777: [State Sync] Enable time-and-size aware storage reads. (Josh Lind) [#18473](https://github.com/aptos-labs/aptos-core/pull/18473)\n- ff38b1d: [move-unit-test] More information for unexpected aborts (#18432) (Calin Tataru) [#18432](https://github.com/aptos-labs/aptos-core/pull/18432)\n- 41b19a6: [qs] Populate BatchKind for BatchV2 (#18452) (Balaji Arun) [#18452](https://github.com/aptos-labs/aptos-core/pull/18452)\n- ab91501: [qs] support pulling OptQuorumStorePayload::V2 (#18453) (Balaji Arun) [#18453](https://github.com/aptos-labs/aptos-core/pull/18453)\n- ca084fe: [vm] Stack size checks for native calls (#18475) (George Mitenkov) [#18475](https://github.com/aptos-labs/aptos-core/pull/18475)\n- 45e93a3: Bulk order rejection event and address various security feedback (#18477) (Sital Kedia) [#18477](https://github.com/aptos-labs/aptos-core/pull/18477)\n- 1b896ef: [cli] Fix MOVE_VM_STEP/MOVE_VM_TRACE for aptos move replay (#18486) (Wolfgang Grieskamp) [#18486](https://github.com/aptos-labs/aptos-core/pull/18486)\n- bb5abe3: [prover] Support tuple results in spec functions (#18484) (Wolfgang Grieskamp) [#18484](https://github.com/aptos-labs/aptos-core/pull/18484)\n- 0a14d4d: [compiler] Allow using wildcard to match tuple (#18434) (Calin Tataru) [#18434](https://github.com/aptos-labs/aptos-core/pull/18434)\n- 7a09118: [encrypted mempool] Return error when trying to initialize digest key with batch size not a power of 2. (#18496) (Rex Fernando) [#18496](https://github.com/aptos-labs/aptos-core/pull/18496)\n- d9e0fd7: [compiler-v2] Make semicolon optional after block expressions (#18497) (Vineeth Kashyap) [#18497](https://github.com/aptos-labs/aptos-core/pull/18497)\n- 05feddd: [prover] Add developer documentation for function values verification (#18493) (Wolfgang Grieskamp) [#18493](https://github.com/aptos-labs/aptos-core/pull/18493)\n- 9a298c4: [prover] Support tuple results in spec functions (#18450) (Wolfgang Grieskamp) [#18450](https://github.com/aptos-labs/aptos-core/pull/18450)\n- use compound arithm expr (#18458) [#18458](https://github.com/aptos-labs/aptos-core/pull/18458) ([Maksim Kurnikov](https://github.com/aptos-labs/aptos-core/commit/20ae0d2a667997ad6d0ec5c9a67aac9be56a2954))\n- c1c0f39: [framework] use vector index expr whenever possible (#18457) (Maksim Kurnikov) [#18457](https://github.com/aptos-labs/aptos-core/pull/18457)\n- 5037571: [vm] Support abort messages in native functions (#18487) (Calin Tataru) [#18487](https://github.com/aptos-labs/aptos-core/pull/18487)\n- 1a97948: [framework] replace with receiver-style call expr in non-spec code (#18462) (Maksim Kurnikov) [#18462](https://github.com/aptos-labs/aptos-core/pull/18462)\n- 402af26: Move cancel_at_price_level from bulk_order_types to bulk_order_utils (#18485) (Sital Kedia) [#18485](https://github.com/aptos-labs/aptos-core/pull/18485)\n- a1d2a25: [tests][vm] Additional tests to increase code coverage of runtime reference safety checker (#18407) (Vineeth Kashyap) [#18407](https://github.com/aptos-labs/aptos-core/pull/18407)\n- a8b5032: [vm] Adding design doc (#18498) (George Mitenkov) [#18498](https://github.com/aptos-labs/aptos-core/pull/18498)\n- 1e04020: [Orderbook] Address security review feedback  (#18495) (Sital Kedia) [#18495](https://github.com/aptos-labs/aptos-core/pull/18495)\n- dfe8add: [telemetry-service] cache vm/prom backend paths (#18455) (Rustie Lin) [#18455](https://github.com/aptos-labs/aptos-core/pull/18455)\n- eb6ae12: Expand PVSS benchmarking tables (#18511) (Wicher Malten) [#18511](https://github.com/aptos-labs/aptos-core/pull/18511)\n- cd818e8: [Network] Remove dead network config fields. (Josh Lind) [#18516](https://github.com/aptos-labs/aptos-core/pull/18516)\n- 532f261: [Network] Remove dead rate limiting code. (Josh Lind) [#18516](https://github.com/aptos-labs/aptos-core/pull/18516)\n- 4106b2b: [Hot State] Enable pruner for hot state merkle db (wqfish) [#18467](https://github.com/aptos-labs/aptos-core/pull/18467)\n- 3e33a2d: [compiler] New macros using abort with message (#18412) (Calin Tataru) [#18412](https://github.com/aptos-labs/aptos-core/pull/18412)\n- 8a56229: [Network] Add simple allow and blocklist. (Josh Lind) [#18504](https://github.com/aptos-labs/aptos-core/pull/18504)\n- 9e2cc98: [mono move] add design of memory management and value representation (#18519) (Victor Gao) [#18519](https://github.com/aptos-labs/aptos-core/pull/18519)\n- ef82cf1: Enhance log entry serialization by converting structured log values to strings using TruncatedLogString for consistency. Added error handling to skip serialization failures gracefully. (#18447) (Zekun Li) [#18447](https://github.com/aptos-labs/aptos-core/pull/18447)\n- b26c038: Add test transaction with signed int (#18527) (Jon) [#18527](https://github.com/aptos-labs/aptos-core/pull/18527)\n- 429038a: [qs] Handle BatchV2 network messages (Balaji Arun) [#18509](https://github.com/aptos-labs/aptos-core/pull/18509)\n- 379d47a: [Orderbook] Bulk order callback to support order margin. (#18512) (Sital Kedia) [#18512](https://github.com/aptos-labs/aptos-core/pull/18512)\n- faed563: [vm] Fix async code state replay (#18479) (George Mitenkov) [#18479](https://github.com/aptos-labs/aptos-core/pull/18479)\n- beb39c0: Signed integer test transaction format (#18546) (Jon) [#18546](https://github.com/aptos-labs/aptos-core/pull/18546)\n- 0d988b2: [Orderbook] Return ClearinghouseStoppedMatching cancellation reason when matching stops (#18530) (Sital Kedia) [#18530](https://github.com/aptos-labs/aptos-core/pull/18530)\n- c195b57: [encrypted mempool] Add `verify_decryption_key` method to `BatchThresholdEncryption` trait (#18500) (Rex Fernando) [#18500](https://github.com/aptos-labs/aptos-core/pull/18500)\n- ffbc743: [REST API] Add `chain_id` and `node_type` to the `/info` endpoint (#18525) (Josh Lind) [#18525](https://github.com/aptos-labs/aptos-core/pull/18525)\n- 1543a9c: [replay-verify] bump disk to 20Ti (Balaji Arun) [#18548](https://github.com/aptos-labs/aptos-core/pull/18548)\n- 6ab5a72: [jwk] rename .pem to .txt (Zekun Li) [#18550](https://github.com/aptos-labs/aptos-core/pull/18550)\n- bcf0d65: Update Cargo.lock (wqfish) [#18551](https://github.com/aptos-labs/aptos-core/pull/18551)\n- dd86244: Verify Cargo.lock and other files are not changed after running lints (wqfish) [#18551](https://github.com/aptos-labs/aptos-core/pull/18551)\n- 2dbcb05: [crypto] Rename SecretSharingConfig trait to TSecretSharingConfig (Balaji Arun) [#18536](https://github.com/aptos-labs/aptos-core/pull/18536)\n- 6fe7383: [Execution] Implement Copy for a few onchain config types (wqfish) [#18554](https://github.com/aptos-labs/aptos-core/pull/18554)\n- e50b4b7: [types] Extract randomness DKG types into separate module (Balaji Arun) [#18537](https://github.com/aptos-labs/aptos-core/pull/18537)\n- a13df87: [Types] Use Self whenever possible in onchain config code (wqfish) [#18555](https://github.com/aptos-labs/aptos-core/pull/18555)\n- cc0556b: Remove Pontem from example documentation (#18561) (Daniel Porteous (dport)) [#18561](https://github.com/aptos-labs/aptos-core/pull/18561)\n- 1b3fc7f: [Encrypted Txn] Add TypeScript tests for encrypted transactions (Josh Lind) [#18521](https://github.com/aptos-labs/aptos-core/pull/18521)\n- e528be4: [CI/CD] Add batch encryption test job. (Josh Lind) [#18521](https://github.com/aptos-labs/aptos-core/pull/18521)\n- 1afe9b4: [types] Add Chunky DKG types and on-chain config (#18538) (Balaji Arun) [#18538](https://github.com/aptos-labs/aptos-core/pull/18538)\n- be2fc5a: [Storage] Improve error message in assertions (wqfish) [#18570](https://github.com/aptos-labs/aptos-core/pull/18570)\n- 069136d: [framework] Add hash-based caching for Move framework builds (Zekun Li) [#18553](https://github.com/aptos-labs/aptos-core/pull/18553)\n- 8f698d7: [framework] Use marker file for compiler change detection (Zekun Li) [#18553](https://github.com/aptos-labs/aptos-core/pull/18553)\n- ca3072c: [TSS] add support for randomness in local mode (#18573) (Victor Gao) [#18573](https://github.com/aptos-labs/aptos-core/pull/18573)",
       "url": "https://github.com/aptos-labs/aptos-core/releases/tag/aptos-cli-v7.14.2",
       "date": "2026-02-03",
       "repo": "aptos-labs/aptos-core",
       "tag": "aptos-cli-v7.14.2",
       "prerelease": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18593",
+      "source_type": "pr",
+      "title": "[trivial] remove boogie.bpl from move-stdlib",
+      "body": "## Description\r\n<!-- Please include a summary of the change, including which issue it fixes or what feature it adds. Include relevant motivation, context and documentation as appropriate. List dependencies that are required for this change, if any. -->\r\n\r\nRemove boogie.bpl  in move-stdlib which was mistakenly added in #18488 \n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Low risk: this PR only deletes an unused Boogie prover artifact from `move-stdlib` and does not change runtime Move code or prover configuration.\n> \n> **Overview**\n> Removes the large generated `move-stdlib/boogie.bpl` file that was mistakenly checked in, reducing repository noise and avoiding shipping a prover artifact as part of the framework sources.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 3e741ff577ec661a5d2691b6944ca26ea84eba37. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18593",
+      "date": "2026-02-04",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18593,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 0,
+      "deletions": 4366,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18540",
@@ -69,7 +89,8 @@
       "labels": [],
       "changed_files": 7,
       "additions": 999,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18539",
@@ -83,7 +104,8 @@
       "labels": [],
       "changed_files": 12,
       "additions": 336,
-      "deletions": 9
+      "deletions": 9,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18642",
@@ -99,7 +121,8 @@
       ],
       "changed_files": 11,
       "additions": 124,
-      "deletions": 72
+      "deletions": 72,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18621",
@@ -115,7 +138,38 @@
       ],
       "changed_files": 7,
       "additions": 51,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18641",
+      "source_type": "pr",
+      "title": "randomness dkg maintenance",
+      "body": "## Description\r\n\r\nstake.move helper function maintenance.\r\n\r\n## How Has This Been Tested?\r\nexisting tests.\r\n\r\n## Key Areas to Review\r\nn/a\r\n\r\n## Type of Change\r\n- [x] Refactoring\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [x] Aptos Framework\r\n\r\n## Checklist\r\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\r\n- [x] I have performed a self-review of my own code\r\n- [x] I have commented my code, particularly in hard-to-understand areas\r\n- [x] I identified and added all stakeholders and component owners affected by this change as reviewers\r\n- [x] I tested both happy and unhappy path of the functionality\r\n- [x] I have made corresponding changes to the documentation\r\n\r\n<!-- Thank you for your contribution! -->\r\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Touches validator-set selection logic, which can affect epoch transitions and consensus membership if incorrect. Scope is small and now guarded by an added invariant-style assertion in tests.\n> \n> **Overview**\n> Fixes an indexing bug in `next_validator_consensus_infos()` so the loop selects `pending_active` candidates using the correct reversed index (`num_candidates - 1 - candidate_idx`) rather than `candidate_idx - num_cur_actives`.\n> \n> Updates the generated `stake.md` docs to match, and strengthens the `#[test_only] end_epoch()` helper by asserting that the validator addresses computed by `next_validator_consensus_infos()` match the post-`on_new_epoch()` current validator set.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 92e2ff0a8f3dd7e76ef8eb0dc525c497915566e8. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18641",
+      "date": "2026-02-06",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18641,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 5,
+      "deletions": 2,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18616",
+      "source_type": "pr",
+      "title": "[cli] Fix some issues in the CLI with move tooling",
+      "body": "## Description\r\n\r\nIn this PR:\r\n- we change various move subcommands to consistently use `--package-dir`, closes #18421. These changes are all backward compatible.\r\n- `aptos move fmt --version` gives the version of the aptos formatter binary, not of the CLI\r\n- The formatter is upgraded to the latest release (which includes being able to format code with optional `;`)\r\n\r\n## How Has This Been Tested?\r\n\r\nManually.\r\n\r\n## Type of Change\r\n- [x] Bug fix\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [x] Aptos CLI\r\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Primarily CLI argument/UX changes plus a formatter binary version bump; risk is limited to potential flag parsing or behavioral differences from the newer `movefmt`.\n> \n> **Overview**\n> Standardizes Move tooling flags by renaming `--package-path` to `--package-dir` for bytecode `disassemble`/`decompile` and `move fmt`, while keeping `--package-path` as an alias for backward compatibility and updating help text/examples.\n> \n> Improves formatter UX by disabling clap\u2019s default version flag for `aptos move fmt` and adding `-V/--version` to print the *movefmt binary* version, and updates the required `movefmt` release from `1.4.5` to `1.4.9`.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit ae14194ffe5959796b65db2766475c208b70cefd. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18616",
+      "date": "2026-02-06",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18616,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 41,
+      "deletions": 13,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18607",
@@ -129,7 +183,8 @@
       "labels": [],
       "changed_files": 10,
       "additions": 42,
-      "deletions": 5
+      "deletions": 5,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18610",
@@ -143,7 +198,55 @@
       "labels": [],
       "changed_files": 5,
       "additions": 47,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18606",
+      "source_type": "pr",
+      "title": "[gha][docker] use runs-on snapshots for caching",
+      "body": "Use runs-on snapshot feature to speed up docker builds. This should improve build perf to under 15 minutes again.",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18606",
+      "date": "2026-02-05",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18606,
+      "labels": [
+        "CICD:build-images"
+      ],
+      "changed_files": 4,
+      "additions": 9,
+      "deletions": 22,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18617",
+      "source_type": "pr",
+      "title": "[gha][docker] upgrade buildx version",
+      "body": "",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18617",
+      "date": "2026-02-05",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18617,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 1,
+      "deletions": 1,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18614",
+      "source_type": "pr",
+      "title": "Fix dkg imports",
+      "body": "## Description\r\nThis quick PR fixes the previous one - `main` does not currently compile. Balaji: \"I think your CI passed on an earlier version of main and GH merged it as it did not have any conflicts.\"\r\n\r\n## How Has This Been Tested?\r\nExisting tests.\r\n\r\n## Key Areas to Review\r\nShould be fine.\r\n\r\n## Type of Change\r\n- [ ] New feature\r\n- [x] Bug fix\r\n- [ ] Breaking change\r\n- [ ] Performance improvement\r\n- [ ] Refactoring\r\n- [ ] Dependency update\r\n- [ ] Documentation update\r\n- [ ] Tests\r\n\r\n## Which Components or Systems Does This Change Impact?\r\n- [ ] Validator Node\r\n- [ ] Full Node (API, Indexer, etc.)\r\n- [ ] Move/Aptos Virtual Machine\r\n- [ ] Aptos Framework\r\n- [ ] Aptos CLI/SDK\r\n- [ ] Developer Infrastructure\r\n- [ ] Move Compiler\r\n- [ ] Other (specify)\r\n\r\n## Checklist\r\n- [x] I have read and followed the [CONTRIBUTING](https://github.com/aptos-labs/aptos-core/blob/main/CONTRIBUTING.md) doc\r\n- [x] I have performed a self-review of my own code\r\n- [x] I have commented my code, particularly in hard-to-understand areas\r\n- [x] I identified and added all stakeholders and component owners affected by this change as reviewers\r\n- [x] I tested both happy and unhappy path of the functionality\r\n- [x] I have made corresponding changes to the documentation\r\n\r\n<!-- Thank you for your contribution! -->\r\n\r\n<!-- CURSOR_SUMMARY -->\r\n---\r\n\r\n> [!NOTE]\r\n> **Low Risk**\r\n> Import-only changes updating to the new `aptos_dkg::pvss::traits::transcript::Aggregated` path; no behavior changes expected.\r\n> \r\n> **Overview**\r\n> Updates Chunky DKG modules to use the newer PVSS transcript trait import layout, replacing the older `Aggregatable`/`Aggregated` import paths.\r\n> \r\n> No functional logic is changed; this is a compile-time fix in `agg_subtrx_producer.rs` and `dkg_manager.rs` to align with the current `aptos_dkg` trait exports.\r\n> \r\n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit 8d5c6bb5c9a28cd79ddbd972465aa3b2e891bdb6. This will update automatically on new",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18614",
+      "date": "2026-02-05",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18614,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 2,
+      "deletions": 5,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18514",
@@ -157,7 +260,8 @@
       "labels": [],
       "changed_files": 13,
       "additions": 157,
-      "deletions": 52
+      "deletions": 52,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18542",
@@ -171,7 +275,8 @@
       "labels": [],
       "changed_files": 11,
       "additions": 240,
-      "deletions": 1
+      "deletions": 1,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18534",
@@ -185,7 +290,43 @@
       "labels": [],
       "changed_files": 15,
       "additions": 290,
-      "deletions": 88
+      "deletions": 88,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18575",
+      "source_type": "pr",
+      "title": "[Storage] Fix for panics in state update code",
+      "body": "\nI've seen this panic in `StateSummary::update` happen once or twice. Hard to\ntell the exact root cause, and it's very rare and hard to reproduce, but what\nhappens in the following hypothesis could theoretically cause some issue.\n\nOccasionally we might run into a fork. Let's say we have block `A` and two\ndescendants `B` and `C`:\n\n```\nA ---- B\n |_____C\n```\n\nIt's possible that `B` and `C` are both scheduled for speculative execution. If\n`B` gets pre-committed, the background thread will eventually advance the\n\"persisted\" version to `B`'s version. This could happen even faster if `B` is a\nreconfig block, since we set `sync_commit` to true in this case.\n\nIf the execution of `C` happens a bit slower, it's possible that by the time we\nare about to calculate `C`'s state, the \"persisted\" version has already moved\npast `A`'s version. Therefore invariant `persisted <= C` would break.\n\nTo address this, we simply relax these assertions a bit and replace them with\n`ensure` instead. If `B` gets pre-committed, `C` probably will be discarded\nanyway, so failing to execute it isn't a big deal and probably saves a bit\nresources too. The error will be propagated and handled by consensus.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Medium Risk**\n> Touches core state update paths used by execution and state summary computation; new early-error conditions could cause blocks to fail execution instead of panicking, so behavior changes under rare fork/version-skew scenarios.\n> \n> **Overview**\n> **Avoids panics in speculative state updates under rare fork/version-skew scenarios.** `State::update`, `LedgerState::update_with_memorized_reads`, and `StateSummary::update` now return `Result` and replace version-ordering `assert!`s with `warn!` + `bail!` when persisted versions are ahead of the cache/current state.\n> \n> Call sites in the executor (`do_get_execution_output`) and storage tests are updated to propagate/unwrap the new `Result`, ensuring the pipeline errors out cleanly instead of crashi",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18575",
+      "date": "2026-02-03",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18575,
+      "labels": [
+        "v1.41"
+      ],
+      "changed_files": 4,
+      "additions": 40,
+      "deletions": 30,
+      "minor": true
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18461",
+      "source_type": "pr",
+      "title": "[forge] bump deployer version",
+      "body": "Automated PR to bump the forge deployer version\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> **Low Risk**\n> Single constant bump that only changes the default deployer image version; risk is limited to any behavioral changes introduced in the new deployer image.\n> \n> **Overview**\n> Updates Forge\u2019s Kubernetes deployer default image tag (`DEFAULT_FORGE_DEPLOYER_IMAGE_TAG`) to a newer main-branch stable build, changing which deployer container version is used when no explicit tag is provided.\n> \n> <sup>Written by [Cursor Bugbot](https://cursor.com/dashboard?tab=bugbot) for commit aac9e91b1198a6568427448b87b1df10ef43ac7b. This will update automatically on new commits. Configure [here](https://cursor.com/dashboard?tab=bugbot).</sup>\n<!-- /CURSOR_SUMMARY -->\n\n<!-- BUGBOT_STATUS --><sup><a href=\"https://cursor.com/dashboard?tab=bugbot\">Cursor Bugbot</a> reviewed your changes and found no issues for commit <u>aac9e91</u></sup><!-- /BUGBOT_STATUS -->",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18461",
+      "date": "2026-02-05",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18461,
+      "labels": [
+        "CICD:run-e2e-tests",
+        "CICD:run-framework-upgrade-test"
+      ],
+      "changed_files": 1,
+      "additions": 1,
+      "deletions": 1,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18557",
@@ -199,7 +340,8 @@
       "labels": [],
       "changed_files": 39,
       "additions": 147,
-      "deletions": 226
+      "deletions": 226,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18545",
@@ -213,7 +355,8 @@
       "labels": [],
       "changed_files": 5,
       "additions": 257,
-      "deletions": 91
+      "deletions": 91,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18544",
@@ -227,7 +370,8 @@
       "labels": [],
       "changed_files": 5,
       "additions": 1089,
-      "deletions": 12
+      "deletions": 12,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18518",
@@ -243,7 +387,23 @@
       ],
       "changed_files": 14,
       "additions": 1730,
-      "deletions": 176
+      "deletions": 176,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-core:#18543",
+      "source_type": "pr",
+      "title": "[dkg] Add chunky DKG producers",
+      "body": "## Summary\n\nImplements the chunky DKG transcript aggregation and certification producers.\n\n### `agg_subtrx_producer.rs`\n- `start_subtranscript_aggregation` - spawns reliable broadcast task to collect transcripts\n- `ChunkyTranscriptAggregationState` - validates incoming transcripts, extracts and aggregates subtranscripts\n- Verifies transcript metadata, deserializes, and cryptographically verifies each transcript\n- Aggregates subtranscripts until quorum is reached, then notifies `ChunkyDKGManager`\n\n### `subtrx_cert_producer.rs`  \n- `start_certification` - spawns reliable broadcast to collect signatures on aggregated subtranscript\n- `SubtranscriptCertificationState` - collects and verifies partial signatures\n- Produces `CertifiedAggregatedSubtranscript` when enough valid signatures are collected",
+      "url": "https://github.com/aptos-labs/aptos-core/pull/18543",
+      "date": "2026-02-03",
+      "repo": "aptos-labs/aptos-core",
+      "number": 18543,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 652,
+      "deletions": 4,
+      "minor": true
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18488",
@@ -259,7 +419,8 @@
       ],
       "changed_files": 64,
       "additions": 14871,
-      "deletions": 3321
+      "deletions": 3321,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18444",
@@ -273,7 +434,8 @@
       "labels": [],
       "changed_files": 24,
       "additions": 950,
-      "deletions": 184
+      "deletions": 184,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-core:#18513",
@@ -287,7 +449,8 @@
       "labels": [],
       "changed_files": 9,
       "additions": 19,
-      "deletions": 39
+      "deletions": 39,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#819",
@@ -301,7 +464,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 788,
-      "deletions": 1054
+      "deletions": 1054,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#820",
@@ -315,7 +479,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 31,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-ts-sdk:#815",
@@ -329,7 +494,8 @@
       "labels": [],
       "changed_files": 121,
       "additions": 2888,
-      "deletions": 1493
+      "deletions": 1493,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#27",
@@ -343,7 +509,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 2,
-      "deletions": 4
+      "deletions": 4,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#26",
@@ -357,7 +524,8 @@
       "labels": [],
       "changed_files": 5,
       "additions": 179,
-      "deletions": 89
+      "deletions": 89,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#23",
@@ -371,7 +539,8 @@
       "labels": [],
       "changed_files": 7,
       "additions": 590,
-      "deletions": 74
+      "deletions": 74,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#25",
@@ -385,7 +554,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 1,
-      "deletions": 1
+      "deletions": 1,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#24",
@@ -399,7 +569,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 82,
-      "deletions": 0
+      "deletions": 0,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-rust-sdk:#20",
@@ -413,7 +584,8 @@
       "labels": [],
       "changed_files": 243,
       "additions": 48309,
-      "deletions": 33867
+      "deletions": 33867,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-go-sdk:#193",
@@ -427,13 +599,15 @@
       "labels": [],
       "changed_files": 38,
       "additions": 5911,
-      "deletions": 114
+      "deletions": 114,
+      "minor": false
     },
     {
       "id": "release:aptos-labs/aptos-wallet-adapter:@aptos-labs/cross-chain-core@5.8.1",
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/cross-chain-core@5.8.1",
       "body": "### Patch Changes\n\n-   01e2df0: Fix Solana multi-signer transaction order\n",
+      "body_full": "### Patch Changes\n\n-   01e2df0: Fix Solana multi-signer transaction order\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%405.8.1",
       "date": "2026-02-08",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -445,6 +619,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/cross-chain-core@5.8.0",
       "body": "### Minor Changes\n\n-   ae37654: Support gas station for cctp withdraw transactions\n",
+      "body_full": "### Minor Changes\n\n-   ae37654: Support gas station for cctp withdraw transactions\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%405.8.0",
       "date": "2026-02-06",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -456,6 +631,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/wallet-adapter-react@8.2.1",
       "body": "### Patch Changes\n\n-   0379135: fix: support async autoConnect and late wallet injection\n\n    Previously, autoConnect had two issues:\n\n    1.  If `autoConnect` started as `false` and later became `true` (e.g., after fetching user preferences), auto-connect would never trigger\n    2.  If a wallet extension injected after the initial render, auto-connect would fail even though the wallet was eventually available\n\n    Now, the auto-connect attempt is only marked as complete when we actually find and connect to the wallet, allowing:\n\n    -   dApps to set `autoConnect` asynchronously\n    -   Wallet extensions that register late to still trigger auto-connect\n",
+      "body_full": "### Patch Changes\n\n-   0379135: fix: support async autoConnect and late wallet injection\n\n    Previously, autoConnect had two issues:\n\n    1.  If `autoConnect` started as `false` and later became `true` (e.g., after fetching user preferences), auto-connect would never trigger\n    2.  If a wallet extension injected after the initial render, auto-connect would fail even though the wallet was eventually available\n\n    Now, the auto-connect attempt is only marked as complete when we actually find and connect to the wallet, allowing:\n\n    -   dApps to set `autoConnect` asynchronously\n    -   Wallet extensions that register late to still trigger auto-connect\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-react%408.2.1",
       "date": "2026-02-05",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -467,6 +643,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/wallet-adapter-mui-design@5.5.1",
       "body": "### Patch Changes\n\n-   Updated dependencies [0379135]\n    -   @aptos-labs/wallet-adapter-react@8.2.1\n",
+      "body_full": "### Patch Changes\n\n-   Updated dependencies [0379135]\n    -   @aptos-labs/wallet-adapter-react@8.2.1\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-mui-design%405.5.1",
       "date": "2026-02-05",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -478,6 +655,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/wallet-adapter-ant-design@5.3.14",
       "body": "### Patch Changes\n\n-   Updated dependencies [0379135]\n    -   @aptos-labs/wallet-adapter-react@8.2.1\n",
+      "body_full": "### Patch Changes\n\n-   Updated dependencies [0379135]\n    -   @aptos-labs/wallet-adapter-react@8.2.1\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/wallet-adapter-ant-design%405.3.14",
       "date": "2026-02-05",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -489,6 +667,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/cross-chain-core@5.7.0",
       "body": "### Minor Changes\n\n-   9f119d7: Improve cross-chain config and Solana RPC handling\n",
+      "body_full": "### Minor Changes\n\n-   9f119d7: Improve cross-chain config and Solana RPC handling\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%405.7.0",
       "date": "2026-02-05",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -500,6 +679,7 @@
       "source_type": "release",
       "title": "aptos-wallet-adapter @aptos-labs/cross-chain-core@5.6.2",
       "body": "### Patch Changes\n\n-   7d936dc: fix: handle missing Solana USDC balance, add devnet warning, and fix Sepolia CORS\n",
+      "body_full": "### Patch Changes\n\n-   7d936dc: fix: handle missing Solana USDC balance, add devnet warning, and fix Sepolia CORS\n",
       "url": "https://github.com/aptos-labs/aptos-wallet-adapter/releases/tag/%40aptos-labs/cross-chain-core%405.6.2",
       "date": "2026-02-03",
       "repo": "aptos-labs/aptos-wallet-adapter",
@@ -518,7 +698,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 7,
-      "deletions": 6
+      "deletions": 6,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#738",
@@ -532,7 +713,8 @@
       "labels": [],
       "changed_files": 2,
       "additions": 12,
-      "deletions": 12
+      "deletions": 12,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#734",
@@ -549,7 +731,8 @@
       ],
       "changed_files": 6,
       "additions": 105,
-      "deletions": 82
+      "deletions": 82,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#737",
@@ -563,7 +746,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 4,
-      "deletions": 1
+      "deletions": 1,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#736",
@@ -577,7 +761,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 7,
-      "deletions": 6
+      "deletions": 6,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#735",
@@ -591,7 +776,8 @@
       "labels": [],
       "changed_files": 11,
       "additions": 119,
-      "deletions": 84
+      "deletions": 84,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#733",
@@ -605,7 +791,8 @@
       "labels": [],
       "changed_files": 10,
       "additions": 38,
-      "deletions": 23
+      "deletions": 23,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#732",
@@ -619,7 +806,8 @@
       "labels": [],
       "changed_files": 23,
       "additions": 269,
-      "deletions": 188
+      "deletions": 188,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#726",
@@ -633,7 +821,8 @@
       "labels": [],
       "changed_files": 5,
       "additions": 239,
-      "deletions": 6
+      "deletions": 6,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#731",
@@ -647,7 +836,8 @@
       "labels": [],
       "changed_files": 1,
       "additions": 1,
-      "deletions": 2
+      "deletions": 2,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#716",
@@ -661,7 +851,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 7,
-      "deletions": 6
+      "deletions": 6,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#729",
@@ -675,7 +866,8 @@
       "labels": [],
       "changed_files": 7,
       "additions": 860,
-      "deletions": 20
+      "deletions": 20,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/aptos-wallet-adapter:#730",
@@ -689,7 +881,203 @@
       "labels": [],
       "changed_files": 120,
       "additions": 361,
-      "deletions": 13069
+      "deletions": 13069,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#24",
+      "source_type": "pr",
+      "title": "fix: address iteration 002 testing findings",
+      "body": "## Summary\n- Fix doc comment ordering before `#[view]` in FUNGIBLE_ASSETS.md to eliminate compiler warnings\n- Add 2 new common mistakes to TESTING.md: `///` before `#[view]` and `borrow_mut` mutability mismatch\n- Add `#[view]` ordering rule to write-contracts SKILL.md testability section\n- Document `withdraw_with_ref` vault/escrow pattern in FUNGIBLE_ASSETS.md\n\n## Context\nFound during testing iteration 002 which generated 3 test dApps (fungible-token, staking-vault, governance-voting) totaling 75 tests. All compile and pass with `--dev` flag.\n\n### Gaps Found\n1. **Doc comments before `#[view]`** - FUNGIBLE_ASSETS.md had `/// comment` before `#[view]` which causes compiler warnings\n2. **`borrow_mut` mutability** - SimpleMap/Table `borrow_mut` needs `&mut` reference, not documented in common mistakes\n3. **`withdraw_with_ref` pattern** - Using TransferRef for vault withdrawals wasn't documented\n4. **Non-existent API** - `generate_transfer_ref_from_transfer_ref` doesn't exist; correct approach is `withdraw_with_ref(&transfer_ref, store, amount)`\n\n## Test plan\n- [x] Verified all 3 test dApps compile and pass tests\n- [x] Verified doc comment fix matches Move compiler expectations\n- [x] `npm run format` passes\n\nGenerated with Claude Code",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/24",
+      "date": "2026-02-06",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 24,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 10,
+      "deletions": 3,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#22",
+      "source_type": "pr",
+      "title": "fix: remove stale skill references from marketplace.json",
+      "body": "## Summary\n- Remove references to 2 deleted skills from marketplace.json: `generate-move-scripts` and `implement-upgradeable-contracts`\n- These skills no longer exist in the codebase\n\n## Test plan\n- Verify marketplace.json is valid JSON\n- Verify remaining skill paths all resolve to existing directories\n\nGenerated with Claude Code",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/22",
+      "date": "2026-02-06",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 22,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 1,
+      "deletions": 3,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#20",
+      "source_type": "pr",
+      "title": "chore: clean up repository for public release",
+      "body": "## Summary\n\n- Remove 5 internal documentation files (NEXT_ACTIONS.md, LESSONS_LEARNED.md, ROADMAP.md, etc.)\n- Remove 13 empty reference files (0 bytes placeholder files)\n- Remove 2 incomplete skill directories (generate-move-scripts, implement-upgradeable-contracts)\n- Consolidate CLAUDE.md to lightweight index (109 \u2192 38 lines)\n- Remove duplicate/redundant content from skill files\n- Update skill count from 11 to 9 across documentation\n- Add deleted internal docs to .gitignore to prevent re-adding\n- Format all markdown files with prettier\n\n## What's Kept\n\n- All 8 comprehensive pattern files (DIGITAL_ASSETS.md, SECURITY.md, etc.)\n- 9 core skills covering the complete development lifecycle\n- All setup guides (claude-code, cursor, copilot)\n\n## Test plan\n\n- [x] Verify all links in CLAUDE.md and README.md are valid\n- [x] Verify all 9 skill SKILL.md files exist\n- [x] Run prettier formatting on all markdown files\n- [x] Confirm deleted directories/files are removed\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/20",
+      "date": "2026-02-05",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 20,
+      "labels": [],
+      "changed_files": 45,
+      "additions": 576,
+      "deletions": 3426,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#19",
+      "source_type": "pr",
+      "title": "fix: Correct marketplace.json schema for Claude Code plugin",
+      "body": "## Summary\n\nFixes the marketplace.json schema to resolve the error:\n```\nError: Invalid schema: owner: Invalid input: expected object, received undefined, plugins: Invalid input: expected array, received undefined\n```\n\n## Changes\n\nUpdated `.claude-plugin/marketplace.json` to match the official schema used by [anthropics/skills](https://github.com/anthropics/skills) and [supabase/agent-skills](https://github.com/supabase/agent-skills):\n\n- Change `author` (string) \u2192 `owner` (object with `name`/`email`)\n- Move `description`/`version` into `metadata` object\n- Replace root-level `skills` array \u2192 `plugins` array with plugin objects\n- Each plugin contains: `name`, `description`, `source`, `strict`, `skills`\n- Remove non-standard fields: `categories`, `patterns`, `license`, `homepage`\n\n## Test plan\n\n- [ ] Run `/plugin marketplace add iskysun96/aptos-agent-skills` in Claude Code\n- [ ] Verify plugin installs without schema errors\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/19",
+      "date": "2026-02-04",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 19,
+      "labels": [],
+      "changed_files": 1,
+      "additions": 27,
+      "deletions": 28,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#18",
+      "source_type": "pr",
+      "title": "feat: Adapt to Agent Skills Open Standard",
+      "body": "## Summary\n\nEnable `npx skills add iskysun96/aptos-agent-skills` installation by conforming to the Agent Skills Open Standard (used by Vercel, Supabase, Anthropic).\n\n- Move AGENTS.md to repository root for standard compliance\n- Add `.claude-plugin/marketplace.json` for Claude Code marketplace integration\n- Update `package.json` with metadata (keywords, repository, agentSkills config)\n- Create `INSTALL.md` with comprehensive installation options\n- Add metadata (category, tags, priority) to all 11 SKILL.md files\n- Update `README.md` with installation section\n\n## Test plan\n\n- [ ] Verify `npx skills add iskysun96/aptos-agent-skills` works after merge\n- [ ] Verify selective installation: `npx skills add iskysun96/aptos-agent-skills --skill write-contracts`\n- [ ] Verify Claude Code plugin: `/plugin marketplace add iskysun96/aptos-agent-skills`\n- [ ] Confirm all skill files have proper YAML frontmatter with metadata\n\n## New Repository Structure\n\n```\naptos-agent-skills/\n\u251c\u2500\u2500 AGENTS.md                    # Moved from setups/ - main orchestration\n\u251c\u2500\u2500 CLAUDE.md                    # Auto-loader for Claude Code\n\u251c\u2500\u2500 INSTALL.md                   # NEW - installation guide\n\u251c\u2500\u2500 README.md                    # Updated with installation section\n\u251c\u2500\u2500 package.json                 # Updated metadata\n\u251c\u2500\u2500 .claude-plugin/\n\u2502   \u2514\u2500\u2500 marketplace.json         # NEW - Claude Code marketplace\n\u251c\u2500\u2500 skills/...\n\u251c\u2500\u2500 patterns/...\n\u2514\u2500\u2500 setups/cursor/, copilot/, claude-code/\n```\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/18",
+      "date": "2026-02-04",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 18,
+      "labels": [],
+      "changed_files": 18,
+      "additions": 312,
+      "deletions": 120,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#16",
+      "source_type": "pr",
+      "title": "Update scaffold-project to use degit bootstrapping",
+      "body": "## Summary\n- Rewrite scaffold-project skill to use degit instead of npx create-aptos-dapp\n- Add clear instructions for fullstack vs contract-only bootstrapping\n- Include Move.toml templates for different project types (NFT, DeFi)\n- Add post-scaffolding checklist\n- Document template sources and one-liner commands\n\n## Changes\n- `skills/project/scaffold-project/SKILL.md` - Complete rewrite\n\n## Template commands\n```bash\n# Fullstack\nnpx degit aptos-labs/create-aptos-dapp/templates/boilerplate-template my-dapp\n\n# Contract-only\nnpx degit aptos-labs/create-aptos-dapp/templates/contract-boilerplate-template my-contract\n```\n\n## Test plan\n- [ ] Test degit command works for fullstack template\n- [ ] Test degit command works for contract-only template\n- [ ] Verify Move.toml templates are correct\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/16",
+      "date": "2026-02-04",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 16,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 230,
+      "deletions": 315,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#15",
+      "source_type": "pr",
+      "title": "Restructure repository for fullstack skills",
+      "body": "## Summary\n- Restructure repository folder hierarchy for fullstack skills support\n- Create `skills/project/`, `skills/move/`, `skills/sdk/`, `skills/wallet/`, `skills/frontend/`, `skills/testing/` directories\n- Create `patterns/move/` and `patterns/fullstack/` directories\n- Move all existing Move skills to `skills/move/`\n- Move all existing patterns to `patterns/move/`\n- Update all internal references/links in skill files\n- Update CLAUDE.md with new structure\n- Update README with new layout\n\n## Test plan\n- [ ] Verify all skill files are in correct locations\n- [ ] Verify all internal links resolve correctly\n- [ ] Verify CLAUDE.md loads properly\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/15",
+      "date": "2026-02-03",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 15,
+      "labels": [],
+      "changed_files": 55,
+      "additions": 305,
+      "deletions": 559,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#14",
+      "source_type": "pr",
+      "title": "Add cross-module testing patterns and common pitfalls",
+      "body": "## Summary\n\nAdds learnings from iteration 001 testing (NFT Marketplace + Staking Vault contracts):\n\n- **Pattern 8 in TESTING.md**: Cross-module testing patterns\n  - Struct field visibility and accessor functions\n  - Testing escrow patterns with ownership changes  \n  - Acquires annotation rules\n- **Updated Common Testing Mistakes table** with 3 new issues\n- **Added testability rules** to write-contracts skill (rules 21-23)\n- **Added Common Pitfalls section** to generate-tests skill\n\n## Key Learnings Documented\n\n1. **Struct field access across modules** - Tests can't directly access struct fields from other modules; need public view accessor functions\n2. **Escrow pattern error expectations** - After listing to escrow, ownership changes so expect `E_NOT_OWNER` not `E_ALREADY_LISTED`\n3. **Acquires annotations** - Only list resources YOUR code borrows, not what framework functions borrow internally\n\n## Test plan\n\n- [ ] Review TESTING.md Pattern 8 examples compile correctly\n- [ ] Verify new table entries in Common Testing Mistakes are accurate\n- [ ] Check write-contracts testability rules are clear\n- [ ] Confirm generate-tests Common Pitfalls section is helpful\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.ai/code)",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/14",
+      "date": "2026-02-03",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 14,
+      "labels": [],
+      "changed_files": 3,
+      "additions": 232,
+      "deletions": 11,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#13",
+      "source_type": "pr",
+      "title": "Add comprehensive storage decision framework and git workflow best practices",
+      "body": "## Summary\nAdds comprehensive storage type decision framework to write-contracts skill using progressive disclosure pattern. Also adds git workflow best practices to CLAUDE.md.\n\n## Changes\n\n### Storage Decision Framework\n- \u2705 6 storage types covered: Vector, SmartVector, Table, TableWithLength, OrderedMap, BigOrderedMap\n- \u2705 Decision tree with 2-3 questions for optimal type selection\n- \u2705 Smart defaults for 9 common patterns (staking, leaderboards, logs, etc)\n- \u2705 Gas optimization guidance for production deployments\n- \u2705 SmartTable marked as deprecated with migration notes\n- \u2705 4 detailed reference files using progressive disclosure\n- \u2705 Compressed SKILL.md (241 lines vs 946 in main)\n\n### Git Workflow Best Practices (CLAUDE.md)\n- \u2705 Always pull from main before starting work\n- \u2705 Run npm install in new worktrees for dependencies\n- \u2705 Keep feature branches synced with main\n- \u2705 Use descriptive branch naming conventions\n\n## Impact\n- **Prevents costly mistakes:** 15k+ token refactors when wrong storage type is chosen\n- **Improves developer workflow:** Clear git best practices in CLAUDE.md\n- **Maintains compression:** 241 lines vs 946 in main, while adding comprehensive storage guidance\n\n## Testing\n- [ ] Test with NFT staking contract scenario\n- [ ] Test with leaderboard contract scenario\n- [ ] Test with transaction log scenario\n\n## Files Changed\n```\n7 files changed, 1809 insertions(+), 830 deletions(-)\n- CLAUDE.md (updated with git workflow)\n- skills/write-contracts/SKILL.md (compressed with storage framework)\n- skills/write-contracts/references/*.md (4 new reference files)\n- NEXT_ACTIONS.md (restored with Priority 1 marked complete)\n```\n\n## Related\n- Addresses Iteration 004 finding (NEXT_ACTIONS.md Priority 1)\n- Prevents 50% of design mistakes based on testing\n- Token savings: 15k+ per prevented storage design error\n\n## Review Notes\nThe compressed SKILL.md is intentionally much shorter (241 vs 946 lines) because it uses progressive disclosure - the main file has concise guidance",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/13",
+      "date": "2026-02-02",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 13,
+      "labels": [],
+      "changed_files": 7,
+      "additions": 1507,
+      "deletions": 1,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#12",
+      "source_type": "pr",
+      "title": "Compress skills using progressive disclosure pattern",
+      "body": "## Summary\n\nImplements progressive disclosure system for all 8 skills to optimize context usage and improve skill triggering.\n\n### Key Changes\n\n**1. Skill Compression**\n- `write-contracts`: 947 \u2192 193 lines (80% reduction, 29KB \u2192 8KB)\n- `troubleshoot-errors`: 748 \u2192 318 lines (57% reduction, 16KB \u2192 12KB)\n- All skills: Enhanced with trigger-rich frontmatter descriptions\n\n**2. Progressive Disclosure Structure**\n- \u2705 YAML frontmatter added to all 8 skills\n- \u2705 Trigger-rich descriptions with 5-8 phrase variations per skill\n- \u2705 `references/` folders created for all skills\n- \u2705 Detailed content extracted to reference files for on-demand loading\n\n**3. Reference Files Created**\n\n**write-contracts (7 files):**\n- `object-patterns.md` - Named objects, collections, transfers, deletion\n- `access-control.md` - RBAC and permission patterns\n- `safe-arithmetic.md` - Overflow/underflow prevention\n- `initialization.md` - init_module patterns\n- `events.md` - Event emission patterns\n- `v2-syntax.md` - Modern Move V2 features\n- `complete-example.md` - Full NFT collection example\n\n**troubleshoot-errors:**\n- `error-catalog.md` - Complete error database\n\n**Other skills:**\n- Reference folder structure ready for future expansion\n\n**4. Consistent Structure Applied**\n\nAll skills now follow:\n- Enhanced frontmatter with multiple trigger phrases\n- Core Rules (front-loaded, concise)\n- Quick Workflow (3-5 steps)\n- Key Examples (show, don't tell)\n- Anti-patterns section\n- References section (links to detailed content)\n\n### Impact\n\n**Token Efficiency:**\n- Major skills compressed by 50-80%\n- Progressive loading enables on-demand detail access\n- Critical information front-loaded for faster processing\n\n**Improved Triggering:**\n- Rich descriptions with natural language variations\n- Aptos-specific terminology included\n- Task-based phrases covered\n\n**Better Maintainability:**\n- Detailed patterns separated into reference files\n- Easier to update without bloating main SKILL.md files\n- Clear separation between quic",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/12",
+      "date": "2026-02-02",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 12,
+      "labels": [],
+      "changed_files": 34,
+      "additions": 1601,
+      "deletions": 3078,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#11",
+      "source_type": "pr",
+      "title": "Update Move.toml to use aptos-framework.git repository",
+      "body": "## Summary\n\nUpdate all Move.toml dependency examples to use the official recommended `aptos-framework.git` repository instead of `aptos-core.git`. This ensures automatic dependency updates when Aptos CLI commands are run.\n\n## Changes\n\n### Files Updated\n- **skills/scaffold-project/SKILL.md** - Updated 6 Move.toml templates + added new documentation section\n- **skills/troubleshoot-errors/SKILL.md** - Updated dependency fix example\n\n### Key Updates\n- \u2705 Replace `aptos-core.git` with `aptos-framework.git` in all dependency examples\n- \u2705 Simplify subdir paths (`aptos-framework` vs `aptos-move/framework/aptos-framework`)\n- \u2705 Add comprehensive \"Default Dependency Configuration\" section explaining the pattern\n- \u2705 Update ALWAYS rules to enforce `aptos-framework.git` usage\n- \u2705 Update NEVER rules to warn against old `aptos-core.git` pattern\n- \u2705 Add reference link to official Aptos documentation\n\n## Benefits\n\n- **Automatic updates**: Dependencies are automatically retrieved and compiled against latest changes when CLI commands run\n- **Official pattern**: This is the standard recommended by Aptos Labs\n- **Simpler paths**: Cleaner, more direct dependency configuration\n- **Latest stable code**: Ensures contracts always build against current framework\n\n## Example Change\n\n**Before:**\n```toml\n[dependencies.AptosFramework]\ngit = \"https://github.com/aptos-labs/aptos-core.git\"\nrev = \"mainnet\"\nsubdir = \"aptos-move/framework/aptos-framework\"\n```\n\n**After:**\n```toml\n[dependencies.AptosFramework]\ngit = \"https://github.com/aptos-labs/aptos-framework.git\"\nrev = \"mainnet\"\nsubdir = \"aptos-framework\"\n```\n\n## Reference\n\nhttps://aptos.dev/build/smart-contracts/book/packages\n\n## Test Plan\n\n- [x] All Move.toml examples use `aptos-framework.git` repository\n- [x] All subdirs use simplified paths\n- [x] Documentation section added explaining the pattern\n- [x] ALWAYS/NEVER rules updated\n- [x] No old patterns remain in actual code examples\n- [x] All files formatted with prettier\n\n\ud83e\udd16 Generated with [Claude Co",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/11",
+      "date": "2026-02-02",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 11,
+      "labels": [],
+      "changed_files": 2,
+      "additions": 80,
+      "deletions": 24,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#10",
+      "source_type": "pr",
+      "title": "Iteration 002: Add DeFi security, governance, and storage patterns",
+      "body": "# Iteration 002 Skills Improvements\n\nBased on comprehensive security review and validation of 4 generated dApps (token-launch, nft-auction, multisig-wallet, lending-protocol).\n\n## Summary\n\nThis PR adds critical security patterns discovered through iteration 002 systematic testing. All 4 dApps achieved **100% test pass rate** (75/75 tests) and **100% pattern compliance** (FA, DA, init_module), but security review found 14 findings that revealed gaps in guidance.\n\n**These updates should prevent 11/14 findings (79%):**\n- 2/2 critical findings\n- 4/4 high findings  \n- 4/5 medium findings\n- 1/3 low findings\n\n## Critical Updates\n\n### 1. Pattern 2: Never Use Implicit Amounts (CRITICAL)\n\n**Prevents:** C-1 (arbitrary balance withdrawal in nft-auction)\n\nAdded mandatory rule: Always require explicit amount parameters for user-facing token operations.\n\n\u274c NEVER:\n```move\nlet bid_amount = coin::balance<AptosCoin>(bidder_addr);\ncoin::transfer(bidder, auction, bid_amount);  // Drains entire balance!\n```\n\n\u2705 ALWAYS:\n```move\npublic entry fun place_bid(bidder: &signer, auction: Object<Auction>, bid_amount: u64)\n```\n\n### 2. Pattern 7: DeFi-Specific Security (NEW MAJOR SECTION)\n\n**Prevents:** C-2 (no price oracle in lending-protocol)\n\nComprehensive DeFi security guidance:\n- **Price Oracles:** Multi-oracle design, staleness checks, deviation limits\n- **MEV Protection:** Slippage parameters, deadline timestamps\n- **Liquidation Safety:** Partial liquidation, incentives, buffers\n\nNever assume 1:1 price ratios - protocols get drained on day 1.\n\n### 3. Pattern 8: Governance and Multi-Sig Security (NEW)\n\n**Prevents:** H-3 (owner removal without handling pending approvals)\n\nNew governance patterns:\n- Proposal expiration (7/3/14 day recommendations)\n- Owner/member removal safety\n- Threshold management validation\n\n## High Priority Updates\n\n### 4. Arithmetic Safety Enhancements\n\n**Prevents:** H-1 (division rounds to zero)\n\n- Division result validation for fees and increments\n- Multi-step calculation ",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/10",
+      "date": "2026-02-02",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 10,
+      "labels": [],
+      "changed_files": 9,
+      "additions": 1228,
+      "deletions": 96,
+      "minor": false
+    },
+    {
+      "id": "pr:aptos-labs/aptos-agent-skills:#9",
+      "source_type": "pr",
+      "title": "Add Fungible Assets support + Critical validation learnings",
+      "body": "## Summary\n\nThis PR adds comprehensive Fungible Asset (FA) standard support and documents critical patterns discovered during iteration 001 validation that achieved **100% test pass rate** (up from 50% baseline).\n\n## Key Additions\n\n### 1. Fungible Assets Standard (Original PR #8 Scope)\n- New `patterns/FUNGIBLE_ASSETS.md` - Complete FA standard guide (580+ lines)\n- Updated `skills/write-contracts/SKILL.md` - Added Step 2.6 for FA contracts\n- Updated `skills/generate-tests/SKILL.md` - Added Step 6.8 for FA testing\n- Strengthened Digital Asset enforcement with explicit type requirements\n\n### 2. Critical Validation Learnings (From iteration 001-validation)\n\n**Validation Results:** 50% \u2192 100% test pass rate (+50% improvement)\n\n#### AptosToken Module Patterns\n- Added section \"Using AptosToken Module\" to `patterns/DIGITAL_ASSETS.md` (240+ lines)\n- Documented correct functions: `aptos_token::create_collection_object()` and `aptos_token::mint_token_object()`\n- Critical fix: max_supply CANNOT be 0, must use `18446744073709551615` for unlimited\n- Updated `skills/write-contracts/SKILL.md` with corrected NFT marketplace pattern\n\n#### Move.toml Configuration Pattern\n- Updated `skills/scaffold-project/SKILL.md` with critical address configuration\n- Pattern: Use `addresses = \"_\"` with `dev-addresses = \"0xCAFE\"`\n- Requirement: ALWAYS use `--dev` flag for compilation/testing\n- Added to ALWAYS/NEVER rules for all future projects\n\n## Files Changed\n\n- `patterns/FUNGIBLE_ASSETS.md` - NEW (580 lines)\n- `patterns/DIGITAL_ASSETS.md` - Enhanced with AptosToken module section\n- `skills/write-contracts/SKILL.md` - Added FA support + corrected NFT patterns\n- `skills/generate-tests/SKILL.md` - Added FA testing patterns\n- `skills/scaffold-project/SKILL.md` - Added Move.toml configuration pattern\n\n## Validation Evidence\n\n**Test Results:**\n```\nRunning Move unit tests\nTest result: OK. Total tests: 15; passed: 15; failed: 0\nModule coverage: 39.28%\n```\n\n**Metrics Comparison:**\n\n| Metric | Baseline (00",
+      "url": "https://github.com/aptos-labs/aptos-agent-skills/pull/9",
+      "date": "2026-02-02",
+      "repo": "aptos-labs/aptos-agent-skills",
+      "number": 9,
+      "labels": [],
+      "changed_files": 6,
+      "additions": 397,
+      "deletions": 55,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/forklift:#26",
@@ -703,119 +1091,8 @@
       "labels": [],
       "changed_files": 6,
       "additions": 80,
-      "deletions": 3
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#361",
-      "source_type": "pr",
-      "title": "Package size limit analysis",
-      "body": "Revert dependency updates to fix Vercel 5MB serverless function limit caused by an unused Firestore package increase.\n\nThe `firebase` package update from v12.7.0 to v12.8.0 pulled in `@firebase/firestore@4.10.0`, which introduced a new \"Firestore Pipelines\" feature, nearly doubling its size (+21.6MB). This project only uses `firebase/app` and `firebase/auth`, but the monolithic `firebase` package caused the overall bundle to exceed the 5MB limit. This PR reverts the problematic dependency updates and includes a detailed analysis document (`PACKAGE_SIZE_ANALYSIS.md`).\n\n---\n<p><a href=\"https://cursor.com/background-agent?bcId=bc-cebe3c64-522e-4a63-80b8-b005721cb2e0\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-cebe3c64-522e-4a63-80b8-b005721cb2e0\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a></p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/361",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 361,
-      "labels": [],
-      "changed_files": 8,
-      "additions": 1609,
-      "deletions": 2304
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#357",
-      "source_type": "pr",
-      "title": "Cursor/documentation size limits 6cd3",
-      "body": "## Summary\r\n \r\nThis PR addresses Vercel's 5MB serverless function body limit by making the site fully static and adding build size analysis tooling.\r\n \r\n## Problem\r\n \r\nThe site was hitting Vercel's 5MB limit due to:\r\n1. **Dynamic OG image API** - Forced SSR mode, creating a 97MB `_render.func` bundle\r\n2. **Large content collections** - All MDX content bundled into server chunks\r\n \r\n## Solution\r\n \r\n### 1. Remove OG Image API (SSR \u2192 Static)\r\n- Deleted `src/pages/api/og-image.png.ts` (the only `prerender=false` route)\r\n- Updated `Head.astro` to use static `/schema-logo.png` instead\r\n- Site is now fully static - no serverless functions needed except middleware\r\n \r\n### 2. Temporarily Disable Spanish Translations\r\n- Moved `src/content/docs/es/` to `src/content/_docs_es_disabled/`\r\n- Reduces content bundle size by ~3.5MB (344 files)\r\n- Can be restored later: `mv src/content/_docs_es_disabled src/content/docs/es`\r\n \r\n### 3. Add .md File Access via GitHub Redirect\r\n- Users can access raw markdown by appending `.md` to any URL\r\n- Example: `/build/cli.md` \u2192 redirects to GitHub raw content\r\n- Middleware only handles redirect logic (~14KB), not file serving\r\n \r\n### 4. Add Build Size Analysis\r\n- Logs file sizes after build and before deployment\r\n- Shows per-function sizes with warnings for files >4MB\r\n \r\n## Trade-offs\r\n \r\n- **OG Images**: Now use static logo instead of dynamic per-page images\r\n- **Spanish Docs**: Temporarily unavailable (content preserved in repo)",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/357",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 357,
-      "labels": [],
-      "changed_files": 8,
-      "additions": 100,
-      "deletions": 220
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#356",
-      "source_type": "pr",
-      "title": "Cursor/documentation size limits 6cd3",
-      "body": "",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/356",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 356,
-      "labels": [],
-      "changed_files": 349,
-      "additions": 411,
-      "deletions": 24
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#354",
-      "source_type": "pr",
-      "title": "Documentation size limits",
-      "body": "This pull request contains changes generated by a Cursor Cloud Agent\n\n<p><a href=\"https://cursor.com/background-agent?bcId=bc-7cb99f88-2955-46b5-b6f2-002555949465\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-7cb99f88-2955-46b5-b6f2-002555949465\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a></p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/354",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 354,
-      "labels": [],
-      "changed_files": 7,
-      "additions": 513,
-      "deletions": 42
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#353",
-      "source_type": "pr",
-      "title": "revert: remove markdown file access feature",
-      "body": "## Summary\n\nReverts the markdown file access feature and all fix attempts due to Vercel's 5MB deployment limit.\n\n### Reverted commits:\n- `bd5d364` - fix: use Astro output dir instead of waiting for Vercel dir (#352)\n- `98b4aee` - fix: replace dynamic .md route with build-time static generation (#351)\n- `bc2bfba` - feat: add markdown file access by appending .md to page paths\n\n### Why\n\nAll approaches hit Vercel's 5MB limit:\n1. **Dynamic route with `getStaticPaths`**: 870 route entries \u2192 manifest too large\n2. **Static file generation**: 870 files \u2192 deployment manifest too large  \n3. **Bundled JSON content**: 6MB \u2192 function bundle too large\n\nA different architecture is needed (e.g., external storage, edge functions with streaming, or GitHub redirects).\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/353",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 353,
-      "labels": [],
-      "changed_files": 5,
-      "additions": 0,
-      "deletions": 83
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#351",
-      "source_type": "pr",
-      "title": "fix: replace dynamic .md route with build-time static generation",
-      "body": "## Summary\n\n- Fixes the \"Body exceeded 5mb limit\" error on Vercel when accessing `.md` file URLs\n- The dynamic route in `[...slug].md.ts` was generating 870+ route entries, causing the Vercel route manifest to exceed 5MB\n- Replaced with an Astro integration that copies `.mdx` files directly to `.vercel/output/static/` as `.md` files during build\n\n## Changes\n\n- **Created** `src/integrations/markdownFiles.ts` - Build-time static file generation\n- **Updated** `astro.config.mjs` - Register the new integration\n- **Updated** `vercel.json` - Add Content-Type and Cache-Control headers for `.md` files\n- **Deleted** `src/pages/[...slug].md.ts` - Remove the problematic dynamic route\n\n## Test plan\n\n- [ ] Verify `pnpm build` completes without errors\n- [ ] Check `.vercel/output/static/*.md` files exist after build\n- [ ] Deploy to Vercel preview and verify no 5MB error\n- [ ] Test URLs: `/build/cli.md`, `/es/build/cli.md`, `/zh/build/cli.md`\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/351",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 351,
-      "labels": [],
-      "changed_files": 4,
-      "additions": 80,
-      "deletions": 69
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#349",
-      "source_type": "pr",
-      "title": "Markdown page access",
-      "body": "Add a feature to serve documentation pages as raw markdown by appending `.md` to their URL.\n\nThis provides direct access to the source content, bypassing standard page rendering and internationalization redirects.\n\n---\n[Slack Thread](https://aptos-org.slack.com/archives/C03EG004E56/p1770261219248539?thread_ts=1770261219.248539&cid=C03EG004E56)\n\n<p><a href=\"https://cursor.com/background-agent?bcId=bc-9d346341-4384-5f8a-9764-32dbb7b28a1a\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-9d346341-4384-5f8a-9764-32dbb7b28a1a\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a></p>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/349",
-      "date": "2026-02-05",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 349,
-      "labels": [],
-      "changed_files": 3,
-      "additions": 76,
-      "deletions": 0
-    },
-    {
-      "id": "pr:aptos-labs/aptos-docs:#337",
-      "source_type": "pr",
-      "title": "Documentation file and symlink",
-      "body": "Adds `CLAUDE.md` with AI agent guidelines and a symlink `AGENTS.md`, and completes the Chinese glossary translation to fulfill documentation requirements.\n\n---\n<a href=\"https://cursor.com/background-agent?bcId=bc-ba2dd975-7ff8-4afe-b4d4-d85484a078cc\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-cursor-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-cursor-light.svg\"><img alt=\"Open in Cursor\" src=\"https://cursor.com/open-in-cursor.svg\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-ba2dd975-7ff8-4afe-b4d4-d85484a078cc\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-web-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-web-light.svg\"><img alt=\"Open in Web\" src=\"https://cursor.com/open-in-web.svg\"></picture></a>\n\n",
-      "url": "https://github.com/aptos-labs/aptos-docs/pull/337",
-      "date": "2026-02-02",
-      "repo": "aptos-labs/aptos-docs",
-      "number": 337,
-      "labels": [],
-      "changed_files": 3,
-      "additions": 729,
-      "deletions": 0
+      "deletions": 3,
+      "minor": false
     },
     {
       "id": "pr:aptos-labs/explorer:#1414",
@@ -829,7 +1106,8 @@
       "labels": [],
       "changed_files": 3,
       "additions": 42,
-      "deletions": 23
+      "deletions": 23,
+      "minor": false
     }
   ]
 }

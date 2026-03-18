@@ -29,6 +29,7 @@ def _build_context(
     summaries: dict[str, Any],
     categorized: dict[str, list[dict[str, Any]]],
     month_year: str,
+    changelog_url: str = "",
 ) -> dict[str, Any]:
     """Build the template context from summaries and categorized items."""
     config = load_newsletter_config()
@@ -55,6 +56,7 @@ def _build_context(
         "intro": summaries.get("intro", ""),
         "sections": sections,
         "branding": branding,
+        "changelog_url": changelog_url,
     }
 
 
@@ -62,11 +64,12 @@ def render_markdown(
     summaries: dict[str, Any],
     categorized: dict[str, list[dict[str, Any]]],
     month_year: str,
+    changelog_url: str = "",
 ) -> str:
     """Render the Markdown newsletter."""
     env = _build_jinja_env()
     template = env.get_template("newsletter.md.j2")
-    context = _build_context(summaries, categorized, month_year)
+    context = _build_context(summaries, categorized, month_year, changelog_url)
     return template.render(**context)
 
 
@@ -74,11 +77,12 @@ def render_html(
     summaries: dict[str, Any],
     categorized: dict[str, list[dict[str, Any]]],
     month_year: str,
+    changelog_url: str = "",
 ) -> str:
     """Render the HTML newsletter with inlined CSS."""
     env = _build_jinja_env()
     template = env.get_template("newsletter.html.j2")
-    context = _build_context(summaries, categorized, month_year)
+    context = _build_context(summaries, categorized, month_year, changelog_url)
     raw_html = template.render(**context)
     return transform(raw_html)
 

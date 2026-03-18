@@ -18,12 +18,14 @@ repos:
     track:
       - releases
       - prs
+      - changelog
 
   - owner: aptos-labs
     name: aptos-python-sdk
     track:
       - releases
       - prs
+      - changelog
 
   - owner: aptos-labs
     name: aptos-rust-sdk
@@ -42,6 +44,7 @@ repos:
     track:
       - releases
       - prs
+      - changelog
 
   - owner: aptos-labs
     name: aptos-indexer-processors
@@ -60,12 +63,14 @@ repos:
     track:
       - releases
       - prs
+      - changelog
 
   - owner: aptos-labs
     name: aptos-cli
     track:
       - releases
       - prs
+      - changelog
 
   - owner: aptos-labs
     name: aptos-agent-skills
